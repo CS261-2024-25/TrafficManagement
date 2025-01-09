@@ -1,6 +1,11 @@
 # TrafficManagement
 CS261 coursework.
 
+### Table of contents
+- [Setup](#setup)
+- [General housekeeping](#general-housekeeping)
+- [Testing](#testing)
+
 # Setup
 Dependencies you'll need installed. This is OS-dependent so I won't be able to help you here. You'll need:
 - Dotnet SDK 9.0
