@@ -47,6 +47,12 @@ jobs:
             projectPath: .
             githubToken: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Clean Docker system
+        run: |
+            docker system prune -f
+            docker builder prune -f
+            docker image prune -f
+
       # Stash uncommitted changes
       - name: Stash uncommitted changes
         run: git stash --include-untracked
