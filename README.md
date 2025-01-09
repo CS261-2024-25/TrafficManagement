@@ -22,4 +22,5 @@ Pushing to main wont be possible, so you'll need to **CREATE A NEW BRANCH FOR YO
 
 Publish your branch to the GitHub and create a __pull request__ when ready to get work reviewed. We'll then merge to main and continue developing.
 
-Good luck kings
+# Testing
+We'll be using the `Unity Test Framework` for this. Find the docs [here](https://docs.unity3d.com/Packages/com.unity.test-framework@1.1/manual/). I've set up an example test in `Assets/Scripts/Backend`, which is a `Test Assembly` generated in Unity inside of `Backend/Tests`, and then a `Test Script` inside of that directory. ChatGPT will probably get it wrong so please **read the docs**.
