@@ -47,9 +47,13 @@ jobs:
             projectPath: .
             githubToken: ${{ secrets.GITHUB_TOKEN }}
 
+      # Stash uncommitted changes
+      - name: Stash uncommitted changes
+        run: git stash --include-untracked
+
       # Build
       - name: Build
-        uses: game-ci/unity-builder@v2
+        uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -57,9 +61,9 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
 
-    #   # Upload Build
-    #   - name: Upload Build
-    #     uses: actions/upload-artifact@v2
-    #     with:
-    #       name: Build-${{ matrix.targetPlatform }}
-    #       path: build/${{ matrix.targetPlatform }}
+      # Upload Build
+      - name: Upload Build
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
