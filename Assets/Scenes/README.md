@@ -1,0 +1,1 @@
+For all scene files (`.unity`).
