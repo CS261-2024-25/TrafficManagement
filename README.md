@@ -13,7 +13,7 @@ Dependencies you'll need installed. This is OS-dependent so I won't be able to h
 
 
 # General housekeeping
-All work should go inside of Assets.
+All work should go inside of Assets. Do not push binaries to the repository. Build the project inside `TrafficManagement/build/`.
 
 ## Conventional git
 If you have any questions or problems, please ask!!!
