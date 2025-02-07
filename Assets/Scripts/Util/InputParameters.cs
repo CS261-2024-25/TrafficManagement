@@ -46,7 +46,8 @@ namespace Assets.Scripts.Util
         public uint LeftFlow { get; }
         public uint ForwardFlow { get; }
         public uint RightFlow { get; }
-        public uint StraightLaneCount { get; }
+        public uint LaneCountOutbound { get; }
+        public uint LaneCountInbound { get; }
         public bool HasLeftTurn { get; }
         public bool HasPedestrianCrossing { get; }
 
@@ -55,14 +56,16 @@ namespace Assets.Scripts.Util
             uint leftFlow,
             uint forwardFlow, 
             uint rightFlow,
-            uint straightLaneCount,
+            uint laneCountOutbound,
+            uint laneCountInbound,
             bool hasLeftTurn,
             bool hasPedestrianCrossing
         ) {
             LeftFlow = leftFlow;
             ForwardFlow = forwardFlow;
             RightFlow = rightFlow;
-            StraightLaneCount = straightLaneCount;
+            LaneCountOutbound = laneCountOutbound;
+            LaneCountInbound = laneCountInbound;
             HasLeftTurn = hasLeftTurn;
             HasPedestrianCrossing = hasPedestrianCrossing;
         }
