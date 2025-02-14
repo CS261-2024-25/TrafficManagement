@@ -1149,6 +1149,7 @@ GameObject:
   - component: {fileID: 396449765}
   - component: {fileID: 396449767}
   - component: {fileID: 396449766}
+  - component: {fileID: 396449768}
   m_Layer: 5
   m_Name: East Panel
   m_TagString: Untagged
@@ -1218,6 +1219,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 396449764}
   m_CullTransparentMesh: 1
+--- !u!114 &396449768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396449764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outboundText: {fileID: 1961115305}
+  inboundText: {fileID: 123536967}
+  leftToggle: {fileID: 1046431045}
+  crossingToggle: {fileID: 1753848267}
 --- !u!1 &409600809
 GameObject:
   m_ObjectHideFlags: 0
@@ -6345,6 +6362,7 @@ GameObject:
   - component: {fileID: 1308259833}
   - component: {fileID: 1308259835}
   - component: {fileID: 1308259834}
+  - component: {fileID: 1308259836}
   m_Layer: 5
   m_Name: North Panel
   m_TagString: Untagged
@@ -6414,6 +6432,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308259832}
   m_CullTransparentMesh: 1
+--- !u!114 &1308259836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308259832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outboundText: {fileID: 533852153}
+  inboundText: {fileID: 1565329444}
+  leftToggle: {fileID: 1958638972}
+  crossingToggle: {fileID: 956565539}
 --- !u!1 &1308646723
 GameObject:
   m_ObjectHideFlags: 0
@@ -8251,7 +8285,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1695421824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1308259836}
+        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+        m_MethodName: GetInputs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 396449768}
+        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+        m_MethodName: GetInputs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1889283556}
+        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+        m_MethodName: GetInputs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2098657057}
+        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+        m_MethodName: GetInputs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1695421824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8623,6 +8705,7 @@ GameObject:
   - component: {fileID: 1889283553}
   - component: {fileID: 1889283555}
   - component: {fileID: 1889283554}
+  - component: {fileID: 1889283556}
   m_Layer: 5
   m_Name: South Panel
   m_TagString: Untagged
@@ -8692,6 +8775,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889283552}
   m_CullTransparentMesh: 1
+--- !u!114 &1889283556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889283552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outboundText: {fileID: 1410410293}
+  inboundText: {fileID: 1209748264}
+  leftToggle: {fileID: 1325440781}
+  crossingToggle: {fileID: 149268645}
 --- !u!1 &1897146626
 GameObject:
   m_ObjectHideFlags: 0
@@ -9595,6 +9694,7 @@ GameObject:
   - component: {fileID: 2098657054}
   - component: {fileID: 2098657056}
   - component: {fileID: 2098657055}
+  - component: {fileID: 2098657057}
   m_Layer: 5
   m_Name: West Panel
   m_TagString: Untagged
@@ -9664,6 +9764,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098657053}
   m_CullTransparentMesh: 1
+--- !u!114 &2098657057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098657053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outboundText: {fileID: 465643772}
+  inboundText: {fileID: 1575977723}
+  leftToggle: {fileID: 10909146}
+  crossingToggle: {fileID: 2019991765}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
