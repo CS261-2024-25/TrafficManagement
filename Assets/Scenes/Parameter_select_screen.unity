@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 10909145}
   - component: {fileID: 10909146}
   m_Layer: 5
-  m_Name: Left Lane Toggle
+  m_Name: West Left Lane Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,8 +269,9 @@ GameObject:
   - component: {fileID: 123536969}
   - component: {fileID: 123536968}
   - component: {fileID: 123536967}
+  - component: {fileID: 123536970}
   m_Layer: 5
-  m_Name: Incoming Lanes Input
+  m_Name: East Incoming Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -375,7 +376,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 123536970}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -435,6 +448,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123536965}
   m_CullTransparentMesh: 1
+--- !u!114 &123536970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123536965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 123536967}
 --- !u!1 &149268643
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +472,7 @@ GameObject:
   - component: {fileID: 149268644}
   - component: {fileID: 149268645}
   m_Layer: 5
-  m_Name: Crossing Toggle
+  m_Name: South Crossing Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1793,8 +1819,9 @@ GameObject:
   - component: {fileID: 465643774}
   - component: {fileID: 465643773}
   - component: {fileID: 465643772}
+  - component: {fileID: 465643775}
   m_Layer: 5
-  m_Name: Outgoing Lanes Input
+  m_Name: West Outgoing Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1899,7 +1926,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 465643775}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1959,6 +1998,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465643770}
   m_CullTransparentMesh: 1
+--- !u!114 &465643775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465643770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 465643772}
 --- !u!1 &491622501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,8 +2159,9 @@ GameObject:
   - component: {fileID: 533852155}
   - component: {fileID: 533852154}
   - component: {fileID: 533852153}
+  - component: {fileID: 533852156}
   m_Layer: 5
-  m_Name: Outgoing Lanes Input
+  m_Name: North Outgoing Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2213,7 +2266,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 533852156}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2273,6 +2338,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 533852151}
   m_CullTransparentMesh: 1
+--- !u!114 &533852156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533852151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 533852153}
 --- !u!1 &544094869
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,7 +4242,7 @@ GameObject:
   - component: {fileID: 956565538}
   - component: {fileID: 956565539}
   m_Layer: 5
-  m_Name: Crossing Toggle
+  m_Name: North Crossing Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4891,7 +4969,7 @@ GameObject:
   - component: {fileID: 1046431044}
   - component: {fileID: 1046431045}
   m_Layer: 5
-  m_Name: Left Lane Toggle
+  m_Name: East Left Lane Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5973,8 +6051,9 @@ GameObject:
   - component: {fileID: 1209748266}
   - component: {fileID: 1209748265}
   - component: {fileID: 1209748264}
+  - component: {fileID: 1209748267}
   m_Layer: 5
-  m_Name: Incoming Lanes Input
+  m_Name: South Incoming Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6079,7 +6158,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1209748267}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6139,6 +6230,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209748262}
   m_CullTransparentMesh: 1
+--- !u!114 &1209748267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209748262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 1209748264}
 --- !u!1 &1234962186
 GameObject:
   m_ObjectHideFlags: 0
@@ -6595,7 +6699,7 @@ GameObject:
   - component: {fileID: 1325440780}
   - component: {fileID: 1325440781}
   m_Layer: 5
-  m_Name: Left Lane Toggle
+  m_Name: South Left Lane Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6914,8 +7018,9 @@ GameObject:
   - component: {fileID: 1410410295}
   - component: {fileID: 1410410294}
   - component: {fileID: 1410410293}
+  - component: {fileID: 1410410296}
   m_Layer: 5
-  m_Name: Outgoing Lanes Input
+  m_Name: South Outgoing Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7020,7 +7125,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1410410296}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7080,6 +7197,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410410291}
   m_CullTransparentMesh: 1
+--- !u!114 &1410410296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410410291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 1410410293}
 --- !u!1 &1425116849
 GameObject:
   m_ObjectHideFlags: 0
@@ -7417,8 +7547,9 @@ GameObject:
   - component: {fileID: 1565329446}
   - component: {fileID: 1565329445}
   - component: {fileID: 1565329444}
+  - component: {fileID: 1565329447}
   m_Layer: 5
-  m_Name: Incoming Lanes Input
+  m_Name: North Incoming Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7523,7 +7654,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1565329447}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7583,6 +7726,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565329442}
   m_CullTransparentMesh: 1
+--- !u!114 &1565329447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565329442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 1565329444}
 --- !u!1 &1570515650
 GameObject:
   m_ObjectHideFlags: 0
@@ -7731,8 +7887,9 @@ GameObject:
   - component: {fileID: 1575977725}
   - component: {fileID: 1575977724}
   - component: {fileID: 1575977723}
+  - component: {fileID: 1575977726}
   m_Layer: 5
-  m_Name: Incoming Lanes Input
+  m_Name: West Incoming Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7837,7 +7994,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1575977726}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7897,6 +8066,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575977721}
   m_CullTransparentMesh: 1
+--- !u!114 &1575977726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575977721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 1575977723}
 --- !u!1 &1618094041
 GameObject:
   m_ObjectHideFlags: 0
@@ -8383,7 +8565,7 @@ GameObject:
   - component: {fileID: 1753848266}
   - component: {fileID: 1753848267}
   m_Layer: 5
-  m_Name: Crossing Toggle
+  m_Name: East Crossing Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9111,7 +9293,7 @@ GameObject:
   - component: {fileID: 1958638971}
   - component: {fileID: 1958638972}
   m_Layer: 5
-  m_Name: Left Lane Toggle
+  m_Name: North Left Lane Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9198,8 +9380,9 @@ GameObject:
   - component: {fileID: 1961115307}
   - component: {fileID: 1961115306}
   - component: {fileID: 1961115305}
+  - component: {fileID: 1961115308}
   m_Layer: 5
-  m_Name: Outgoing Lanes Input
+  m_Name: East Outgoing Lanes Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9304,7 +9487,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1961115308}
+        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
+        m_MethodName: ResetInvalidText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9364,6 +9559,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961115303}
   m_CullTransparentMesh: 1
+--- !u!114 &1961115308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961115303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputText: {fileID: 1961115305}
 --- !u!1 &2010763503
 GameObject:
   m_ObjectHideFlags: 0
@@ -9451,7 +9659,7 @@ GameObject:
   - component: {fileID: 2019991764}
   - component: {fileID: 2019991765}
   m_Layer: 5
-  m_Name: Crossing Toggle
+  m_Name: West Crossing Toggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
