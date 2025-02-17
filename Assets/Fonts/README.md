@@ -1,0 +1,1 @@
+Font files `.ttf` before conversion to asset and `.asset` after
