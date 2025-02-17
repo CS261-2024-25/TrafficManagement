@@ -719,7 +719,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 110917757}
         m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
@@ -2413,7 +2413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4a46852c0435d6439fda38b261ff16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToCheck: {fileID: 0}
+  objectToCheck: {fileID: 1947920559}
 --- !u!4 &358889324
 Transform:
   m_ObjectHideFlags: 0
@@ -2871,7 +2871,7 @@ GameObject:
   - component: {fileID: 475614593}
   - component: {fileID: 475614592}
   m_Layer: 5
-  m_Name: Eastbound exiting West
+  m_Name: Eastbound exiting East
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3590,7 +3590,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exiting East
+  m_text: Exiting West
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3999,8 +3999,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 638651049}
-        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+      - m_Target: {fileID: 638651053}
+        m_TargetAssemblyTypeName: CreateStruct, Assembly-CSharp
         m_MethodName: GetInputs
         m_Mode: 1
         m_Arguments:
@@ -4011,8 +4011,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1160223659}
-        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+      - m_Target: {fileID: 1174612682}
+        m_TargetAssemblyTypeName: CreateStruct, Assembly-CSharp
         m_MethodName: GetInputs
         m_Mode: 1
         m_Arguments:
@@ -4023,8 +4023,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1174612678}
-        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+      - m_Target: {fileID: 1160223663}
+        m_TargetAssemblyTypeName: CreateStruct, Assembly-CSharp
         m_MethodName: GetInputs
         m_Mode: 1
         m_Arguments:
@@ -4035,8 +4035,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1984416346}
-        m_TargetAssemblyTypeName: ConfigureDirection, Assembly-CSharp
+      - m_Target: {fileID: 1984416350}
+        m_TargetAssemblyTypeName: CreateStruct, Assembly-CSharp
         m_MethodName: GetInputs
         m_Mode: 1
         m_Arguments:
@@ -4096,7 +4096,7 @@ GameObject:
   - component: {fileID: 638651052}
   - component: {fileID: 638651051}
   - component: {fileID: 638651050}
-  - component: {fileID: 638651049}
+  - component: {fileID: 638651053}
   m_Layer: 5
   m_Name: North Panel
   m_TagString: Untagged
@@ -4104,23 +4104,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &638651049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 638651048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 1810450970}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  direction: 0
 --- !u!114 &638651050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4180,9 +4163,26 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624.17993, y: 307.3}
-  m_SizeDelta: {x: 350, y: 230}
+  m_AnchoredPosition: {x: -579, y: 307.3}
+  m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &638651053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638651048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction1Text: {fileID: 1810450970}
+  direction2Text: {fileID: 1138645513}
+  direction3Text: {fileID: 1464678540}
+  priorityDropdown: {fileID: 239977040}
+  direction: 0
 --- !u!1 &659305543
 GameObject:
   m_ObjectHideFlags: 0
@@ -5331,7 +5331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exiting West
+  m_text: Exiting East
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7337,7 +7337,7 @@ GameObject:
   - component: {fileID: 1160223662}
   - component: {fileID: 1160223661}
   - component: {fileID: 1160223660}
-  - component: {fileID: 1160223659}
+  - component: {fileID: 1160223663}
   m_Layer: 5
   m_Name: East Panel
   m_TagString: Untagged
@@ -7345,23 +7345,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1160223659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160223658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 0}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  direction: 2
 --- !u!114 &1160223660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7421,9 +7404,26 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77, y: 307.3}
-  m_SizeDelta: {x: 350, y: 230}
+  m_AnchoredPosition: {x: 182.00006, y: 307.3}
+  m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1160223663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160223658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction1Text: {fileID: 812455771}
+  direction2Text: {fileID: 212583117}
+  direction3Text: {fileID: 475614592}
+  priorityDropdown: {fileID: 1388801316}
+  direction: 2
 --- !u!1 &1168178566
 GameObject:
   m_ObjectHideFlags: 0
@@ -7510,7 +7510,7 @@ GameObject:
   - component: {fileID: 1174612681}
   - component: {fileID: 1174612680}
   - component: {fileID: 1174612679}
-  - component: {fileID: 1174612678}
+  - component: {fileID: 1174612682}
   m_Layer: 5
   m_Name: South Panel
   m_TagString: Untagged
@@ -7518,23 +7518,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1174612678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174612677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 0}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  direction: 1
 --- !u!114 &1174612679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7594,9 +7577,26 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -624.18, y: -146.86}
-  m_SizeDelta: {x: 350, y: 230}
+  m_AnchoredPosition: {x: -579, y: -146.86}
+  m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1174612682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174612677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction1Text: {fileID: 310518790}
+  direction2Text: {fileID: 323673140}
+  direction3Text: {fileID: 2109178243}
+  priorityDropdown: {fileID: 493279242}
+  direction: 1
 --- !u!1 &1185453547
 GameObject:
   m_ObjectHideFlags: 0
@@ -10351,7 +10351,7 @@ GameObject:
   - component: {fileID: 1757063838}
   - component: {fileID: 1757063837}
   m_Layer: 5
-  m_Name: Westbound exiting East
+  m_Name: Westbound exiting West
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12256,7 +12256,7 @@ GameObject:
   - component: {fileID: 1984416349}
   - component: {fileID: 1984416348}
   - component: {fileID: 1984416347}
-  - component: {fileID: 1984416346}
+  - component: {fileID: 1984416350}
   m_Layer: 5
   m_Name: West Panel
   m_TagString: Untagged
@@ -12264,23 +12264,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1984416346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984416345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 0}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  direction: 3
 --- !u!114 &1984416347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12340,9 +12323,26 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 76.99997, y: -146.85999}
-  m_SizeDelta: {x: 350, y: 230}
+  m_AnchoredPosition: {x: 182, y: -146.85999}
+  m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1984416350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984416345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction1Text: {fileID: 855456249}
+  direction2Text: {fileID: 2018996838}
+  direction3Text: {fileID: 1757063837}
+  priorityDropdown: {fileID: 1671024754}
+  direction: 3
 --- !u!1 &2017082010
 GameObject:
   m_ObjectHideFlags: 0
