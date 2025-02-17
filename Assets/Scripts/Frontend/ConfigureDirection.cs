@@ -3,23 +3,24 @@ using Assets.Scripts.Util;
 using TMPro;
 using UnityEngine.UI; // For toggles
 using System;
-using System.IO; // To parse strings
+using System.IO;
+using UnityEngine.SceneManagement; // To parse strings
 
 public class ConfigureDirection : MonoBehaviour
 {
         // Values to be put into struct
-        private uint LeftFlow;
-        private uint ForwardFlow;
-        private uint RightFlow;
         private uint LaneCountOutbound;
         private uint LaneCountInbound;
         private bool HasLeftTurn;
         private bool HasPedestrianCrossing;
 
+        // Values from input fields
         public TMP_InputField outboundText;
         public TMP_InputField inboundText;
         public Toggle leftToggle;
         public Toggle crossingToggle;
+
+        public CardinalDirection direction; // Manually set in unity
         
 
         public void GetInputs(){
@@ -35,6 +36,22 @@ public class ConfigureDirection : MonoBehaviour
                 LaneCountInbound = Convert.ToUInt32(parsedVal);
                 HasLeftTurn = leftToggle.isOn;
                 HasPedestrianCrossing = crossingToggle.isOn;
+
+                switch(direction){  // Flows are set to 0 as they will be set later
+                        case CardinalDirection.North:
+                           StaticData.northbound = new DirectionDetails(0,0,0,LaneCountInbound,LaneCountOutbound,HasLeftTurn,HasPedestrianCrossing);
+                           break;
+                        case CardinalDirection.East:
+                           StaticData.eastbound = new DirectionDetails(0,0,0,LaneCountInbound,LaneCountOutbound,HasLeftTurn,HasPedestrianCrossing);
+                           break;
+                        case CardinalDirection.South:
+                           StaticData.southbound = new DirectionDetails(0,0,0,LaneCountInbound,LaneCountOutbound,HasLeftTurn,HasPedestrianCrossing);
+                           break;
+                        case CardinalDirection.West:
+                           StaticData.westbound = new DirectionDetails(0,0,0,LaneCountInbound,LaneCountOutbound,HasLeftTurn,HasPedestrianCrossing);
+                           break;      
+                }
+                SceneManager.LoadScene("TrafficFlowSelect");
         }
 
 }

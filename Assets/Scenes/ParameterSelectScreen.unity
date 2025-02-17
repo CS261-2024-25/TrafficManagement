@@ -1261,6 +1261,7 @@ MonoBehaviour:
   inboundText: {fileID: 123536967}
   leftToggle: {fileID: 1046431045}
   crossingToggle: {fileID: 1753848267}
+  direction: 2
 --- !u!1 &409600809
 GameObject:
   m_ObjectHideFlags: 0
@@ -6552,6 +6553,7 @@ MonoBehaviour:
   inboundText: {fileID: 1565329444}
   leftToggle: {fileID: 1958638972}
   crossingToggle: {fileID: 956565539}
+  direction: 0
 --- !u!1 &1308646723
 GameObject:
   m_ObjectHideFlags: 0
@@ -8973,6 +8975,7 @@ MonoBehaviour:
   inboundText: {fileID: 1209748264}
   leftToggle: {fileID: 1325440781}
   crossingToggle: {fileID: 149268645}
+  direction: 1
 --- !u!1 &1897146626
 GameObject:
   m_ObjectHideFlags: 0
@@ -9988,6 +9991,7 @@ MonoBehaviour:
   inboundText: {fileID: 1575977723}
   leftToggle: {fileID: 10909146}
   crossingToggle: {fileID: 2019991765}
+  direction: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
