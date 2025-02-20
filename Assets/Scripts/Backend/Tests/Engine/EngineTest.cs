@@ -3,6 +3,8 @@ using NUnit.Framework;
 using UnityEngine.TestTools;
 using Assets.Scripts.Backend.Engine;
 using System.Threading;
+using System;
+using UnityEngine;
 using System.Threading.Tasks;
 
 public class EngineTest
@@ -10,12 +12,22 @@ public class EngineTest
     [Test]
     public void EngineTickCorrect()
     {
-        Engine engine = new Engine(10);
+        var ticksPerSecond = 50;
+        var sleepTimeMs = 500;
+        Engine engine = new Engine(ticksPerSecond);
         engine.StartEngine();
-        Thread.Sleep(1000);
+        Thread.Sleep(sleepTimeMs);
+
+        var expectedTicks = Convert.ToInt32(
+            (double)ticksPerSecond * ((double)sleepTimeMs / 1000.0)
+        );
+        
         var timeAfter = engine.SimulationTime;
-        Assert.True(timeAfter > 8);
-        Assert.True(timeAfter < 12);
+        Debug.Log($"expected: {expectedTicks}, curr: {timeAfter}");
+        
+        // some margin of error
+        Assert.True(timeAfter > expectedTicks - 3);
+        Assert.True(timeAfter < expectedTicks + 3);
         engine.StopEngine();
     }
 }
