@@ -1204,7 +1204,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 175.00003, y: 293.13004}
+  m_AnchoredPosition: {x: 175.00003, y: 293}
   m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396449766
@@ -2511,7 +2511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Submit
+  m_text: Set Parameters
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3400,7 +3400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.592346}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 300, y: 31.184692}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &743284771
@@ -3536,7 +3536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.592346}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 300, y: 31.184692}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &745694552
@@ -3994,7 +3994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.592346}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 300, y: 31.184692}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822663047
@@ -6496,7 +6496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -574, y: 293.13}
+  m_AnchoredPosition: {x: -574, y: 293}
   m_SizeDelta: {x: 400, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1308259834
@@ -8400,7 +8400,7 @@ GameObject:
   - component: {fileID: 1695421824}
   - component: {fileID: 1695421823}
   m_Layer: 5
-  m_Name: Submit Button
+  m_Name: Set Parameters Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8423,8 +8423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -6.1185, y: -1.1125}
+  m_SizeDelta: {x: 172.2371, y: 32.225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1695421823
 MonoBehaviour:
@@ -9183,7 +9183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -15.592346}
+  m_AnchoredPosition: {x: 0, y: -16}
   m_SizeDelta: {x: 300, y: 31.184692}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938670531
