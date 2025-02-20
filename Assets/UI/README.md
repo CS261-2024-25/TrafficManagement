@@ -1,1 +1,0 @@
-Assets for user interfaces such as buttons, panels and fonts.

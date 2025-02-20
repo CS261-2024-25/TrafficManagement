@@ -1,1 +1,0 @@
-Texture or image files used in materials or UI.
