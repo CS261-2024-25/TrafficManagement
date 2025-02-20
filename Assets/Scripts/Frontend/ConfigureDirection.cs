@@ -3,8 +3,8 @@ using Assets.Scripts.Util;
 using TMPro;
 using UnityEngine.UI; // For toggles
 using System;
-using System.IO;
-using UnityEngine.SceneManagement; // To parse strings
+using System.IO; // To parse strings
+using UnityEngine.SceneManagement;
 
 public class ConfigureDirection : MonoBehaviour
 {
