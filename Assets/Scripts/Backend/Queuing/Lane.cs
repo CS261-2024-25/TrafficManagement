@@ -3,7 +3,7 @@ namespace Assets.Scripts.Backend.Queuing {
     using System.Collections.Generic;
     using Assets.Scripts.Backend.Vehicle;
 
-    abstract class Lane 
+    public abstract class Lane 
     {
         private Queue<(Vehicle, uint)> VehicleQueue;
         public double PeakQueueLength { get; private set; }
@@ -41,6 +41,7 @@ namespace Assets.Scripts.Backend.Queuing {
             return currQueueLength;
         }
 
+#nullable enable
         public virtual (Vehicle?, double) VehicleExit()
         {
             if (VehicleQueue.Count > 0)
@@ -53,5 +54,6 @@ namespace Assets.Scripts.Backend.Queuing {
                 return (null, GetQueueLength());
             }
         }
+#nullable disable
     }
 }
