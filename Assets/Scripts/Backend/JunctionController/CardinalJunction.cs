@@ -5,6 +5,7 @@ namespace Assets.Scripts.Backend.JunctionController
 {
     public class CardinalJunction
     {
-        
+        private Dictionary<CardinalDirection, JunctionEntrance> Entrances;
+        private Engine.Engine Engine;
     }
 }
