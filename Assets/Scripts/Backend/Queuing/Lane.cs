@@ -3,15 +3,17 @@ namespace Assets.Scripts.Backend.Queuing {
     using System.Collections.Generic;
     using Assets.Scripts.Backend.Vehicle;
 
-    class Lane 
+    abstract class Lane 
     {
-        private Queue<Vehicle> VehicleQueue;
+        private Queue<(Vehicle, uint)> VehicleQueue;
         public double PeakQueueLength { get; private set; }
+        protected Engine.Engine Engine;
 
-        public Lane()
+        protected Lane(Engine.Engine engine)
         {
-            VehicleQueue = new Queue<Vehicle>();
+            VehicleQueue = new Queue<(Vehicle, uint)>();
             PeakQueueLength = 0;
+            Engine = engine;
         }
 
         public double GetQueueLength()
@@ -20,7 +22,7 @@ namespace Assets.Scripts.Backend.Queuing {
 
             foreach( var vehicle in VehicleQueue )
             {
-                total += vehicle.VehicleLength + vehicle.MinSpaceBehind;
+                total += vehicle.Item1.VehicleLength + vehicle.Item1.MinSpaceBehind;
             }
 
             return total;
@@ -29,9 +31,9 @@ namespace Assets.Scripts.Backend.Queuing {
         /// <summary>
         /// Returns current queue length after adding vehicle
         /// </summary>
-        public double VehicleEnter(Vehicle vehicle)
+        public virtual double VehicleEnter(Vehicle vehicle)
         {
-            VehicleQueue.Enqueue(vehicle);
+            VehicleQueue.Enqueue((vehicle, Engine.SimulationTime));
 
             var currQueueLength = GetQueueLength();
             PeakQueueLength = Math.Max(PeakQueueLength, currQueueLength);
@@ -39,12 +41,12 @@ namespace Assets.Scripts.Backend.Queuing {
             return currQueueLength;
         }
 
-        public (Vehicle?, double) VehicleExit()
+        public virtual (Vehicle?, double) VehicleExit()
         {
             if (VehicleQueue.Count > 0)
             {
                 var leavingVehicle = VehicleQueue.Dequeue();
-                return (leavingVehicle, GetQueueLength());
+                return (leavingVehicle.Item1, GetQueueLength());
             }
             else
             {
