@@ -11,7 +11,7 @@ public class Demo : MonoBehaviour
 
     // Traffic direction configurations
     private List<DirectionConfig> directions;
-    private Dictionary<string, Queue<Vehicle>> queues; // queue for each direction and vehicles present there
+    
 
 
     //Pedestrian Crossing data
@@ -40,14 +40,15 @@ public class Demo : MonoBehaviour
 
     private void InitSimulation()
     {
+        startTime = DateTime.Now;
         //Not finalised
         directions = new List<DirectionConfig>
         {
             new DirectionConfig
             {
-                Name = "North",
+                Name = "Northbound",
                 IncomingVph = 300,
-                Lanes = 3,
+                road = new Road{numLanes = 3},
                 TrafficPriority = 1,
                 HasLeftTurnLane = true,
                 HasBusCycleLane = true,
@@ -58,9 +59,9 @@ public class Demo : MonoBehaviour
             },
             new DirectionConfig
             {
-                Name = "South",
+                Name = "Southbound",
                 IncomingVph = 250,
-                Lanes = 3,
+                road = new Road{numLanes = 3},
                 TrafficPriority = 2,
                 HasLeftTurnLane = true,
                 HasBusCycleLane = true,
@@ -71,9 +72,9 @@ public class Demo : MonoBehaviour
             },
             new DirectionConfig
             {
-                Name = "East",
+                Name = "Eastbound",
                 IncomingVph = 150,
-                Lanes = 3,
+                road = new Road{numLanes = 3},
                 TrafficPriority = 2,
                 HasLeftTurnLane = true,
                 HasBusCycleLane = true,
@@ -84,9 +85,9 @@ public class Demo : MonoBehaviour
             },
             new DirectionConfig
             {
-                Name = "West",
+                Name = "Westbound",
                 IncomingVph = 100,
-                Lanes = 3,
+                road = new Road{numLanes = 3},
                 TrafficPriority = 4,
                 HasLeftTurnLane = true,
                 HasBusCycleLane = true,
@@ -98,16 +99,11 @@ public class Demo : MonoBehaviour
 
         };
 
-         // Initialize queues for each direction
-        queues = new Dictionary<string, Queue<Vehicle>>();
-        foreach (var dir in directions)
-        {
-            queues[dir.Name] = new Queue<Vehicle>();
-        }
+         
 
         metrics = new Metrics();
 
-        startTime = DateTime.Now;
+        
 
     }
 
@@ -121,21 +117,11 @@ public class Demo : MonoBehaviour
     //Input parameters
     public class DirectionConfig
     {
-        public string Name { get; set; }  // e.g., "North", "South"
+        public string Name { get; set; }  // e.g., "Northbound", "Southbound"
         public int IncomingVph { get; set; }  // Vehicles per hour arriving at junction
 
-        private int lanes { get; set; }  // Number of lanes
-
-        public int Lanes {
-            get{return lanes;}
-            set{
-                if(value<1 || value>5){
-                     throw new ArgumentOutOfRangeException("Number of lanes must be between 1 and 5.");  //validation of number of lanes
-                } else {
-                    lanes = value;
-                }
-            }
-        }
+        public Road road {get; set;}
+        
         public int TrafficPriority { get; set; }  // 0-4 priority 
 
         public bool HasLeftTurnLane {get; set;}
@@ -148,6 +134,39 @@ public class Demo : MonoBehaviour
         public int ExitWest { get; set; }
         public int ExitSouth {get; set; }   
     }
+
+    public class Road{
+
+        private int number_lanes { get; set; }  // Number of lanes
+        public Dictionary<int,Queue<Vehicle>> Lanes;
+
+        public int numLanes {
+            get{return number_lanes;}
+            set{
+                if(value<1 || value>5){
+                     throw new ArgumentOutOfRangeException("Number of lanes must be between 1 and 5.");  //validation of number of lanes
+                } else {
+                    number_lanes = value;
+                    InitLanes();
+                }
+            }
+        }
+
+        
+
+        private void InitLanes(){
+
+            for(int i = 0; i < number_lanes; i++){
+                Lanes.Add(i,new Queue<Vehicle>());
+            }
+
+        }
+
+        
+        
+    }
+
+    
 
     //Vehicle structure containing exit and entry time to calculate wait time.
     public class Vehicle
