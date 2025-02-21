@@ -11,6 +11,7 @@ namespace Assets.Scripts.Backend.JunctionController
     /// 
     /// <para>
     /// This portion of the class is what should be used as an API REFERENCE
+    /// </para>
     /// </summary>
     public partial class JunctionEntranceLaneSets
     {
