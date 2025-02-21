@@ -1,7 +1,8 @@
 {
-    "name": "Tests",
+    "name": "Frontend",
     "references": [
-        "Backend"
+        "Util",
+        "Unity.TextMeshPro"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
