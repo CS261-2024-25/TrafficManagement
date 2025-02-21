@@ -6,7 +6,7 @@ namespace Assets.Scripts.Backend.JunctionController
     /// <summary>
     /// This is concerned about what directions are valid to turn into
     /// </summary>
-    class JunctionEntrance
+    public class JunctionEntrance
     {
         private Engine.Engine Engine;
         public readonly bool LeftValid;

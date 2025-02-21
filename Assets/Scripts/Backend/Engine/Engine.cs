@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Assets.Scripts.Backend.Engine {
-    using Assets.Scripts.Backend.Vehicle;
     public class Engine
     {
         public uint SimulationTime { get; private set; }
@@ -36,7 +35,7 @@ namespace Assets.Scripts.Backend.Engine {
             cancel.Cancel();
         }
 
-        public T CreateVehicle<T>() where T : Vehicle
+        public T CreateVehicle<T>() where T : Vehicle.Vehicle
         {
             return (T)Activator.CreateInstance(typeof(T), this, VehicleId++);
         }

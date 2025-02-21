@@ -11,11 +11,11 @@ namespace Assets.Scripts.Backend.JunctionController
             Engine = engine;
         }
 
-        public JunctionEntranceFactoryL SetJunctionLanes(
+        public Unsafe.JunctionEntranceFactoryL SetJunctionLanes(
             uint intoJunctionLanes, 
             uint exitJunctionLanes
         ) {
-            return new JunctionEntranceFactoryL(
+            return new Unsafe.JunctionEntranceFactoryL(
                 Engine,
                 intoJunctionLanes,
                 exitJunctionLanes
@@ -23,108 +23,13 @@ namespace Assets.Scripts.Backend.JunctionController
         }
     }
 
-    /// <summary>
-    /// Junction Entrance Factory with Lanes
-    /// 
-    /// 
-    /// ** ALWAYS START CONSTRUCTION FROM ENTRANCE FACTORY**
-    /// </summary>
-    public partial class JunctionEntranceFactoryL : IGeneratesEntrance
-    {
-        public JunctionEntranceLaneSets GenerateEntrance() 
-        {
-            return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, false, false);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Constructed factory object</returns>
-        /// <exception cref="ArgumentException">Throws if IntoJunctionLanes is less than 1</exception>
-        public JunctionEntranceFactoryLL SetLeftTurnLane()
-        {
-            if (IntoJunctionLanes < 1)
-            {
-                throw new ArgumentException("Must have atleast 1 lane to have a left turn lane");
-            }
-
-            return new JunctionEntranceFactoryLL(Engine, IntoJunctionLanes, ExitJunctionLanes);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Constructed factory object</returns>
-        /// <exception cref="ArgumentException">Throws if IntoJunctionLanes is less than 1</exception>
-        public JunctionEntranceFactoryRL SetRightTurnLane()
-        {
-            if (IntoJunctionLanes < 1)
-            {
-                throw new ArgumentException("Must have atleast 1 lane to have a right turn lane");
-            }
-
-            return new JunctionEntranceFactoryRL(Engine, IntoJunctionLanes, ExitJunctionLanes);
-        }
-    }
-
-    /// <summary>
-    /// Junction entrance with both a left turn lane and lanes defined.
-    /// 
-    /// Do NOT directly construct this class as it does not guarantee correctness.
-    /// </summary>
-    public partial class JunctionEntranceFactoryLL : IGeneratesEntrance
-    {
-        public JunctionEntranceLaneSets GenerateEntrance()
-        {
-            return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, true, false);
-        }
-
-        public JunctionEntranceFactoryRLL SetRightTurnLane()
-        {
-            if (IntoJunctionLanes < 2)
-            {
-                throw new ArgumentException("Must have atleast 1 lane to have a right turn lane and a left turn lane");
-            }
-
-            return new JunctionEntranceFactoryRLL(Engine, IntoJunctionLanes, ExitJunctionLanes);
-        }
-    }
-
-    /// <summary>
-    /// Junction entrance with both a right turn lane and lanes defined.
-    /// 
-    /// Do NOT directly construct this class as it does not guarantee correctness.
-    /// </summary>
-    public partial class JunctionEntranceFactoryRL : IGeneratesEntrance
-    {
-        public JunctionEntranceLaneSets GenerateEntrance()
-        {
-            return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, false, true);
-        }
-
-        public JunctionEntranceFactoryRLL SetLeftTurnLane()
-        {
-            if (IntoJunctionLanes < 2)
-            {
-                throw new ArgumentException("Must have atleast 1 lane to have a right turn lane and a left turn lane");
-            }
-
-            return new JunctionEntranceFactoryRLL(Engine, IntoJunctionLanes, ExitJunctionLanes);
-        }
-    }
-
-    public partial class JunctionEntranceFactoryRLL : IGeneratesEntrance
-    {
-        public JunctionEntranceLaneSets GenerateEntrance()
-        {
-            return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, true, true);
-        }
-    }
+    
 
 #region DO NOT USE ANY APIS IN THIS REGION
-    public interface IGeneratesEntrance
+
+    public partial class JunctionEntranceFactory
     {
-        public JunctionEntranceLaneSets GenerateEntrance();
+        private Engine.Engine Engine;
     }
 
     public partial class JunctionEntranceLaneSets
@@ -159,98 +64,172 @@ namespace Assets.Scripts.Backend.JunctionController
         }
     }
 
-    public partial class JunctionEntranceFactory
+    namespace Unsafe
     {
-        private Engine.Engine Engine;
-    }
 
-    /// <summary>
-    /// Junction Entrance Factory with Lanes
-    /// 
-    /// 
-    /// ** ALWAYS START CONSTRUCTION FROM ENTRANCE FACTORY**
-    /// </summary>
-    public partial class JunctionEntranceFactoryL : IGeneratesEntrance
-    {
-        private uint IntoJunctionLanes;
-        private uint ExitJunctionLanes;
-        private Engine.Engine Engine;
+        public interface IGeneratesEntrance
+        {
+            public JunctionEntranceLaneSets GenerateEntrance();
+        }
 
         /// <summary>
-        /// This can be a zero-lane junction (ie. cars do not enter or leave)
+        /// Junction Entrance Factory with Lanes
+        /// 
+        /// 
+        /// ** ALWAYS START CONSTRUCTION FROM ENTRANCE FACTORY**
         /// </summary>
-        public JunctionEntranceFactoryL(
-            Engine.Engine engine, 
-            uint intoJunctionLanes, 
-            uint exitJunctionLanes
-        ) {
-            IntoJunctionLanes = intoJunctionLanes;
-            ExitJunctionLanes = exitJunctionLanes;
-            Engine = engine;
-        }
-    }
+        public partial class JunctionEntranceFactoryL : IGeneratesEntrance
+        {
+            private uint IntoJunctionLanes;
+            private uint ExitJunctionLanes;
+            private Engine.Engine Engine;
 
-    /// <summary>
-    /// Junction entrance with both a left turn lane and lanes defined.
-    /// 
-    /// Do NOT directly construct this class as it does not guarantee correctness.
-    /// </summary>
-    public partial class JunctionEntranceFactoryLL : IGeneratesEntrance
-    {
-        private uint IntoJunctionLanes;
-        private uint ExitJunctionLanes;
-        private Engine.Engine Engine;
-        public JunctionEntranceFactoryLL(
-            Engine.Engine engine, 
-            uint intoJunctionLanes, 
-            uint exitJunctionLanes
-        ) {
-            IntoJunctionLanes = intoJunctionLanes;
-            ExitJunctionLanes = exitJunctionLanes;
-            Engine = engine;
-        }
-    }
+            /// <summary>
+            /// This can be a zero-lane junction (ie. cars do not enter or leave)
+            /// </summary>
+            public JunctionEntranceFactoryL(
+                Engine.Engine engine, 
+                uint intoJunctionLanes, 
+                uint exitJunctionLanes
+            ) {
+                IntoJunctionLanes = intoJunctionLanes;
+                ExitJunctionLanes = exitJunctionLanes;
+                Engine = engine;
+            }
 
-    /// <summary>
-    /// Junction entrance with both a right turn lane and lanes defined.
-    /// 
-    /// Do NOT directly construct this class as it does not guarantee correctness.
-    /// </summary>
-    public partial class JunctionEntranceFactoryRL : IGeneratesEntrance
-    {
-        private uint IntoJunctionLanes;
-        private uint ExitJunctionLanes;
-        private Engine.Engine Engine;
-        public JunctionEntranceFactoryRL(
-            Engine.Engine engine, 
-            uint intoJunctionLanes, 
-            uint exitJunctionLanes
-        ) {
-            IntoJunctionLanes = intoJunctionLanes;
-            ExitJunctionLanes = exitJunctionLanes;
-            Engine = engine;
-        }
-    }
+            public JunctionEntranceLaneSets GenerateEntrance() 
+            {
+                return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, false, false);
+            }
 
-    /// <summary>
-    /// Junction entrance with both a right turn lane and lanes defined.
-    /// 
-    /// Do NOT directly construct this class as it does not guarantee correctness.
-    /// </summary>
-    public partial class JunctionEntranceFactoryRLL : IGeneratesEntrance
-    {
-        private uint IntoJunctionLanes;
-        private uint ExitJunctionLanes;
-        private Engine.Engine Engine;
-        public JunctionEntranceFactoryRLL(
-            Engine.Engine engine, 
-            uint intoJunctionLanes, 
-            uint exitJunctionLanes
-        ) {
-            IntoJunctionLanes = intoJunctionLanes;
-            ExitJunctionLanes = exitJunctionLanes;
-            Engine = engine;
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns>Constructed factory object</returns>
+            /// <exception cref="ArgumentException">Throws if IntoJunctionLanes is less than 1</exception>
+            public JunctionEntranceFactoryLL SetLeftTurnLane()
+            {
+                if (IntoJunctionLanes < 1)
+                {
+                    throw new ArgumentException("Must have atleast 1 lane to have a left turn lane");
+                }
+
+                return new JunctionEntranceFactoryLL(Engine, IntoJunctionLanes, ExitJunctionLanes);
+            }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns>Constructed factory object</returns>
+            /// <exception cref="ArgumentException">Throws if IntoJunctionLanes is less than 1</exception>
+            public JunctionEntranceFactoryRL SetRightTurnLane()
+            {
+                if (IntoJunctionLanes < 1)
+                {
+                    throw new ArgumentException("Must have atleast 1 lane to have a right turn lane");
+                }
+
+                return new JunctionEntranceFactoryRL(Engine, IntoJunctionLanes, ExitJunctionLanes);
+            }
         }
-    }
+
+        /// <summary>
+        /// Junction entrance with both a left turn lane and lanes defined.
+        /// 
+        /// Do NOT directly construct this class as it does not guarantee correctness.
+        /// </summary>
+        public partial class JunctionEntranceFactoryLL : IGeneratesEntrance
+        {
+            private uint IntoJunctionLanes;
+            private uint ExitJunctionLanes;
+            private Engine.Engine Engine;
+            public JunctionEntranceFactoryLL(
+                Engine.Engine engine, 
+                uint intoJunctionLanes, 
+                uint exitJunctionLanes
+            ) {
+                IntoJunctionLanes = intoJunctionLanes;
+                ExitJunctionLanes = exitJunctionLanes;
+                Engine = engine;
+            }
+
+            public JunctionEntranceLaneSets GenerateEntrance()
+            {
+                return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, true, false);
+            }
+
+            public JunctionEntranceFactoryRLL SetRightTurnLane()
+            {
+                if (IntoJunctionLanes < 2)
+                {
+                    throw new ArgumentException("Must have atleast 1 lane to have a right turn lane and a left turn lane");
+                }
+
+                return new JunctionEntranceFactoryRLL(Engine, IntoJunctionLanes, ExitJunctionLanes);
+            }
+        }
+
+        /// <summary>
+        /// Junction entrance with both a right turn lane and lanes defined.
+        /// 
+        /// Do NOT directly construct this class as it does not guarantee correctness.
+        /// </summary>
+        public partial class JunctionEntranceFactoryRL : IGeneratesEntrance
+        {
+            private uint IntoJunctionLanes;
+            private uint ExitJunctionLanes;
+            private Engine.Engine Engine;
+            public JunctionEntranceFactoryRL(
+                Engine.Engine engine, 
+                uint intoJunctionLanes, 
+                uint exitJunctionLanes
+            ) {
+                IntoJunctionLanes = intoJunctionLanes;
+                ExitJunctionLanes = exitJunctionLanes;
+                Engine = engine;
+            }
+
+            public JunctionEntranceLaneSets GenerateEntrance()
+            {
+                return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, false, true);
+            }
+
+            public JunctionEntranceFactoryRLL SetLeftTurnLane()
+            {
+                if (IntoJunctionLanes < 2)
+                {
+                    throw new ArgumentException("Must have atleast 1 lane to have a right turn lane and a left turn lane");
+                }
+
+                return new JunctionEntranceFactoryRLL(Engine, IntoJunctionLanes, ExitJunctionLanes);
+            }
+        }
+
+        /// <summary>
+        /// Junction entrance with both a right turn lane and lanes defined.
+        /// 
+        /// Do NOT directly construct this class as it does not guarantee correctness.
+        /// </summary>
+        public partial class JunctionEntranceFactoryRLL : IGeneratesEntrance
+        {
+            private uint IntoJunctionLanes;
+            private uint ExitJunctionLanes;
+            private Engine.Engine Engine;
+            public JunctionEntranceFactoryRLL(
+                Engine.Engine engine, 
+                uint intoJunctionLanes, 
+                uint exitJunctionLanes
+            ) {
+                IntoJunctionLanes = intoJunctionLanes;
+                ExitJunctionLanes = exitJunctionLanes;
+                Engine = engine;
+            }
+
+            public JunctionEntranceLaneSets GenerateEntrance()
+            {
+                return new JunctionEntranceLaneSets(Engine, IntoJunctionLanes, ExitJunctionLanes, true, true);
+            }
+        }
 #endregion
+    }
 }
