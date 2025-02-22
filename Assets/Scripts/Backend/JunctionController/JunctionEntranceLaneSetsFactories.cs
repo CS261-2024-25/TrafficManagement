@@ -78,7 +78,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// 
         /// ** ALWAYS START CONSTRUCTION FROM ENTRANCE FACTORY**
         /// </summary>
-        public partial class JunctionEntranceFactoryL : IGeneratesEntrance
+        public class JunctionEntranceFactoryL : IGeneratesEntrance
         {
             private uint IntoJunctionLanes;
             private uint ExitJunctionLanes;
@@ -138,7 +138,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// 
         /// Do NOT directly construct this class as it does not guarantee correctness.
         /// </summary>
-        public partial class JunctionEntranceFactoryLL : IGeneratesEntrance
+        public class JunctionEntranceFactoryLL : IGeneratesEntrance
         {
             private uint IntoJunctionLanes;
             private uint ExitJunctionLanes;
@@ -174,7 +174,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// 
         /// Do NOT directly construct this class as it does not guarantee correctness.
         /// </summary>
-        public partial class JunctionEntranceFactoryRL : IGeneratesEntrance
+        public class JunctionEntranceFactoryRL : IGeneratesEntrance
         {
             private uint IntoJunctionLanes;
             private uint ExitJunctionLanes;
@@ -210,7 +210,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// 
         /// Do NOT directly construct this class as it does not guarantee correctness.
         /// </summary>
-        public partial class JunctionEntranceFactoryRLL : IGeneratesEntrance
+        public class JunctionEntranceFactoryRLL : IGeneratesEntrance
         {
             private uint IntoJunctionLanes;
             private uint ExitJunctionLanes;
