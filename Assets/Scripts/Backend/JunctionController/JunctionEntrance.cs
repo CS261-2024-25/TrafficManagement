@@ -39,7 +39,13 @@ namespace Assets.Scripts.Backend.JunctionController
         ) {
             Engine = engine;
 
-            if (!leftValid && junctionEntranceLaneSets.HasLeftTurn)
+            if (
+                junctionEntranceLaneSets.IntoJunctionLanesCount() == 0 &&
+                (leftValid || rightValid || forwardValid)
+            ) {
+                throw new ArgumentException("Empty lane sets cannot have valid turnings");
+            }
+            else if (!leftValid && junctionEntranceLaneSets.HasLeftTurn)
             {
                 throw new ArgumentException("Cannot have a left turn lane when left turns are not valid");
             }
