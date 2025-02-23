@@ -88,6 +88,7 @@ namespace Assets.Scripts.Backend.JunctionController
             LeftValid = leftValid;
             RightValid = rightValid;
             ForwardValid = forwardValid;
+            LaneSets = junctionEntranceLaneSets;
         }
 
         public static JunctionEntrance ClosedEntrance(Engine.Engine engine)

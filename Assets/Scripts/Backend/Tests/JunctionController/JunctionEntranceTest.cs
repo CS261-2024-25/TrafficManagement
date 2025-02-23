@@ -14,12 +14,20 @@ public class JunctionEntranceTest
             .SetJunctionLanes(0, 0)
             .GenerateEntrance();
 
-        var _ = new JunctionEntrance(
+        var emptyEntrance = new JunctionEntrance(
             engine: engine, 
             junctionEntranceLaneSets: emptyLaneSet, 
             leftValid: false, 
             rightValid: false, 
             forwardValid: false
+        );
+
+        var defaultConstructed = JunctionEntrance.ClosedEntrance(engine);
+
+        Assert.True(
+            defaultConstructed.LeftValid == emptyEntrance.LeftValid &&
+            defaultConstructed.ForwardValid == emptyEntrance.ForwardValid &&
+            defaultConstructed.RightValid == emptyEntrance.RightValid
         );
     }
 
