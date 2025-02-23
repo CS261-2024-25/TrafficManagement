@@ -39,6 +39,20 @@ namespace Assets.Scripts.Backend.JunctionController
                 }
             }
 
+            for (int i = 0; i < Entrances.Length; ++i)
+            {
+                for (int j = i + 1; j < Entrances.Length; ++j)
+                {
+                    if (ReferenceEquals(Entrances[i], Entrances[j]))
+                    {
+                        throw new ArgumentException(
+                            "Two entrances for a CardinalJunction instance " + 
+                            "reference the same underlying object illegaly. "
+                        );
+                    }
+                }
+            }
+
             return new CardinalJunction(
                 engine: Engine,
                 northJunctionEntrance: Entrances[NorthIndex],
