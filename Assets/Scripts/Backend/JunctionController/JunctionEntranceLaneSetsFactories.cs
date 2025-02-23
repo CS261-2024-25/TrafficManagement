@@ -1,11 +1,14 @@
 using System;
+using System.Collections.Generic;
 using Assets.Scripts.Backend.Queuing;
 
 namespace Assets.Scripts.Backend.JunctionController
 {
 
-    public partial class JunctionEntranceFactory
+    public class JunctionEntranceFactory
     {
+        private readonly Engine.Engine Engine;
+
         public JunctionEntranceFactory(Engine.Engine engine) 
         {
             Engine = engine;
@@ -27,11 +30,6 @@ namespace Assets.Scripts.Backend.JunctionController
 
 #region DO NOT USE ANY APIS IN THIS REGION
 
-    public partial class JunctionEntranceFactory
-    {
-        private Engine.Engine Engine;
-    }
-
     public partial class JunctionEntranceLaneSets
     {
         private Engine.Engine Engine;
@@ -49,6 +47,8 @@ namespace Assets.Scripts.Backend.JunctionController
             Engine = engine;
             HasLeftTurn = hasLeftTurnLane;
             HasRightTurn = hasRightTurnLane;
+            IntoJunctionLanes = new List<IntoJunctionLane>();
+            ExitJunctionLanes = new List<ExitJunctionLane>();
 
             while (intoJunctionLanes > 0)
             {
@@ -80,9 +80,9 @@ namespace Assets.Scripts.Backend.JunctionController
         /// </summary>
         public class JunctionEntranceFactoryL : IGeneratesEntrance
         {
-            private uint IntoJunctionLanes;
-            private uint ExitJunctionLanes;
-            private Engine.Engine Engine;
+            private readonly uint IntoJunctionLanes;
+            private readonly uint ExitJunctionLanes;
+            private readonly Engine.Engine Engine;
 
             /// <summary>
             /// This can be a zero-lane junction (ie. cars do not enter or leave)
@@ -140,9 +140,9 @@ namespace Assets.Scripts.Backend.JunctionController
         /// </summary>
         public class JunctionEntranceFactoryLL : IGeneratesEntrance
         {
-            private uint IntoJunctionLanes;
-            private uint ExitJunctionLanes;
-            private Engine.Engine Engine;
+            private readonly uint IntoJunctionLanes;
+            private readonly uint ExitJunctionLanes;
+            private readonly Engine.Engine Engine;
             public JunctionEntranceFactoryLL(
                 Engine.Engine engine, 
                 uint intoJunctionLanes, 
@@ -176,9 +176,9 @@ namespace Assets.Scripts.Backend.JunctionController
         /// </summary>
         public class JunctionEntranceFactoryRL : IGeneratesEntrance
         {
-            private uint IntoJunctionLanes;
-            private uint ExitJunctionLanes;
-            private Engine.Engine Engine;
+            private readonly uint IntoJunctionLanes;
+            private readonly uint ExitJunctionLanes;
+            private readonly Engine.Engine Engine;
             public JunctionEntranceFactoryRL(
                 Engine.Engine engine, 
                 uint intoJunctionLanes, 
@@ -212,9 +212,9 @@ namespace Assets.Scripts.Backend.JunctionController
         /// </summary>
         public class JunctionEntranceFactoryRLL : IGeneratesEntrance
         {
-            private uint IntoJunctionLanes;
-            private uint ExitJunctionLanes;
-            private Engine.Engine Engine;
+            private readonly uint IntoJunctionLanes;
+            private readonly uint ExitJunctionLanes;
+            private readonly Engine.Engine Engine;
             public JunctionEntranceFactoryRLL(
                 Engine.Engine engine, 
                 uint intoJunctionLanes, 
