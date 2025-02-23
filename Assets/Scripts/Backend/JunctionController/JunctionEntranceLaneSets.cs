@@ -26,6 +26,17 @@ namespace Assets.Scripts.Backend.JunctionController
         public readonly bool HasLeftTurn;
         public readonly bool HasRightTurn;
 
+        public static JunctionEntranceLaneSets EmptyLaneSet(Engine.Engine engine)
+        {
+            return new JunctionEntranceLaneSets(
+                engine: engine,
+                intoJunctionLanes: 0,
+                exitJunctionLanes: 0,
+                hasLeftTurnLane: false,
+                hasRightTurnLane: false
+            );
+        }
+
         public uint GetMaxWaitTime()
         {
             uint maxTime = 0;

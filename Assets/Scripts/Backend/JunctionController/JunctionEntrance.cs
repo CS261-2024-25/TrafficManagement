@@ -13,7 +13,7 @@ namespace Assets.Scripts.Backend.JunctionController
         public readonly bool ForwardValid;
         public readonly bool RightValid;
 
-        private JunctionEntranceLaneSets LaneSets { get; }
+        private JunctionEntranceLaneSets LaneSets;
 
         /// <summary>
         /// Constructor with state guarantees:
@@ -90,6 +90,17 @@ namespace Assets.Scripts.Backend.JunctionController
             ForwardValid = forwardValid;
         }
 
+        public static JunctionEntrance ClosedEntrance(Engine.Engine engine)
+        {
+            return new JunctionEntrance(
+                engine: engine,
+                JunctionEntranceLaneSets.EmptyLaneSet(engine),
+                false,
+                false,
+                false
+            );
+        }
+
         /// <summary>
         /// Attempt to enter a vehicle to turn left
         /// </summary>
@@ -163,6 +174,16 @@ namespace Assets.Scripts.Backend.JunctionController
         public double GetPeakQueueLength()
         {
             return LaneSets.GetPeakQueueLength();
+        }
+
+        public int IntoJunctionLanesCount()
+        {
+            return LaneSets.IntoJunctionLanesCount();
+        }
+
+        public int ExitJunctionLanesCount()
+        {
+            return LaneSets.ExitJunctionLanesCount();
         }
     }
 }
