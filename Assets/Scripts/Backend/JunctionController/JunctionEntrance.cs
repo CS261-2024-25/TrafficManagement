@@ -60,7 +60,8 @@ namespace Assets.Scripts.Backend.JunctionController
             }
             else if (
                 junctionEntranceLaneSets.IntoJunctionLanesCount() == 1 &&
-                leftValid && rightValid || forwardValid
+                (leftValid && rightValid || forwardValid) && 
+                junctionEntranceLaneSets.HasLeftTurn
             ) {
                 throw new ArgumentException(
                     "Incoming lane set has 1 lane for exclusive left, " +
@@ -69,7 +70,8 @@ namespace Assets.Scripts.Backend.JunctionController
             }
             else if (
                 junctionEntranceLaneSets.IntoJunctionLanesCount() == 1 &&
-                rightValid && leftValid || forwardValid
+                (rightValid && leftValid || forwardValid) &&
+                junctionEntranceLaneSets.HasRightTurn
             ) {
                 throw new ArgumentException(
                     "Incoming lane set has 1 lane for exclusive right, " +
