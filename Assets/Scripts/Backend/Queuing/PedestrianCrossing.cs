@@ -59,7 +59,8 @@ namespace Assets.Scripts.Backend.Queuing
             }
 
             PedestriansCrossed += (uint) WaitingPedestrians.Count;
-            AverageWait = newAverage / PedestriansCrossed;
+            AverageWait = (PedestriansCrossed != 0) ? 
+                newAverage / PedestriansCrossed : 0;
             
             return (AverageWait, PeakWait);
         }
