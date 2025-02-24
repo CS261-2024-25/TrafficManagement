@@ -1,7 +1,7 @@
 {
-    "name": "BackendTests",
+    "name": "UtilTests",
     "references": [
-        "Backend"
+        "Util"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
