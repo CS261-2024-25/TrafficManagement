@@ -1,9 +1,9 @@
-using UnityEngine;
+
 using System.Collections.Generic;
 using System;
 using System.Linq;
 
-public class Demo : MonoBehaviour
+public class Demo 
 {
     //Settings
     public float simulationDuration = 3600f;
@@ -19,6 +19,14 @@ public class Demo : MonoBehaviour
     public float PedestrianCrossingTime = 30f;
     public float  CrossingRequestsPerHour = 300f;
     private float NextPedestrianCrossingTime;
+
+    //Traffic Light data
+
+    private int currPhaseIndex = 0;
+    private DateTime phaseEndTime;
+    private bool phaseInitialised = false;
+    
+    
 
     // Output
     private Metrics metrics;
@@ -107,9 +115,56 @@ public class Demo : MonoBehaviour
 
     }
 
+    private void processTrafficLights(DateTime currentTime){
+        //Note: Phases here are green lights for each lane. So if we are on phase 0, The traffic light is green for Northbound road and red for everything else.
+        //used to make sure phaseEndTime does not increase indefinitely and so the second if block can run
+        if(!phaseInitialised){
+            phaseEndTime = currentTime.AddSeconds(calculatePhaseDuration(directions[currPhaseIndex].TrafficPriority));
+            phaseInitialised = true;
+        }
+
+        if(currentTime>=phaseEndTime){
+            currPhaseIndex = (currPhaseIndex + 1) % directions.Count; // switches to next phase 
+
+            phaseEndTime = currentTime.AddSeconds(calculatePhaseDuration(directions[currPhaseIndex].TrafficPriority));
+        }
+        
+
+                
+                
+            
+    }
+
+    private float calculatePhaseDuration(int priority){
+        return 30f +(priority * 5f); // as the priority increases , the phase duration increases by 5 starting from 30 (priority 0)
+    }
+
+    
+
     private void RunSimulation()
     {
+        DateTime currentTime = startTime;
+        DateTime endTime = startTime.AddSeconds(simulationDuration);
 
+        while(startTime < endTime) {
+
+            foreach (var dir in directions){
+                
+                double Vps = dir.IncomingVph/3600;
+                Random rnum = new Random();
+                if(rnum.NextDouble() < Vps){
+                    Vehicle car = new Vehicle();
+                    car.EntryTime = currentTime;
+                    int car_lane = rnum.Next(0,dir.road.numLanes-1);
+                    dir.road.Lanes[car_lane].Enqueue(car);
+                }
+            }
+
+            processTrafficLights(currentTime);
+            
+            
+
+        }
     }
 
     //Helper classes
@@ -120,6 +175,7 @@ public class Demo : MonoBehaviour
         public string Name { get; set; }  // e.g., "Northbound", "Southbound"
         public int IncomingVph { get; set; }  // Vehicles per hour arriving at junction
 
+        //change 
         public Road road {get; set;}
         
         public int TrafficPriority { get; set; }  // 0-4 priority 
@@ -135,10 +191,11 @@ public class Demo : MonoBehaviour
         public int ExitSouth {get; set; }   
     }
 
+    //change
     public class Road{
 
-        private int number_lanes { get; set; }  // Number of lanes
-        public Dictionary<int,Queue<Vehicle>> Lanes;
+        private int number_lanes {get; set;} // Number of lanes
+        public Dictionary<int,Queue<Vehicle>> Lanes= new Dictionary<int,Queue<Vehicle>>() ;
 
         public int numLanes {
             get{return number_lanes;}
@@ -155,7 +212,7 @@ public class Demo : MonoBehaviour
         
 
         private void InitLanes(){
-
+            Lanes.Clear();
             for(int i = 0; i < number_lanes; i++){
                 Lanes.Add(i,new Queue<Vehicle>());
             }
