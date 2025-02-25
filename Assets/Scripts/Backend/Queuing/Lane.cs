@@ -1,6 +1,7 @@
 namespace Assets.Scripts.Backend.Queuing {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading;
     using Assets.Scripts.Backend.Vehicle;
 
@@ -14,26 +15,24 @@ namespace Assets.Scripts.Backend.Queuing {
         protected Engine.Engine Engine;
         private Mutex Mutex;
 
+        private double QueueLength;
+
         protected Lane(Engine.Engine engine)
         {
             VehicleQueue = new Queue<(Vehicle, uint)>();
             PeakQueueLength = 0;
             Engine = engine;
             Mutex = new Mutex();
+            QueueLength = 0;
         }
 
+        /// <summary>
+        /// Implementation dependent, so explicit getter.
+        /// </summary>
+        /// <returns>Queue length</returns>
         public double GetQueueLength()
         {
-            Mutex.WaitOne();
-            double total = 0;
-
-            foreach( var vehicle in VehicleQueue )
-            {
-                total += vehicle.Item1.VehicleLength + vehicle.Item1.MinSpaceBehind;
-            }
-
-            Mutex.ReleaseMutex();
-            return total;
+            return QueueLength;
         }
 
         /// <summary>
@@ -42,7 +41,14 @@ namespace Assets.Scripts.Backend.Queuing {
         public virtual double VehicleEnter(Vehicle vehicle)
         {
             Mutex.WaitOne();
+
+            if (VehicleQueue.Count > 0)
+            {
+                QueueLength += VehicleQueue.Last().Item1.MinSpaceBehind;
+            }
+            
             VehicleQueue.Enqueue((vehicle, Engine.SimulationTime));
+            QueueLength += vehicle.VehicleLength;
             Mutex.ReleaseMutex();
 
             var currQueueLength = GetQueueLength();
@@ -54,16 +60,24 @@ namespace Assets.Scripts.Backend.Queuing {
 #nullable enable
         public virtual (Vehicle?, double) VehicleExit()
         {
+            Mutex.WaitOne();
             if (VehicleQueue.Count > 0)
             {
-                Mutex.WaitOne();
                 var leavingVehicle = VehicleQueue.Dequeue();
+
+                if  (VehicleQueue.Count >= 1)
+                {
+                    QueueLength -= leavingVehicle.Item1.MinSpaceBehind;
+                }
+                
+                QueueLength -= leavingVehicle.Item1.VehicleLength;
                 Mutex.ReleaseMutex();
 
                 return (leavingVehicle.Item1, GetQueueLength());
             }
             else
             {
+                Mutex.ReleaseMutex();
                 return (null, GetQueueLength());
             }
         }
