@@ -86,8 +86,9 @@ public class CreateStruct : MonoBehaviour
                 }
                 // If value is 0, then no priority was selected
                 if (priorityDropdown.value != 0){
-                    StaticData.priority[priorityDropdown.value-1] = direction; 
+                    StaticData.priority[priorityDropdown.value-1] = (direction,priorityDropdown.value-1); 
                 }
+                Debug.log
                 // West Direction is run last so when west runs, switch scene and create struct
                 if (direction == CardinalDirection.West){
                     SceneManager.LoadScene("ResultsScreen");
