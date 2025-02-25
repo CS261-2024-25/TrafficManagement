@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -10,30 +11,50 @@ namespace Assets.Scripts.Util
         public DirectionDetails Eastbound { get; }
         public DirectionDetails Southbound { get; }
         public DirectionDetails Westbound { get; }
-        public CardinalDirection[] Priority { get; }
+        public (CardinalDirection, double)[] Priority { get; }
 
+        /// <summary>
+        /// Constructor for a somewhat valid set of input parameters.
+        /// </summary>
+        /// <exception cref="ArgumentException">Thrown if something constructed is unexpected</exception>
         public InputParameters
         (
             DirectionDetails northbound,
             DirectionDetails eastbound,
             DirectionDetails southbound,
             DirectionDetails westbound,
-            CardinalDirection[] priority
+            (CardinalDirection, double)[] priority
         ) {
             Northbound = northbound;
             Eastbound = eastbound;
             Southbound = southbound;
             Westbound = westbound;
 
-            Debug.Assert(
-                priority.Length == 4, 
-                "Priority array must be of length 4."
-            );
+            if (priority.Length != 4)
+            {
+                throw new ArgumentException("Priority array must be of length 4.");
+            }
 
-            Debug.Assert(
-                priority.Distinct().Count() == priority.Length, 
-                "Priority array must contain unique elements."
-            );
+            double prioritySum = 0;
+            foreach (var (_, priorityNum) in priority)
+            {
+                if (priorityNum < 0)
+                {
+                    throw new ArgumentException("Priority values cannot be negative");
+                }
+
+                prioritySum += priorityNum;
+            }
+
+            if (!prioritySum.AlmostEqualTo(4.0))
+            {
+                throw new ArgumentException("Priority array values must sum to 4.");
+            }
+
+            if (priority.Distinct().Count() == priority.Length)
+            {
+                throw new ArgumentException("Priority array must contain unique elements.");
+            }
 
             Priority = priority;
         }
