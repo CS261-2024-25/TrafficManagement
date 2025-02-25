@@ -86,7 +86,7 @@ public class CreateStruct : MonoBehaviour
                 }
                 // If value is 0, then no priority was selected
 
-                double prioNum = Convert.ToUInt32(priorityText.text);
+                double prioNum = Convert.ToDouble(priorityText.text);
                 
                 StaticData.priority[StaticData.arrIndex] = (direction,prioNum); 
                 StaticData.arrIndex++;

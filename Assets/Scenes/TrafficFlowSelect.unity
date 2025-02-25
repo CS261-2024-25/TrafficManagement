@@ -2789,7 +2789,7 @@ GameObject:
   - component: {fileID: 425911477}
   - component: {fileID: 425911476}
   m_Layer: 5
-  m_Name: Northbound Priority
+  m_Name: Southbound Priority
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4197,13 +4197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftFlow: 0
-  ForwardFlow: 0
-  RightFlow: 0
   direction1Text: {fileID: 1810450970}
   direction2Text: {fileID: 1138645513}
   direction3Text: {fileID: 1464678540}
-  priorityDropdown: {fileID: 0}
+  priorityText: {fileID: 984777518}
   direction: 0
 --- !u!1 &678851479
 GameObject:
@@ -6201,7 +6198,7 @@ GameObject:
   - component: {fileID: 1027526037}
   - component: {fileID: 1027526036}
   m_Layer: 5
-  m_Name: Northbound Priority
+  m_Name: Eastbound Priority
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6846,13 +6843,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftFlow: 0
-  ForwardFlow: 0
-  RightFlow: 0
   direction1Text: {fileID: 812455771}
   direction2Text: {fileID: 212583117}
   direction3Text: {fileID: 475614592}
-  priorityDropdown: {fileID: 0}
+  priorityText: {fileID: 1027526036}
   direction: 2
 --- !u!1 &1174612677
 GameObject:
@@ -6947,13 +6941,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftFlow: 0
-  ForwardFlow: 0
-  RightFlow: 0
   direction1Text: {fileID: 310518790}
   direction2Text: {fileID: 323673140}
   direction3Text: {fileID: 2109178243}
-  priorityDropdown: {fileID: 0}
+  priorityText: {fileID: 425911476}
   direction: 1
 --- !u!1 &1185453547
 GameObject:
@@ -7638,7 +7629,7 @@ GameObject:
   - component: {fileID: 1423842316}
   - component: {fileID: 1423842315}
   m_Layer: 5
-  m_Name: Northbound Priority
+  m_Name: Westbound Priority
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10582,13 +10573,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftFlow: 0
-  ForwardFlow: 0
-  RightFlow: 0
   direction1Text: {fileID: 855456249}
   direction2Text: {fileID: 2018996838}
   direction3Text: {fileID: 1757063837}
-  priorityDropdown: {fileID: 0}
+  priorityText: {fileID: 1423842315}
   direction: 3
 --- !u!1 &1997642978
 GameObject:
