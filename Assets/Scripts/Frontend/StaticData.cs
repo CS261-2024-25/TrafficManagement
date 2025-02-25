@@ -9,4 +9,5 @@ public class StaticData : MonoBehaviour
     public static DirectionDetails southbound;
     public static DirectionDetails westbound;
     public static (CardinalDirection, double)[] priority = new (CardinalDirection,double)[4];
+    public static int arrIndex = 0;
 }

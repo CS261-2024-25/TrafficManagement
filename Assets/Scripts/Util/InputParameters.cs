@@ -55,7 +55,7 @@ namespace Assets.Scripts.Util
             {
                 throw new ArgumentException("Priority array must contain unique elements.");
             }
-
+    
             Priority = priority;
         }
     }
