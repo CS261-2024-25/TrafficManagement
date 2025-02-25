@@ -1,7 +1,7 @@
 using Assets.Scripts.Backend.Queuing;
 using Assets.Scripts.Util;
 
-namespace Assets.Scripts.Backend.JunctionController
+namespace Assets.Scripts.Backend.Junction
 {
     public interface GeneratesCardinalJunction
     {

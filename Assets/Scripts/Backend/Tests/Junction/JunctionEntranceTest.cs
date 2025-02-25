@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using Assets.Scripts.Backend.Engine;
-using Assets.Scripts.Backend.JunctionController;
+using Assets.Scripts.Backend.Junction;
 using System;
 
 public class JunctionEntranceTest

@@ -1,7 +1,6 @@
 using System;
-using Assets.Scripts.Backend.Queuing;
 
-namespace Assets.Scripts.Backend.JunctionController
+namespace Assets.Scripts.Backend.Junction
 {
     /// <summary>
     /// This is concerned about what directions are valid to turn into

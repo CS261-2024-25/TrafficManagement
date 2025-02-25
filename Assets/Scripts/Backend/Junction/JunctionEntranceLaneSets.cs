@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Backend.Queuing;
 using JetBrains.Annotations;
 
-namespace Assets.Scripts.Backend.JunctionController
+namespace Assets.Scripts.Backend.Junction
 {
     /// <summary>
     /// This is not concerned with whether there exists lanes to turn into.

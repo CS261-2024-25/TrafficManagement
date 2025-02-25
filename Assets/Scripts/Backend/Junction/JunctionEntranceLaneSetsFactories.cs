@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Assets.Scripts.Backend.Queuing;
 
-namespace Assets.Scripts.Backend.JunctionController
+namespace Assets.Scripts.Backend.Junction
 {
 
     public class JunctionEntranceFactory
