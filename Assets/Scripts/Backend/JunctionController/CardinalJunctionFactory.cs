@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Assets.Scripts.Backend.Queuing;
 using Assets.Scripts.Util;
 
 namespace Assets.Scripts.Backend.JunctionController
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Backend.JunctionController
         private List<(Lazy<bool>, string)> Assertions;
         private JunctionEntrance[] Entrances;
         private bool[] UpdatedEntrances;
+        private bool[] PedestrianCrossings;
 
         private static readonly int NorthIndex = (int) CardinalDirection.North % 4;
         private static readonly int EastIndex = (int) CardinalDirection.East % 4;
@@ -21,6 +23,7 @@ namespace Assets.Scripts.Backend.JunctionController
             Engine = engine;
             Assertions = new List<(Lazy<bool>, string)>();
             UpdatedEntrances = new bool[4] {false, false, false, false};
+            PedestrianCrossings = new bool[4] {false, false, false, false};
             Entrances = new JunctionEntrance[4] {
                 JunctionEntrance.ClosedEntrance(Engine),
                 JunctionEntrance.ClosedEntrance(Engine),
@@ -58,12 +61,18 @@ namespace Assets.Scripts.Backend.JunctionController
                 northJunctionEntrance: Entrances[NorthIndex],
                 eastJunctionEntrance: Entrances[EastIndex],
                 southJunctionEntrance: Entrances[SouthIndex],
-                westJunctionEntrance: Entrances[WestIndex]
+                westJunctionEntrance: Entrances[WestIndex],
+                northPedestrianCrossing: PedestrianCrossings[NorthIndex],
+                eastPedestrianCrossing: PedestrianCrossings[EastIndex],
+                southPedestrianCrossing: PedestrianCrossings[SouthIndex],
+                westPedestrianCrossing: PedestrianCrossings[WestIndex]
             );
         }
 
-        public CardinalJunctionFactory AddNorthEntrance(JunctionEntrance entrance)
-        {
+        public CardinalJunctionFactory AddNorthEntrance(
+            JunctionEntrance entrance, 
+            bool pedestrianCrossingEnabled=false
+        ) {
             if (UpdatedEntrances[NorthIndex])
             {
                 throw new ArgumentException("Tried to define north entrance for a CardinalJunction instance twice");
@@ -72,6 +81,7 @@ namespace Assets.Scripts.Backend.JunctionController
             {
                 UpdatedEntrances[NorthIndex] = true;
                 Entrances[NorthIndex] = entrance;
+                PedestrianCrossings[NorthIndex] = pedestrianCrossingEnabled;
             }
 
             if (entrance.LeftValid)
@@ -101,8 +111,10 @@ namespace Assets.Scripts.Backend.JunctionController
             return this;
         }
 
-        public CardinalJunctionFactory AddEastEntrance(JunctionEntrance entrance)
-        {
+        public CardinalJunctionFactory AddEastEntrance(
+            JunctionEntrance entrance, 
+            bool pedestrianCrossingEnabled=false
+        ) {
             if (UpdatedEntrances[EastIndex])
             {
                 throw new ArgumentException("Tried to define east entrance for a CardinalJunction instance twice");
@@ -111,6 +123,7 @@ namespace Assets.Scripts.Backend.JunctionController
             {
                 UpdatedEntrances[EastIndex] = true;
                 Entrances[EastIndex] = entrance;
+                PedestrianCrossings[EastIndex] = pedestrianCrossingEnabled;
             }
 
             if (entrance.LeftValid)
@@ -140,8 +153,10 @@ namespace Assets.Scripts.Backend.JunctionController
             return this;
         }
 
-        public CardinalJunctionFactory AddSouthEntrance(JunctionEntrance entrance)
-        {
+        public CardinalJunctionFactory AddSouthEntrance(
+            JunctionEntrance entrance, 
+            bool pedestrianCrossingEnabled=false
+        ) {
             if (UpdatedEntrances[SouthIndex])
             {
                 throw new ArgumentException("Tried to define south entrance for a CardinalJunction instance twice");
@@ -150,6 +165,7 @@ namespace Assets.Scripts.Backend.JunctionController
             {
                 UpdatedEntrances[SouthIndex] = true;
                 Entrances[SouthIndex] = entrance;
+                PedestrianCrossings[SouthIndex] = pedestrianCrossingEnabled;
             }
 
             if (entrance.LeftValid)
@@ -179,8 +195,10 @@ namespace Assets.Scripts.Backend.JunctionController
             return this;
         }
 
-        public CardinalJunctionFactory AddWestEntrance(JunctionEntrance entrance)
-        {
+        public CardinalJunctionFactory AddWestEntrance(
+            JunctionEntrance entrance, 
+            bool pedestrianCrossingEnabled=false
+        ) {
             if (UpdatedEntrances[WestIndex])
             {
                 throw new ArgumentException("Tried to define west entrance for a CardinalJunction instance twice");
@@ -189,6 +207,7 @@ namespace Assets.Scripts.Backend.JunctionController
             {
                 UpdatedEntrances[WestIndex] = true;
                 Entrances[WestIndex] = entrance;
+                PedestrianCrossings[WestIndex] = pedestrianCrossingEnabled;
             }
 
             if (entrance.LeftValid)

@@ -1,3 +1,4 @@
+using Assets.Scripts.Backend.Queuing;
 using Assets.Scripts.Util;
 
 namespace Assets.Scripts.Backend.JunctionController
@@ -9,8 +10,15 @@ namespace Assets.Scripts.Backend.JunctionController
 
     public class CardinalJunction
     {
-        private JunctionEntrance[] Entrances;
+#nullable enable
+        private (JunctionEntrance, PedestrianCrossing?)[] Entrances;
+
         private Engine.Engine Engine;
+
+        private static readonly int NorthIndex = (int) CardinalDirection.North % 4;
+        private static readonly int EastIndex = (int) CardinalDirection.East % 4;
+        private static readonly int SouthIndex = (int) CardinalDirection.South % 4;
+        private static readonly int WestIndex = (int) CardinalDirection.West % 4;
 
         /// <summary>
         /// Do not use this constructor, use CardinalJunctionFactory for safety
@@ -20,17 +28,24 @@ namespace Assets.Scripts.Backend.JunctionController
             JunctionEntrance northJunctionEntrance,
             JunctionEntrance eastJunctionEntrance,
             JunctionEntrance southJunctionEntrance,
-            JunctionEntrance westJunctionEntrance
+            JunctionEntrance westJunctionEntrance,
+            bool northPedestrianCrossing,
+            bool eastPedestrianCrossing,
+            bool southPedestrianCrossing,
+            bool westPedestrianCrossing
         ) {
-            Entrances = new JunctionEntrance[4];
+            Entrances = new (JunctionEntrance, PedestrianCrossing?)[4];
             Engine = engine;
 
-            Entrances[(int) CardinalDirection.North % 4] = northJunctionEntrance;
-            Entrances[(int) CardinalDirection.East % 4] = eastJunctionEntrance;
-            Entrances[(int) CardinalDirection.South % 4] = southJunctionEntrance;
-            Entrances[(int) CardinalDirection.West % 4] = westJunctionEntrance;
+            Entrances[NorthIndex] = (northJunctionEntrance, northPedestrianCrossing ? 
+                new PedestrianCrossing(engine) : null);
+            Entrances[EastIndex] = (eastJunctionEntrance, eastPedestrianCrossing ? 
+                new PedestrianCrossing(engine) : null);
+            Entrances[WestIndex] = (westJunctionEntrance, westPedestrianCrossing ? 
+                new PedestrianCrossing(engine) : null);
+            Entrances[SouthIndex] = (southJunctionEntrance, southPedestrianCrossing ? 
+                new PedestrianCrossing(engine) : null);
         }
+#nullable disable
     }
-
-    
 }
