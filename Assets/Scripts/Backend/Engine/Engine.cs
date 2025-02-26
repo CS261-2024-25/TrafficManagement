@@ -50,6 +50,7 @@ namespace Assets.Scripts.Backend.Engine {
                 {
                     await Task.Delay(TimeSpan.FromMilliseconds(tickIntervalMs), token);
                     SimulationTime++;
+                    Monitor.PulseAll(SimulationTime);
                 }
             }
             catch (TaskCanceledException)
