@@ -8,6 +8,11 @@ namespace Assets.Scripts.Backend.Queuing
     {        
         public ExitJunctionLane(Engine.Engine engine) : base(engine) {}
 
+        /// <summary>
+        /// Any vehicle that enters the lane is by default immediately exited.
+        /// </summary>
+        /// <param name="vehicle">Vehicle to enter the lane</param>
+        /// <returns>If this is nonzero, something is wrong with the lane.</returns>
         public override double VehicleEnter(Vehicle.Vehicle vehicle)
         {
             var _ = base.VehicleEnter(vehicle);

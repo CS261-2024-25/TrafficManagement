@@ -28,6 +28,8 @@ namespace Assets.Scripts.Backend.Queuing {
 
         /// <summary>
         /// Implementation dependent, so explicit getter.
+        /// 
+        /// Currently runs in O(1).
         /// </summary>
         /// <returns>Queue length</returns>
         public double GetQueueLength()
@@ -36,7 +38,9 @@ namespace Assets.Scripts.Backend.Queuing {
         }
 
         /// <summary>
-        /// Returns current queue length after adding vehicle
+        /// Returns current queue length after adding vehicle.
+        /// 
+        /// O(1)
         /// </summary>
         public virtual double VehicleEnter(Vehicle vehicle)
         {
@@ -58,6 +62,10 @@ namespace Assets.Scripts.Backend.Queuing {
         }
 
 #nullable enable
+        /// <summary>
+        /// O(1)
+        /// </summary>
+        /// <returns></returns>
         public virtual (Vehicle?, double) VehicleExit()
         {
             Mutex.WaitOne();

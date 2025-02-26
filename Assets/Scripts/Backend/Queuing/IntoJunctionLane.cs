@@ -34,6 +34,10 @@ namespace Assets.Scripts.Backend.Queuing
         }
 
 #nullable enable
+        /// <summary>
+        /// O(1) vehicle exit
+        /// </summary>
+        /// <returns></returns>
         public override (Vehicle.Vehicle?, double) VehicleExit()
         {
             var (vehicle, queueLength) = base.VehicleExit();
