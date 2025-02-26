@@ -16,7 +16,7 @@ public class EngineTest
         Thread.Sleep(sleepTimeMs);
 
         var expectedTicks = Convert.ToInt32(
-            (double)ticksPerSecond * ((double)sleepTimeMs / 1000.0)
+            ticksPerSecond * (sleepTimeMs / 1000.0)
         );
         
         var timeAfter = engine.SimulationTime;

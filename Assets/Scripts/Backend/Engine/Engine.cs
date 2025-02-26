@@ -7,6 +7,8 @@ namespace Assets.Scripts.Backend.Engine {
     public class Engine
     {
         public uint SimulationTime { get; private set; }
+        public object Tick;
+
         private readonly double TicksPerSecond;
         private CancellationTokenSource cancel;
         private uint VehicleId;
@@ -16,6 +18,7 @@ namespace Assets.Scripts.Backend.Engine {
             SimulationTime = 0;
             TicksPerSecond = ticksPerSecond;
             VehicleId = 0;
+            Tick = new object();
         }
 
         public void StartEngine()
@@ -50,7 +53,10 @@ namespace Assets.Scripts.Backend.Engine {
                 {
                     await Task.Delay(TimeSpan.FromMilliseconds(tickIntervalMs), token);
                     SimulationTime++;
-                    Monitor.PulseAll(SimulationTime);
+                    lock (Tick)
+                    {
+                        Monitor.PulseAll(Tick);
+                    }
                 }
             }
             catch (TaskCanceledException)
