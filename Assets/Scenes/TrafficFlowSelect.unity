@@ -626,8 +626,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'All fields must be filled non-negative, and the total priority must be
-    equal to 4 '
+  m_text: All fields must be filled non-negative. The total priority must some to
+    4 and the total flow for each direction must be the sum of all traffic exiting
+    for the direction.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1817,13 +1818,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 111997588}
   - {fileID: 1754678717}
   - {fileID: 638651052}
   - {fileID: 1174612681}
   - {fileID: 1160223662}
   - {fileID: 1984416349}
   - {fileID: 516809090}
+  - {fileID: 111997588}
   m_Father: {fileID: 1947920563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3590,7 +3591,7 @@ GameObject:
   - component: {fileID: 450504789}
   - component: {fileID: 450504788}
   m_Layer: 5
-  m_Name: Southbound total
+  m_Name: Westbound total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5023,6 +5024,7 @@ MonoBehaviour:
   direction1Text: {fileID: 1810450970}
   direction2Text: {fileID: 1138645513}
   direction3Text: {fileID: 1464678540}
+  TotalFlowText: {fileID: 1050761839}
   priorityText: {fileID: 984777518}
   errorPanel: {fileID: 111997587}
   direction: 0
@@ -8424,6 +8426,7 @@ MonoBehaviour:
   direction1Text: {fileID: 812455771}
   direction2Text: {fileID: 212583117}
   direction3Text: {fileID: 475614592}
+  TotalFlowText: {fileID: 1060697457}
   priorityText: {fileID: 1027526036}
   errorPanel: {fileID: 111997587}
   direction: 2
@@ -8524,6 +8527,7 @@ MonoBehaviour:
   direction1Text: {fileID: 310518790}
   direction2Text: {fileID: 323673140}
   direction3Text: {fileID: 2109178243}
+  TotalFlowText: {fileID: 1826751553}
   priorityText: {fileID: 425911476}
   errorPanel: {fileID: 111997587}
   direction: 1
@@ -9505,7 +9509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Total Southbound Flow
+  m_text: Total Westbound Flow
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13026,6 +13030,7 @@ MonoBehaviour:
   direction1Text: {fileID: 855456249}
   direction2Text: {fileID: 2018996838}
   direction3Text: {fileID: 1757063837}
+  TotalFlowText: {fileID: 450504788}
   priorityText: {fileID: 1423842315}
   errorPanel: {fileID: 111997587}
   direction: 3

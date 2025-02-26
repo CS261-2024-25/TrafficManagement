@@ -16,6 +16,7 @@ public class CreateStruct : MonoBehaviour
         public TMP_InputField direction1Text;
         public TMP_InputField direction2Text;
         public TMP_InputField direction3Text;
+        public TMP_InputField TotalFlowText;
         public TMP_InputField priorityText;
 
         public GameObject errorPanel;
@@ -27,6 +28,7 @@ public class CreateStruct : MonoBehaviour
                 int parsedVal1 = 0;
                 int parsedVal2 = 0;
                 int parsedVal3 = 0;
+                int parsedVal4 = 0;
                 if (!Int32.TryParse(direction1Text.text, out parsedVal1)){ // If runs when number cannot be parsed
                         StaticData.failFlowParse = true;
                 }
@@ -34,6 +36,9 @@ public class CreateStruct : MonoBehaviour
                         StaticData.failFlowParse = true;
                 }
                 if (!Int32.TryParse(direction3Text.text, out parsedVal3)){
+                        StaticData.failFlowParse = true;
+                }
+                if (!Int32.TryParse(TotalFlowText.text, out parsedVal4)){
                         StaticData.failFlowParse = true;
                 }
                 
@@ -45,7 +50,8 @@ public class CreateStruct : MonoBehaviour
                         StaticData.failFlowParse = true;
                 }
                 // Input sanitisation checks
-                if (StaticData.failFlowParse || prioNum < 0 || parsedVal1 < 0 || parsedVal2 < 0 || parsedVal3 < 0 || ( direction == CardinalDirection.West && StaticData.totPrio + prioNum != 4)){
+                if (StaticData.failFlowParse || prioNum < 0 || parsedVal1 < 0 || parsedVal2 < 0 || parsedVal3 < 0 ||
+                        parsedVal1 + parsedVal2 + parsedVal3 != parsedVal4||( direction == CardinalDirection.West && StaticData.totPrio + prioNum != 4)){
                         StaticData.failFlowParse = true; // Needs to be set incase loop is entered through invalid priority
                         if (direction == CardinalDirection.West){
                                 StaticData.totPrio = 0;
@@ -58,7 +64,7 @@ public class CreateStruct : MonoBehaviour
                         StaticData.priority[StaticData.arrIndex] = (direction,prioNum); 
                         StaticData.arrIndex++;
                         StaticData.totPrio += prioNum;
-                        uint direction1Flow = Convert.ToUInt32(parsedVal1);
+                        uint direction1Flow = Convert.ToUInt32(parsedVal1); // Needed to fit struct type
                         uint direction2Flow = Convert.ToUInt32(parsedVal2);
                         uint direction3Flow = Convert.ToUInt32(parsedVal3);
 
