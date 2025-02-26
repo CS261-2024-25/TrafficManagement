@@ -45,7 +45,7 @@ public class CreateStruct : MonoBehaviour
                         StaticData.failFlowParse = true;
                 }
                 // Input sanitisation checks
-                if (StaticData.failFlowParse || prioNum < 0 || ( direction == CardinalDirection.West && StaticData.totPrio + prioNum != 4)){
+                if (StaticData.failFlowParse || prioNum < 0 || parsedVal1 < 0 || parsedVal2 < 0 || parsedVal3 < 0 || ( direction == CardinalDirection.West && StaticData.totPrio + prioNum != 4)){
                         StaticData.failFlowParse = true; // Needs to be set incase loop is entered through invalid priority
                         if (direction == CardinalDirection.West){
                                 StaticData.totPrio = 0;
