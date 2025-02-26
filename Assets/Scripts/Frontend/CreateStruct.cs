@@ -16,7 +16,7 @@ public class CreateStruct : MonoBehaviour
         public TMP_InputField direction1Text;
         public TMP_InputField direction2Text;
         public TMP_InputField direction3Text;
-        public TMP_Dropdown priorityDropdown;
+        public TMP_InputField priorityText;
         public CardinalDirection direction; // Manually set in unity
 
         // Run when submit is clicked on the second page
@@ -85,9 +85,11 @@ public class CreateStruct : MonoBehaviour
                                 
                 }
                 // If value is 0, then no priority was selected
-                if (priorityDropdown.value != 0){
-                    StaticData.priority[priorityDropdown.value-1] = direction; 
-                }
+
+                double prioNum = Convert.ToDouble(priorityText.text);
+                
+                StaticData.priority[StaticData.arrIndex] = (direction,prioNum); 
+                StaticData.arrIndex++;
                 // West Direction is run last so when west runs, switch scene and create struct
                 if (direction == CardinalDirection.West){
                     SceneManager.LoadScene("ResultsScreen");
