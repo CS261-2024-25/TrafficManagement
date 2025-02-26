@@ -158,6 +158,85 @@ namespace Assets.Scripts.Backend.Junction
             }
         }
 
+        public List<Vehicle.Vehicle> VehicleExitForLeftTurn()
+        {
+            if (
+                HasLeftTurn || 
+                (HasRightTurn && IntoJunctionLanesCount() > 1)
+            ) {
+                var exited = new List<Vehicle.Vehicle>();
+                var vehicle = IntoJunctionLanes[0].VehicleExit().Item1;
+
+                if (vehicle != null)
+                {
+                    exited.Add(vehicle);
+                }
+
+                return exited;
+            }
+            else
+            {
+                throw new InvalidOperationException(
+                    "No lanes exist to exit right from."
+                );
+            }
+        }
+
+        public List<Vehicle.Vehicle> VehicleExitForForward()
+        {
+            if (HasRightTurn && HasLeftTurn && IntoJunctionLanesCount() <= 2)
+            {
+                throw new InvalidOperationException(
+                    "No lanes exist to go forward from"
+                );
+            }
+            else if (IntoJunctionLanesCount() == 1 && (HasRightTurn || HasLeftTurn))
+            {
+                throw new InvalidOperationException(
+                    "No lanes exist to go forward from"
+                );
+            }
+            else if (HasRightTurn && HasLeftTurn)
+            {
+                return UnsafeVehicleExitLanesWithRange(1, IntoJunctionLanesCount() - 1);
+            }
+            else if (HasLeftTurn)
+            {
+                return UnsafeVehicleExitLanesWithRange(1, IntoJunctionLanesCount());
+            }
+            else if (HasRightTurn)
+            {
+                return UnsafeVehicleExitLanesWithRange(0, IntoJunctionLanesCount() - 1);
+            }
+            else
+            {
+                return UnsafeVehicleExitLanesWithRange(0, IntoJunctionLanesCount());
+            }
+        }
+
+        public List<Vehicle.Vehicle> VehicleExitForRightTurn()
+        {
+            if (
+                HasRightTurn || (HasLeftTurn && IntoJunctionLanesCount() > 1)
+            ) {
+                var exited = new List<Vehicle.Vehicle>();
+                var vehicle = IntoJunctionLanes[0].VehicleExit().Item1;
+
+                if (vehicle != null)
+                {
+                    exited.Add(vehicle);
+                }
+
+                return exited;
+            }
+            else
+            {
+                throw new InvalidOperationException(
+                    "No lanes exist to exit left from."
+                );
+            }
+        }
+
         public int IntoJunctionLanesCount()
         {
             return IntoJunctionLanes.Count;
@@ -192,5 +271,24 @@ namespace Assets.Scripts.Backend.Junction
 
             return bestLane.VehicleEnter(vehicle);
         }
+
+#nullable enable
+        private List<Vehicle.Vehicle> UnsafeVehicleExitLanesWithRange(int l, int r)
+        {
+            var exited = new List<Vehicle.Vehicle>();
+
+            for (int i = l + 1; i < r; ++i)
+            {
+                var vehicle = IntoJunctionLanes[i].VehicleExit().Item1;
+
+                if (vehicle != null)
+                {
+                    exited.Add(vehicle);
+                }
+            }
+
+            return exited;
+        }
+#nullable disable
     }
 }

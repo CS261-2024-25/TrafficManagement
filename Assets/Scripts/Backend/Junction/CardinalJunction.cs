@@ -11,7 +11,7 @@ namespace Assets.Scripts.Backend.Junction
     public class CardinalJunction
     {
 #nullable enable
-        private (JunctionEntrance, PedestrianCrossing?)[] Entrances;
+        public (JunctionEntrance, PedestrianCrossing?)[] Entrances { get; private set; }
 
         private Engine.Engine Engine;
 

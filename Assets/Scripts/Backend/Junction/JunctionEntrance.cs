@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Assets.Scripts.Backend.Junction
 {
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Backend.Junction
         public readonly bool ForwardValid;
         public readonly bool RightValid;
 
-        private JunctionEntranceLaneSets LaneSets;
+        public JunctionEntranceLaneSets LaneSets { get; private set; }
 
         /// <summary>
         /// Constructor with state guarantees:
@@ -156,6 +157,66 @@ namespace Assets.Scripts.Backend.Junction
                     );
                 }
                 return LaneSets.VehicleEnterForForward(vehicle);
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Attempt to exit a vehicle to turn left
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Thrown if it is not possible to turn this direction</exception>
+        public List<Vehicle.Vehicle> VehicleExitForLeftTurn() {
+            try {
+                if (!LeftValid)
+                {
+                    throw new InvalidOperationException(
+                        "JunctionEntrance defines left as an invalid direction"  
+                    );
+                }
+                return LaneSets.VehicleExitForLeftTurn();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Attempt to exit a vehicle to turn right
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Thrown if it is not possible to turn this direction</exception>
+        public List<Vehicle.Vehicle> VehicleExitForRightTurn() {
+            try {
+                if (!RightValid)
+                {
+                    throw new InvalidOperationException(
+                        "JunctionEntrance defines right as an invalid direction"  
+                    );
+                }
+                return LaneSets.VehicleExitForRightTurn();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Attempt to enter a vehicle to turn left
+        /// </summary>
+        /// <param name="vehicle"></param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">Thrown if it is not possible to go into this direction</exception>
+        public List<Vehicle.Vehicle> VehicleExitForForward() {
+            try {
+                if (!ForwardValid)
+                {
+                    throw new InvalidOperationException(
+                        "JunctionEntrance defines forward as an invalid direction"  
+                    );
+                }
+                return LaneSets.VehicleExitForForward();
             } catch {
                 throw;
             }
