@@ -22,7 +22,6 @@ public class ConfigureDirection : MonoBehaviour
 
         // Values for the error panel
         public GameObject errorPanel;
-        public TMP_Text errorText;
 
         public CardinalDirection direction; // Manually set in unity
         
