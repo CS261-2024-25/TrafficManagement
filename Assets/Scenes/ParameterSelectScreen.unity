@@ -1261,6 +1261,8 @@ MonoBehaviour:
   inboundText: {fileID: 123536967}
   leftToggle: {fileID: 1046431045}
   crossingToggle: {fileID: 1753848267}
+  errorPanel: {fileID: 1659154898}
+  errorText: {fileID: 0}
   direction: 2
 --- !u!1 &409600809
 GameObject:
@@ -3265,7 +3267,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 776796841}
-        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_TargetAssemblyTypeName: ExitButton, Frontend
         m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
@@ -6554,6 +6556,8 @@ MonoBehaviour:
   inboundText: {fileID: 1565329444}
   leftToggle: {fileID: 1958638972}
   crossingToggle: {fileID: 956565539}
+  errorPanel: {fileID: 1659154898}
+  errorText: {fileID: 0}
   direction: 0
 --- !u!1 &1308646723
 GameObject:
@@ -7413,6 +7417,7 @@ GameObject:
   - component: {fileID: 1478278488}
   - component: {fileID: 1478278487}
   - component: {fileID: 1478278486}
+  - component: {fileID: 1478278489}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7483,7 +7488,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1478278487}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1478278489}
+        m_TargetAssemblyTypeName: ClosePanel, Frontend
+        m_MethodName: HidePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1478278487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7522,6 +7539,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478278484}
   m_CullTransparentMesh: 1
+--- !u!114 &1478278489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478278484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4cd591f269160542be2107044d93633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1659154898}
 --- !u!1 &1542754468
 GameObject:
   m_ObjectHideFlags: 0
@@ -8703,7 +8733,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Number of incoming and outgoing lanes must be set for all directions
+  m_text: Number of incoming and outgoing lanes must be set and sum to 5 for each
+    direction.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9446,6 +9477,8 @@ MonoBehaviour:
   inboundText: {fileID: 1209748264}
   leftToggle: {fileID: 1325440781}
   crossingToggle: {fileID: 149268645}
+  errorPanel: {fileID: 1659154898}
+  errorText: {fileID: 0}
   direction: 1
 --- !u!1 &1897146626
 GameObject:
@@ -10462,6 +10495,8 @@ MonoBehaviour:
   inboundText: {fileID: 1575977723}
   leftToggle: {fileID: 10909146}
   crossingToggle: {fileID: 2019991765}
+  errorPanel: {fileID: 1659154898}
+  errorText: {fileID: 0}
   direction: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
