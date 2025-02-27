@@ -10,21 +10,18 @@ using UnityEngine.SceneManagement;
 public class DisplayResults : MonoBehaviour
 {
     //Output Field Variables
-    public TMP_Text northAvgWaitText;
-    public TMP_Text northMaxWaitText;
-    public TMP_Text northMaxQueueText;
+    public TMP_Text northAvgWaitText, northMaxWaitText, northMaxQueueText;
+    public TMP_Text southAvgWaitText, southMaxWaitText, southMaxQueueText;
+    public TMP_Text eastAvgWaitText, eastMaxWaitText, eastMaxQueueText;
+    public TMP_Text westAvgWaitText, westMaxWaitText, westMaxQueueText;
 
-    public TMP_Text southAvgWaitText;
-    public TMP_Text southMaxWaitText;
-    public TMP_Text southMaxQueueText;
+    void Start()
+    {
+        // hides or resets the text fields as soon as the scene starts
+        ClearResults();
+    }
 
-    public TMP_Text eastAvgWaitText;
-    public TMP_Text eastMaxWaitText;
-    public TMP_Text eastMaxQueueText;
 
-    public TMP_Text westAvgWaitText;
-    public TMP_Text westMaxWaitText;
-    public TMP_Text westMaxQueueText;
 
     //public void UpdateResults(TrafficSimulationResults SimulationResults ) //To be uncommented when objects available from backend
     public void UpdateResults()
@@ -56,15 +53,34 @@ public class DisplayResults : MonoBehaviour
         */
     }
 
+    public void ClearResults(){
+        northAvgWaitText.text = "";
+        northMaxWaitText.text = "";
+        northMaxQueueText.text = "";
 
-    public void btnClkViewResults(){
+        southAvgWaitText.text = "";
+        southMaxWaitText.text = "";
+        southMaxQueueText.text = "";
+
+        eastAvgWaitText.text = "";
+        eastMaxWaitText.text = "";
+        eastMaxQueueText.text = "";
+
+        westAvgWaitText.text = "";
+        westMaxWaitText.text = "";
+        westMaxQueueText.text = "";
+    }
+
+
+    public void btnClickViewResults(){
         //simulationResults = RetriveSimulationResults()
         //UpdateResults(simulationResults); //To be uncommented when objects available from backend
         UpdateResults(); //To comment out when objects available from backend
     }
 
-    public void btnClkViewJunctionSimulation(){
-        SceneManager.LoadScene("GraphicalJunctionSimulation");
+    public void btnClickViewJunctionSimulation(){
+        SceneManager.LoadScene("GraphicalJunctionSimulationScreen");
     }
+
     
 }

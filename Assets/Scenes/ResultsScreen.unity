@@ -1074,18 +1074,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d009c917aff01459dad06071fca9707b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  northAvgWaitText: {fileID: 0}
-  northMaxWaitText: {fileID: 0}
-  northMaxQueueText: {fileID: 0}
-  southAvgWaitText: {fileID: 0}
-  southMaxWaitText: {fileID: 0}
-  southMaxQueueText: {fileID: 0}
-  eastAvgWaitText: {fileID: 0}
-  eastMaxWaitText: {fileID: 0}
-  eastMaxQueueText: {fileID: 0}
-  westAvgWaitText: {fileID: 0}
-  westMaxWaitText: {fileID: 0}
-  westMaxQueueText: {fileID: 0}
+  northAvgWaitText: {fileID: 1423948005}
+  northMaxWaitText: {fileID: 1367962414}
+  northMaxQueueText: {fileID: 2017246250}
+  southAvgWaitText: {fileID: 875454337}
+  southMaxWaitText: {fileID: 148585615}
+  southMaxQueueText: {fileID: 1855582581}
+  eastAvgWaitText: {fileID: 240321745}
+  eastMaxWaitText: {fileID: 630401876}
+  eastMaxQueueText: {fileID: 1472605259}
+  westAvgWaitText: {fileID: 408882874}
+  westMaxWaitText: {fileID: 1252796673}
+  westMaxQueueText: {fileID: 2108814043}
 --- !u!1 &630401874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,13 +1386,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 578071123}
+        m_TargetAssemblyTypeName: DisplayResults, Frontend
+        m_MethodName: btnClickViewResults
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
