@@ -79,7 +79,8 @@ public class DisplayResults : MonoBehaviour
     }
 
     public void btnClickViewJunctionSimulation(){
-        SceneManager.LoadScene("GraphicalJunctionSimulationScreen");
+        // SceneManager.LoadScene("GraphicalJunctionSimulationScreen");
+        SceneManager.LoadScene("g_junc");
     }
 
     
