@@ -26,7 +26,8 @@ public class DisplayResults : MonoBehaviour
     public TMP_Text westMaxWaitText;
     public TMP_Text westMaxQueueText;
 
-    void UpdateResults(TrafficSimulationResults SimulationResults )
+    //public void UpdateResults(TrafficSimulationResults SimulationResults ) //To be uncommented when objects available from backend
+    public void UpdateResults()
     {
         // Fetch results from static dictionary/Backend Result Object 
         // JunctionResults north = SimulationResults.results["Northbound"];
@@ -37,7 +38,7 @@ public class DisplayResults : MonoBehaviour
         
         // Sets text values FOR TIME with one decimal place formatting (only numbers + "sec")
         // Sets text values FOR QUEUE LENGTH rounded up to nearest integer (as we want maximum queue) , (only numbers + "sec")
-        northAvgWaitText.text = $"{north.AvgWaitTime:F1} sec";
+        /*northAvgWaitText.text = $"{north.AvgWaitTime:F1} sec";
         northMaxWaitText.text = $"{north.MaxWaitTime:F1} sec";
         northMaxQueueText.text = $"{Math.Ceiling(north.MaxQueueLength)} vehicles";
 
@@ -52,12 +53,14 @@ public class DisplayResults : MonoBehaviour
         westAvgWaitText.text = $"{west.AvgWaitTime:F1} sec";
         westMaxWaitText.text = $"{west.MaxWaitTime:F1} sec";
         westMaxQueueText.text = $"{Math.Ceiling(west.MaxQueueLength)} vehicles";
+        */
     }
 
 
     public void btnClkViewResults(){
         //simulationResults = RetriveSimulationResults()
-        UpdateResults(simulationResults);
+        //UpdateResults(simulationResults); //To be uncommented when objects available from backend
+        UpdateResults(); //To comment out when objects available from backend
     }
 
     public void btnClkViewJunctionSimulation(){
