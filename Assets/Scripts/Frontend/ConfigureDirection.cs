@@ -20,37 +20,56 @@ public class ConfigureDirection : MonoBehaviour
         public Toggle leftToggle;
         public Toggle crossingToggle;
 
+        // Values for the error panel
+        public GameObject errorPanel;
+
         public CardinalDirection direction; // Manually set in unity
         
         // Run when submit is clicken on the first page
         public void GetInputs(){
                 int parsedVal = 0;
+                int parsedVal2 = 0;
                 if (!Int32.TryParse(outboundText.text, out parsedVal)){
-                        throw new IOException("Could not parse outbound lane number to an integer");
+                        StaticData.failDirectionParse = true;
                 }
                 LaneCountOutbound = Convert.ToUInt32(parsedVal);
 
-                if (!Int32.TryParse(inboundText.text, out parsedVal)){
-                        throw new IOException("Could not parse inbound lane number to an integer");
+                if (!Int32.TryParse(inboundText.text, out parsedVal2)){
+                        StaticData.failDirectionParse = true;
                 }
-                LaneCountInbound = Convert.ToUInt32(parsedVal);
-                HasLeftTurn = leftToggle.isOn;
-                HasPedestrianCrossing = crossingToggle.isOn;
+                if (StaticData.failDirectionParse){
+                        if (direction == CardinalDirection.West){
+                                StaticData.failDirectionParse = false;
+                        }
+                        errorPanel.SetActive(true);
+                }
+                else{
+                        LaneCountOutbound = Convert.ToUInt32(parsedVal);
+                        LaneCountInbound = Convert.ToUInt32(parsedVal2);
+                        if (LaneCountInbound + LaneCountOutbound != 5){
+                                StaticData.failDirectionParse = true;
+                                errorPanel.SetActive(true);
+                        }
+                        else{
+                                HasLeftTurn = leftToggle.isOn;
+                                HasPedestrianCrossing = crossingToggle.isOn;
 
-                switch(direction){  // Traffic flows are set to 0 as they will be set later in CreateStruct
-                        case CardinalDirection.North:
-                           StaticData.northbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
-                           break;
-                        case CardinalDirection.East:
-                           StaticData.eastbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
-                           break;
-                        case CardinalDirection.South:
-                           StaticData.southbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
-                           break;
-                        case CardinalDirection.West:
-                           StaticData.westbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
-                           SceneManager.LoadScene("TrafficFlowSelect"); // West run last so that switches scene
-                           break;      
+                                switch(direction){  // Traffic flows are set to 0 as they will be set later in CreateStruct
+                                        case CardinalDirection.North:
+                                                StaticData.northbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
+                                                break;
+                                        case CardinalDirection.East:
+                                                StaticData.eastbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
+                                                break;
+                                        case CardinalDirection.South:
+                                                StaticData.southbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
+                                                break;
+                                        case CardinalDirection.West:
+                                                StaticData.westbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
+                                                SceneManager.LoadScene("TrafficFlowSelect"); // West run last so that switches scene
+                                                break;      
+                                }
+                        }
                 }
         }
 

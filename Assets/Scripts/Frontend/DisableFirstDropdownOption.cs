@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class DisableFirstDropdownOption : MonoBehaviour
 {
+    // Script currently is not used for anything. Will leave in case needed later
     public GameObject objectToCheck;
     void Start (){
         TMP_Dropdown[] dropdowns;
