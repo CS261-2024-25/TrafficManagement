@@ -18,10 +18,10 @@ public class Demo
 
 
     //Pedestrian Crossing data
-    public bool IsPedestrianCrossing = false;
-    public float PedestrianCrossingTime = 30f;
+    public bool[] IsPedestrianCrossing = new bool[4];
+    public float PedestrianCrossingTime = 5f;
     public float  CrossingRequestsPerHour = 300f;
-    private float NextPedestrianCrossingTime;
+    private DateTime[] NextPedestrianCrossingTime = new DateTime[4];
 
     //Traffic Light data
 
@@ -176,7 +176,7 @@ public class Demo
         DateTime currentTime = startTime;
         DateTime endTime = startTime.AddSeconds(simulationDuration);
 
-        while(startTime < endTime) {
+        while(currentTime < endTime) {
 
             
             //Enqueue vehicles
@@ -215,12 +215,11 @@ public class Demo
                     Exit = currDir.LeftTurnDir;
             }
 
-            if(vehicleQueue.Count == 0){
-                currentTime = currentTime.AddSeconds(1);
-                continue;
+             if (vehicleQueue.Count > 0){
+                Vehicle currVehicle = vehicleQueue.Dequeue();
             }
 
-            Vehicle currVehicle = vehicleQueue.Dequeue();
+            
             
 
         }
@@ -240,7 +239,7 @@ public class Demo
         public int TrafficPriority { get; set; }  // 0-4 priority 
 
         public bool HasLeftTurnLane {get; set;}
-        public int BusCycleVph {get; set;}
+        
         
         // Vehicles exiting in different directions
         public int ExitNorth { get; set; }  
