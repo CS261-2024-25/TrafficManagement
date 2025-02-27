@@ -46,6 +46,7 @@ public class CreateStruct : MonoBehaviour
                 double prioNum=0;
                 try{
                         prioNum = Convert.ToDouble(priorityText.text);
+                        StaticData.totPrio += prioNum;
                 }
                 catch(FormatException e){ // Occurs when no text is input for priority
                         StaticData.failFlowParse = true;
@@ -58,7 +59,7 @@ public class CreateStruct : MonoBehaviour
                         parsedVal2 <= 0 || 
                         parsedVal3 <= 0 ||
                         parsedVal1 + parsedVal2 + parsedVal3 != parsedVal4 ||
-                        (direction == terminalDirection && StaticData.totPrio + prioNum != 4)
+                        (direction == terminalDirection && StaticData.totPrio != 4)
                 ){
                         StaticData.failFlowParse = true; // Needs to be set incase loop is entered through invalid priority
                         if (direction == terminalDirection){
@@ -120,12 +121,10 @@ public class CreateStruct : MonoBehaviour
                                         StaticData.westbound.HasLeftTurn,
                                         StaticData.westbound.HasPedestrianCrossing
                                 );
+                                        StaticData.totPrio = 0;
+                                        SceneManager.LoadScene("ResultsScreen"); // West Direction is run last so when west runs, switch scene
                                 break;
                                                 
-                                }
-                                // West Direction is run last so when west runs, switch scene and create struct
-                                if (direction == terminalDirection){
-                                SceneManager.LoadScene("ResultsScreen");
                                 }
                 }
         }
