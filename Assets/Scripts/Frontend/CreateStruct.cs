@@ -55,9 +55,9 @@ public class CreateStruct : MonoBehaviour
                 if (
                         StaticData.failFlowParse || 
                         prioNum < 0 || 
-                        parsedVal1 <= 0 || 
-                        parsedVal2 <= 0 || 
-                        parsedVal3 <= 0 ||
+                        parsedVal1 < 0 || 
+                        parsedVal2 < 0 || 
+                        parsedVal3 < 0 ||
                         parsedVal1 + parsedVal2 + parsedVal3 != parsedVal4 ||
                         (direction == terminalDirection && StaticData.totPrio != 4)
                 ){
