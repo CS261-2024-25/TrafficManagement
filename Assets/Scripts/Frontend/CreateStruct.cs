@@ -25,6 +25,7 @@ public class CreateStruct : MonoBehaviour
 
         // Run when submit is clicked on the second page
         public void GetInputs(){
+                CardinalDirection terminalDirection = CardinalDirection.West;
                 int parsedVal1 = 0;
                 int parsedVal2 = 0;
                 int parsedVal3 = 0;
@@ -50,23 +51,17 @@ public class CreateStruct : MonoBehaviour
                         StaticData.failFlowParse = true;
                 }
                 // Input sanitisation checks
-  if (StaticData.failFlowParse || 
-    prioNum < 0 || 
-    parsedVal1 < 0 || 
-    parsedVal2 < 0 || 
-    parsedVal3 < 0 || 
-    parsedVal4 <= 0 ||  // Added line
-
-    (parsedVal1 + parsedVal2 + parsedVal3 != parsedVal4) || 
-    (direction == CardinalDirection.West && (StaticData.totPrio + prioNum != 4))) 
-{
-    // Handle error or invalid state
-}
-
-
-                        parsedVal1 + parsedVal2 + parsedVal3 != parsedVal4||( direction == CardinalDirection.West && StaticData.totPrio + prioNum != 4)){
+                if (
+                        StaticData.failFlowParse || 
+                        prioNum < 0 || 
+                        parsedVal1 <= 0 || 
+                        parsedVal2 <= 0 || 
+                        parsedVal3 <= 0 ||
+                        parsedVal1 + parsedVal2 + parsedVal3 != parsedVal4 ||
+                        (direction == terminalDirection && StaticData.totPrio + prioNum != 4)
+                ){
                         StaticData.failFlowParse = true; // Needs to be set incase loop is entered through invalid priority
-                        if (direction == CardinalDirection.West){
+                        if (direction == terminalDirection){
                                 StaticData.totPrio = 0;
                                 StaticData.failFlowParse = false;
                         }
@@ -129,7 +124,7 @@ public class CreateStruct : MonoBehaviour
                                                 
                                 }
                                 // West Direction is run last so when west runs, switch scene and create struct
-                                if (direction == CardinalDirection.West){
+                                if (direction == terminalDirection){
                                 SceneManager.LoadScene("ResultsScreen");
                                 }
                 }
