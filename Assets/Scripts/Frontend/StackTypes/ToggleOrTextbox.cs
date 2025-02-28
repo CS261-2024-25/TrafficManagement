@@ -9,12 +9,14 @@ public class ToggleOrTextbox{
     public string text {get;}
     public bool on {get;}
 
-    public ToggleOrTextbox(
+    public ToggleOrTextbox
+    (
         TMP_InputField textBox, // Pass in Null if using a toggle
         Toggle toggle, // Pass in Null if using if using a textBox
         string text,
         bool on
-    ){
+    )
+    {
         this.textBox = textBox;
         this.toggle = toggle;
         this.text = text;
