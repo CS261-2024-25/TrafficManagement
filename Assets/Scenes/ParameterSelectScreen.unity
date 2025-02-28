@@ -1262,7 +1262,6 @@ MonoBehaviour:
   leftToggle: {fileID: 1046431045}
   crossingToggle: {fileID: 1753848267}
   errorPanel: {fileID: 1659154898}
-  errorText: {fileID: 0}
   direction: 2
 --- !u!1 &409600809
 GameObject:
@@ -6557,7 +6556,6 @@ MonoBehaviour:
   leftToggle: {fileID: 1958638972}
   crossingToggle: {fileID: 956565539}
   errorPanel: {fileID: 1659154898}
-  errorText: {fileID: 0}
   direction: 0
 --- !u!1 &1308646723
 GameObject:
@@ -9478,7 +9476,6 @@ MonoBehaviour:
   leftToggle: {fileID: 1325440781}
   crossingToggle: {fileID: 149268645}
   errorPanel: {fileID: 1659154898}
-  errorText: {fileID: 0}
   direction: 1
 --- !u!1 &1897146626
 GameObject:
@@ -10496,7 +10493,6 @@ MonoBehaviour:
   leftToggle: {fileID: 10909146}
   crossingToggle: {fileID: 2019991765}
   errorPanel: {fileID: 1659154898}
-  errorText: {fileID: 0}
   direction: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
