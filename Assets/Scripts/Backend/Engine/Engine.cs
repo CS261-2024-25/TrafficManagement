@@ -10,7 +10,7 @@ namespace Assets.Scripts.Backend.Engine {
         public object Tick;
 
         private readonly double TicksPerSecond;
-        private CancellationTokenSource cancel;
+        protected CancellationTokenSource cancel;
         private uint VehicleId;
 
         public Engine(double ticksPerSecond)
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Backend.Engine {
             Tick = new object();
         }
 
-        public void StartEngine()
+        public virtual void StartEngine()
         {
             Debug.Log("Start engine called");
             cancel = new CancellationTokenSource();
