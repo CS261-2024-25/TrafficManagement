@@ -203,7 +203,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 10909146}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &109951495
 GameObject:
@@ -358,13 +370,37 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 123536967}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 123536967}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -545,7 +581,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 149268645}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &212556681
 GameObject:
@@ -1910,7 +1958,19 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 465643772}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -2250,13 +2310,37 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 533852153}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 533852153}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -3939,8 +4023,9 @@ GameObject:
   m_Component:
   - component: {fileID: 776796842}
   - component: {fileID: 776796841}
+  - component: {fileID: 776796843}
   m_Layer: 0
-  m_Name: Exit Manager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3973,6 +4058,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776796843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776796840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83dd7834a62ea9438c18f326100ee82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &822663045
 GameObject:
   m_ObjectHideFlags: 0
@@ -4329,7 +4426,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 956565539}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &992380819
 GameObject:
@@ -5056,7 +5165,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1046431045}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1072059438
 GameObject:
@@ -6169,13 +6290,37 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1209748264}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1209748264}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -6803,7 +6948,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1325440781}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1333523732
 GameObject:
@@ -7138,13 +7295,37 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1410410293}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1410410293}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -7814,13 +7995,37 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1565329444}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1565329444}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -8154,13 +8359,37 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1575977723}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1575977723}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -9166,7 +9395,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1753848267}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1871413626
 GameObject:
@@ -9637,7 +9878,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1928770536}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: Undo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1928770536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9896,7 +10149,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1958638972}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1961115303
 GameObject:
@@ -9999,13 +10264,37 @@ MonoBehaviour:
   m_CharacterLimit: 1
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1961115305}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: TextBoxSelect
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1961115305}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -10262,7 +10551,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 776796843}
+        m_TargetAssemblyTypeName: Assets.Scripts.Frontend.Stack.HandleStack, Frontend
+        m_MethodName: ToggleUpdate
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2019991765}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Toggle, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &2054478476
 GameObject:
