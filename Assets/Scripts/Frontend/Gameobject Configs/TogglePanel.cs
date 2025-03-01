@@ -7,4 +7,8 @@ public class ClosePanel : MonoBehaviour
     public void HidePanel(){
         panel.SetActive(false);
     }
+
+    public void ShowPanel(){
+        panel.SetActive(true);
+    }
 }
