@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Frontend.Stack{
     public class ToggleOrTextbox{
-        public TMP_InputField textBox {get;}
-        public Toggle toggle {get;}
-        public string text {get;}
-        public bool on {get;}
+        public TMP_InputField TextBox {get;}
+        public Toggle Toggle {get;}
+        public string Text {get;set;}
+        public bool On {get;set;}
 
         public ToggleOrTextbox
         (
@@ -17,10 +17,10 @@ namespace Assets.Scripts.Frontend.Stack{
             bool on
         )
         {
-            this.textBox = textBox;
-            this.toggle = toggle;
-            this.text = text;
-            this.on = on;
+            this.TextBox = textBox;
+            this.Toggle = toggle;
+            this.Text = text;
+            this.On = on;
         }
     }
 
