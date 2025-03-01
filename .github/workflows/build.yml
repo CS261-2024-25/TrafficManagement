@@ -1,0 +1,73 @@
+name: Build
+
+on:
+    workflow_dispatch:
+
+jobs:
+  build:
+    name: ${{ matrix.targetPlatform }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      checks: write
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
+          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneLinux64 # Build a Linux 64-bit standalone.
+
+    steps:
+      # Checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      # Cache
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ matrix.targetPlatform }}
+          restore-keys: Library-
+    
+    #   # Test
+    #   - name: Test
+    #     uses: game-ci/unity-test-runner@v4
+    #     env:
+    #         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+    #         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+    #         UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+    #     with:
+    #         projectPath: .
+    #         githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clean Docker system
+        run: |
+            docker system prune -f
+            docker builder prune -f
+            docker image prune -f
+
+      # Stash uncommitted changes
+      - name: Stash uncommitted changes
+        run: git stash --include-untracked
+
+      # Build
+      - name: Build
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: ${{ matrix.targetPlatform }}
+
+      # Upload Build
+      - name: Upload Build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}

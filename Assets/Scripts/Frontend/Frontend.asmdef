@@ -1,0 +1,10 @@
+{
+    "name": "Frontend",
+    "references": [
+        "Util",
+        "Unity.TextMeshPro"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

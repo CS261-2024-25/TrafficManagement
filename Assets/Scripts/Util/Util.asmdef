@@ -1,0 +1,9 @@
+{
+    "name": "Util",
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

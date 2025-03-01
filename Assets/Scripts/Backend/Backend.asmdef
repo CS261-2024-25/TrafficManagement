@@ -1,0 +1,12 @@
+{
+    "name": "Backend",
+    "references": [
+        "Util"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}
