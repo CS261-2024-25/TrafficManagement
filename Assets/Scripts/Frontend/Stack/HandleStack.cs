@@ -45,6 +45,9 @@ namespace Assets.Scripts.Frontend.Stack{
             if (hasObject){
                 redoStack.Push(top);
                 if (top.TextBox){
+                    if (!prevText.ContainsKey(top.TextBox)){
+                        prevText[top.TextBox] = "";
+                    }
                     prevText[top.TextBox] = top.TextBox.text;
                     top.TextBox.text = top.Text;
                     top.Text = prevText[top.TextBox]; // Set to prev value for redo stack
