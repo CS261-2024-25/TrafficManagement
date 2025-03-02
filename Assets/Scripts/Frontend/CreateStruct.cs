@@ -44,11 +44,10 @@ public class CreateStruct : MonoBehaviour
                 }
                 
                 double prioNum=0;
-                try{
-                        prioNum = Convert.ToDouble(priorityText.text);
-                        StaticData.totPrio += prioNum;
+                if (double.TryParse(priorityText.text,out prioNum)){
+                        StaticData.totPrio+=prioNum;
                 }
-                catch(FormatException e){ // Occurs when no text is input for priority
+                else{
                         StaticData.failFlowParse = true;
                 }
                 // Input sanitisation checks
