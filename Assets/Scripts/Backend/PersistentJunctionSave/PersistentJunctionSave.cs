@@ -22,7 +22,6 @@ namespace Assets.Scripts.Backend.PersistentJunctionSave
             PersistentFileManager.AppendToFile(JunctionSaveFileName, json);
         }
 
-#nullable enable
         public static bool LoadAllResults(
             out (InputParameters, ResultTrafficSimulation)[] results
         ) {
@@ -73,7 +72,41 @@ namespace Assets.Scripts.Backend.PersistentJunctionSave
 
             return true;
         }
-#nullable disable
+
+        /// <summary>
+        /// Load junction configs by efficiency
+        /// </summary>
+        /// <param name="w_1">Coefficient of AverageWait</param>
+        /// <param name="w_2">Coefficient of MaxWait</param>
+        /// <param name="w_3">Coefficient of MaxQueueLength</param>
+        /// <param name="result">configs ordered in descending order of efficiency</param>
+        /// <returns></returns>
+        public static bool LoadByEfficiency(
+            double w_1,
+            double w_2,
+            double w_3,
+            out List<(double, (InputParameters, ResultTrafficSimulation))> result
+        ) {
+            result = new List<(double, (InputParameters, ResultTrafficSimulation))>();
+            (InputParameters, ResultTrafficSimulation)[] results;
+            var success = LoadAllResults(out results);
+
+            if (!success) return false;
+
+            foreach (var x in results)
+            {
+                double efficiency = 0;
+                foreach (var dir in Enum.GetValues(typeof(CardinalDirection)))
+                {
+                    efficiency += 
+                        x.Item2.EfficiencyWithDirection((CardinalDirection) dir, w_1, w_2, w_3);
+                }
+                result.Add((efficiency, x));
+            }
+
+            result.Sort((a, b) => b.Item1.CompareTo(a.Item1));
+            return true;
+        }
 
         [Serializable]
         class JointInputResult

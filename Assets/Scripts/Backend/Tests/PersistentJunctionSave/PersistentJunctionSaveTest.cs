@@ -107,4 +107,23 @@ class PersistentJunctionSaveTest
                 results[i].Item2.ResultWithDirection(CardinalDirection.East).AverageWaitTime);
         }
     }
+
+    [Test]
+    public void WriteManyThenAggregate()
+    {
+        var len = 50;
+        var paramPairs = new (InputParameters, ResultTrafficSimulation)[len];
+        for (uint i = 0; i < len; ++i)
+        {
+            paramPairs[i] = PairMaker(i + 1);
+            PersistentJunctionSave.SaveResult(paramPairs[i].Item1, paramPairs[i].Item2);
+        }
+
+        System.Collections.Generic.List<(double, (InputParameters, ResultTrafficSimulation))> 
+            results;
+        var success = PersistentJunctionSave.LoadByEfficiency(1.0, 1.0, 1.0, out results);
+        Assert.True(success);
+
+        Assert.AreEqual(results.Count, paramPairs.Length);
+    }
 }
