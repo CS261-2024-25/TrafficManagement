@@ -61,6 +61,7 @@ public class CreateStruct : MonoBehaviour
                         (direction == terminalDirection && StaticData.totPrio != 4)
                 ){
                         StaticData.failFlowParse = true; // Needs to be set incase loop is entered through invalid priority
+                        StaticData.arrIndex = 0;
                         if (direction == terminalDirection){
                                 StaticData.totPrio = 0;
                                 StaticData.failFlowParse = false;
@@ -71,7 +72,7 @@ public class CreateStruct : MonoBehaviour
                 else{
                         StaticData.priority[StaticData.arrIndex] = (direction,prioNum); 
                         StaticData.arrIndex++;
-                        StaticData.totPrio += prioNum;
+
                         uint direction1Flow = Convert.ToUInt32(parsedVal1); // Needed to fit struct type
                         uint direction2Flow = Convert.ToUInt32(parsedVal2);
                         uint direction3Flow = Convert.ToUInt32(parsedVal3);
