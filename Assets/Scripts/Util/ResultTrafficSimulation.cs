@@ -1,8 +1,23 @@
+using System;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace Assets.Scripts.Util
 {
+    [Serializable]
     public class ResultTrafficSimulation
     {
         private ResultJunctionEntrance[] results;
+
+        // these exist to serialize in a nice format
+        [JsonProperty]
+        private ResultJunctionEntrance NorthResult;
+        [JsonProperty]
+        private ResultJunctionEntrance EastResult;
+        [JsonProperty]
+        private ResultJunctionEntrance SouthResult;
+        [JsonProperty]
+        private ResultJunctionEntrance WestResult;
 
         private static readonly int NorthIndex = (int) CardinalDirection.North % 4;
         private static readonly int EastIndex = (int) CardinalDirection.East % 4;
@@ -21,6 +36,10 @@ namespace Assets.Scripts.Util
             results[EastIndex] = eastResult;
             results[SouthIndex] = southResult;
             results[WestIndex] = westResult;
+            NorthResult = northResult;
+            EastResult = eastResult;
+            WestResult = westResult;
+            SouthResult = southResult;
         }
 
         public ResultJunctionEntrance ResultWithDirection(CardinalDirection direction)
@@ -45,12 +64,26 @@ namespace Assets.Scripts.Util
             return ResultWithDirection(direction)
                 .getJunctionEfficiency(w_1, w_2, w_3);
         }
+
+        [OnDeserialized]
+        private void OnDeserialized(StreamingContext context) {
+            results = new ResultJunctionEntrance[4];
+
+            results[NorthIndex] = NorthResult;
+            results[EastIndex] = EastResult;
+            results[SouthIndex] = SouthResult;
+            results[WestIndex] = WestResult;
+        }
     }
 
+    [Serializable]
     public class ResultJunctionEntrance
     {
+        [JsonProperty]
         public readonly double MaxWaitTime;
+        [JsonProperty]
         public readonly double AverageWaitTime;
+        [JsonProperty]
         public readonly double MaxQueueLength;
 
         public ResultJunctionEntrance(

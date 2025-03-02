@@ -1,16 +1,22 @@
 using System;
-using System.Diagnostics;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace Assets.Scripts.Util
 {
 #region user input spec
+    [Serializable]
     public class InputParameters 
     {
+        [JsonProperty]
         public DirectionDetails Northbound { get; }
+        [JsonProperty]
         public DirectionDetails Eastbound { get; }
+        [JsonProperty]
         public DirectionDetails Southbound { get; }
+        [JsonProperty]
         public DirectionDetails Westbound { get; }
+        [JsonProperty]
         public (CardinalDirection, double)[] Priority { get; }
 
         /// <summary>
@@ -51,7 +57,7 @@ namespace Assets.Scripts.Util
                 throw new ArgumentException("Priority array values must sum to 4.");
             }
 
-            if (priority.Distinct().Count() == priority.Length)
+            if (priority.Distinct().Count() != priority.Length)
             {
                 throw new ArgumentException("Priority array must contain unique elements.");
             }
@@ -62,14 +68,22 @@ namespace Assets.Scripts.Util
 #endregion
 
 #region directional type
+    [Serializable]
     public class DirectionDetails
     {
+        [JsonProperty]
         public uint LeftFlow { get; }
+        [JsonProperty]
         public uint ForwardFlow { get; }
+        [JsonProperty]
         public uint RightFlow { get; }
+        [JsonProperty]
         public uint LaneCountOutbound { get; }
+        [JsonProperty]
         public uint LaneCountInbound { get; }
+        [JsonProperty]
         public bool HasLeftTurn { get; }
+        [JsonProperty]
         public bool HasPedestrianCrossing { get; }
 
         public DirectionDetails
