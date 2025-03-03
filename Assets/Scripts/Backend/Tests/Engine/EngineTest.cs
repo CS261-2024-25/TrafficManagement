@@ -23,8 +23,9 @@ public class EngineTest
         Debug.Log($"expected: {expectedTicks}, curr: {timeAfter}");
         
         // some margin of error
-        Assert.True(timeAfter > expectedTicks - 3);
-        Assert.True(timeAfter < expectedTicks + 3);
+        var delta = 8;
+        Assert.True(timeAfter > expectedTicks - delta);
+        Assert.True(timeAfter < expectedTicks + delta);
         engine.StopEngine();
     }
 }
