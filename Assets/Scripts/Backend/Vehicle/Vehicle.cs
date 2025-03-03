@@ -9,6 +9,7 @@ namespace Assets.Scripts.Backend.Vehicle
         public double MinSpaceBehind { get; }
         public uint CreatedAt { get; }
         public uint VehicleId { get; }
+        
 
         protected Vehicle(Engine engine, double vehicleLength, double minSpaceBehind, uint vehicleId) 
         {
@@ -18,21 +19,30 @@ namespace Assets.Scripts.Backend.Vehicle
             VehicleId = vehicleId;
         }
 
-        //Dictionary of all possible vehicles
-        public static readonly Dictionary<string, (double length, double spaceBehind)> VehicleTypes =
-            new()
-            {
-                { "Car", (4.5, 1.5) },
-                { "Truck", (10.0, 3.0) },
-                { "Bus", (12.0, 3.5) },
-                { "Motorcycle", (2.0, 1.0) }
-            };
+        
     }
 
-    //Generic vehicle class so we can make use of the abstract vehicle class
-    public class GenericVehicle : Vehicle
+    
+
+    
+    public class Car : Vehicle
     {
-        public GenericVehicle(Engine engine, double vehicleLength, double minSpaceBehind, uint vehicleId)
-            : base(engine, vehicleLength, minSpaceBehind, vehicleId) { }
+        public Car(Engine engine, uint vehicleId) : base(engine, 4.5, 1.5, vehicleId) { }
     }
+
+    public class Truck : Vehicle
+    {
+        public Truck(Engine engine, uint vehicleId) : base(engine, 10.0, 3.0, vehicleId) { }
+    }
+
+    public class Bus : Vehicle
+    {
+        public Bus(Engine engine, uint vehicleId) : base(engine, 12.0, 3.5, vehicleId) { }
+    }
+
+    public class Motorcycle : Vehicle
+    {
+        public Motorcycle(Engine engine, uint vehicleId) : base(engine, 2.0, 1.0, vehicleId) { }
+    }
+
 }

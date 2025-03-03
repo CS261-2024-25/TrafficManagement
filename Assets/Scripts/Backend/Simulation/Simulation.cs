@@ -113,7 +113,7 @@ namespace Assets.Scripts.Backend.Simulation
                     
                     if(random < Vps){
                         int laneToQueue = dir.road.numLanesInbound > 0 ? rnum.Next(0, (int) dir.road.numLanesInbound-1) : 0;
-                        dir.road.IJLanes[laneToQueue].VehicleEnter(Engine.CreateVehicle(generateGenericVehicle()));
+                        dir.road.IJLanes[laneToQueue].VehicleEnter(generateVehicle());
                     }
                 }
 
@@ -141,6 +141,8 @@ namespace Assets.Scripts.Backend.Simulation
                     
                     
                 }
+
+                Engine.StopEngine();
 
             }
 
@@ -231,10 +233,23 @@ namespace Assets.Scripts.Backend.Simulation
             
         }
 
-        private string generateGenericVehicle(){
+        private Vehicle.Vehicle generateVehicle(){
             
-            string[] vehicleTypes = { "Car", "Truck", "Bus", "Motorcycle" };
-            return vehicleTypes[rnum.Next(vehicleTypes.Length)];
+            int random = rnum.Next(0,3);
+
+            switch(random){
+                case 0:
+                    return Engine.CreateVehicle<Vehicle.Car>();
+                case 1 :
+                    return Engine.CreateVehicle<Vehicle.Truck>();
+                case 2 :
+                    return Engine.CreateVehicle<Vehicle.Bus>();
+                default:
+                    return Engine.CreateVehicle<Vehicle.Motorcycle>();
+            }
+
+            
+            
                 
         }
 
