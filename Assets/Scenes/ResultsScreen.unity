@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 209911965}
   - component: {fileID: 209911964}
   - component: {fileID: 209911963}
-  - component: {fileID: 209911962}
+  - component: {fileID: 209911966}
   m_Layer: 5
   m_Name: Back Button
   m_TagString: Untagged
@@ -564,18 +564,6 @@ RectTransform:
   m_AnchoredPosition: {x: 15, y: -134}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &209911962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209911960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8ea42ddc83a61f4db88288625054b7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &209911963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,13 +608,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: db4df163c6b7ff840868196f396b845d, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 209911966}
+        m_TargetAssemblyTypeName: BackButton, Frontend
+        m_MethodName: BackToTrafficFlowScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -670,6 +658,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209911960}
   m_CullTransparentMesh: 1
+--- !u!114 &209911966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209911960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db4df163c6b7ff840868196f396b845d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &216340633
 GameObject:
   m_ObjectHideFlags: 0
