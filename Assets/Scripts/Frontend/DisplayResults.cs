@@ -2,8 +2,9 @@ using UnityEngine;
 using TMPro;
 using Assets.Scripts.Util;
 using UnityEngine.SceneManagement;
-using  Assets.Scripts.Backend.PersistentJunctionSave;
-
+//using  Assets.Scripts.Backend.PersistentJunctionSave;
+using Assets.Scripts.Backend.PersistentJunctionSave;
+using  System;
 
 
 public class DisplayResults : MonoBehaviour
@@ -34,9 +35,9 @@ public class DisplayResults : MonoBehaviour
             return (northResult, southResult, eastResult, westResult);
         }
         else{
-            return (null, null, null, null);
-            //Debug.Log("No simulation results found - please run the simulation first.");
             
+            Debug.Log("No simulation results found - please run the simulation first.");
+            return (null, null, null, null);
         }
 
     }
@@ -50,19 +51,19 @@ public class DisplayResults : MonoBehaviour
         // Sets text values FOR QUEUE LENGTH rounded up to nearest integer (as we want maximum queue) , (only numbers + "sec")
         northAvgWaitText.text = $"{north.AverageWaitTime:F1} sec";
         northMaxWaitText.text = $"{north.MaxWaitTime:F1} sec";
-        northMaxQueueText.text = $"{System.Math.Ceiling(north.MaxQueueLength)} vehicles";
+        northMaxQueueText.text = $"{Math.Ceiling(north.MaxQueueLength)} vehicles";
 
         southAvgWaitText.text = $"{south.AverageWaitTime:F1} sec";
         southMaxWaitText.text = $"{south.MaxWaitTime:F1} sec";
-        southMaxQueueText.text = $"{System.Math.Ceiling(south.MaxQueueLength)} vehicles";
+        southMaxQueueText.text = $"{Math.Ceiling(south.MaxQueueLength)} vehicles";
 
         eastAvgWaitText.text = $"{east.AverageWaitTime:F1} sec";
         eastMaxWaitText.text = $"{east.MaxWaitTime:F1} sec";
-        eastMaxQueueText.text = $"{System.Math.Ceiling(east.MaxQueueLength)} vehicles";
+        eastMaxQueueText.text = $"{Math.Ceiling(east.MaxQueueLength)} vehicles";
 
         westAvgWaitText.text = $"{west.AverageWaitTime:F1} sec";
         westMaxWaitText.text = $"{west.MaxWaitTime:F1} sec";
-        westMaxQueueText.text = $"{System.Math.Ceiling(west.MaxQueueLength)} vehicles";
+        westMaxQueueText.text = $"{Math.Ceiling(west.MaxQueueLength)} vehicles";
         
     }
 
@@ -102,20 +103,3 @@ public class DisplayResults : MonoBehaviour
 
 
 
-
-/*using UnityEngine;
-
-public class DisplayResults : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}*/
