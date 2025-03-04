@@ -10,6 +10,7 @@ namespace Assets.Scripts.Backend.Queuing
         public PedestrianCrossing(Engine.Engine engine)
         {
             Engine = engine;
+            WaitingPedestrians = new List<uint>();
         }
 
         /// <summary>

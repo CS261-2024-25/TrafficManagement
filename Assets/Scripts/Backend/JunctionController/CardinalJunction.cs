@@ -30,7 +30,11 @@ namespace Assets.Scripts.Backend.JunctionController
             Entrances[(int) CardinalDirection.South % 4] = southJunctionEntrance;
             Entrances[(int) CardinalDirection.West % 4] = westJunctionEntrance;
         }
+
+        public JunctionEntrance[] GetEntrances() => Entrances;
     }
+
+    
 
     
 }
