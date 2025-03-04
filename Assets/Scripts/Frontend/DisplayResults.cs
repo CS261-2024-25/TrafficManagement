@@ -36,7 +36,7 @@ public class DisplayResults : MonoBehaviour
         }
         else{
             
-            Debug.Log("No simulation results found - please run the simulation first.");
+            Debug.LogError("No simulation results found - please run the simulation first.");
             return (null, null, null, null);
         }
 
@@ -64,10 +64,11 @@ public class DisplayResults : MonoBehaviour
         westAvgWaitText.text = $"{west.AverageWaitTime:F1} sec";
         westMaxWaitText.text = $"{west.MaxWaitTime:F1} sec";
         westMaxQueueText.text = $"{Math.Ceiling(west.MaxQueueLength)} vehicles";
-        
+        //removed error handling for null results as backend logic verifies that null results can't be appended to persistent junction data 
     }
 
     public void ClearResults(){
+        //removed loop AND HARDCODED --> NO CHANCE OF ERROR
         northAvgWaitText.text = "";
         northMaxWaitText.text = "";
         northMaxQueueText.text = "";
@@ -87,14 +88,13 @@ public class DisplayResults : MonoBehaviour
 
 
     public void btnClickViewResults(){
-        //simulationResults = RetriveSimulationResults()
-        //UpdateResults(simulationResults); //To be uncommented when objects available from backend
         UpdateResults(); //To comment out when objects available from backend
+        Debug.LogError("Button Clicked! Trying to Update RESULTS SCENE");
     }
 
     public void btnClickViewJunctionSimulation(){
         SceneManager.LoadScene("GraphicalJunctionSimulationScreen");
-        Debug.Log("Button Clicked! Trying to load scene...");
+        Debug.LogError("Button Clicked! Trying to load JunctionSimulation SCENE");
         
     }
 
