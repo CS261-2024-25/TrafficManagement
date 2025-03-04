@@ -620,13 +620,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 209911962}
-        m_TargetAssemblyTypeName: BackButton, Frontend
-        m_MethodName: BackToTrafficFlowScreen
+      - m_Target: {fileID: 11500000, guid: db4df163c6b7ff840868196f396b845d, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -704,7 +704,9 @@ MonoBehaviour:
   direction1Text: {fileID: 0}
   direction2Text: {fileID: 0}
   direction3Text: {fileID: 0}
+  TotalFlowText: {fileID: 0}
   priorityText: {fileID: 0}
+  errorPanel: {fileID: 0}
   direction: 1
 --- !u!114 &216340635
 MonoBehaviour:
@@ -3339,7 +3341,9 @@ MonoBehaviour:
   direction1Text: {fileID: 0}
   direction2Text: {fileID: 0}
   direction3Text: {fileID: 0}
+  TotalFlowText: {fileID: 0}
   priorityText: {fileID: 0}
+  errorPanel: {fileID: 0}
   direction: 3
 --- !u!114 &1174087464
 MonoBehaviour:
@@ -3605,7 +3609,9 @@ MonoBehaviour:
   direction1Text: {fileID: 0}
   direction2Text: {fileID: 0}
   direction3Text: {fileID: 0}
+  TotalFlowText: {fileID: 0}
   priorityText: {fileID: 0}
+  errorPanel: {fileID: 0}
   direction: 0
 --- !u!114 &1229603511
 MonoBehaviour:
@@ -4713,7 +4719,9 @@ MonoBehaviour:
   direction1Text: {fileID: 0}
   direction2Text: {fileID: 0}
   direction3Text: {fileID: 0}
+  TotalFlowText: {fileID: 0}
   priorityText: {fileID: 0}
+  errorPanel: {fileID: 0}
   direction: 2
 --- !u!114 &1422472256
 MonoBehaviour:
