@@ -125,6 +125,7 @@ public class CreateStruct : MonoBehaviour
                                         StaticData.westbound.HasPedestrianCrossing
                                 );
                                         StaticData.totPrio = 0;
+                                        StaticData.arrIndex = 0;
                                         InputParameters toBackend = new InputParameters(StaticData.northbound,StaticData.eastbound, StaticData.southbound, StaticData.westbound, StaticData.priority);
                                         Simulation simulation = new Simulation(new Engine(1000000),toBackend,1000);
                                         ResultTrafficSimulation results = simulation.RunSimulation();
