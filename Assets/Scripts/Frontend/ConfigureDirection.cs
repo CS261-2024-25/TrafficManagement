@@ -46,7 +46,7 @@ public class ConfigureDirection : MonoBehaviour
                 else{
                         LaneCountOutbound = Convert.ToUInt32(parsedVal);
                         LaneCountInbound = Convert.ToUInt32(parsedVal2);
-                        if (LaneCountInbound + LaneCountOutbound != 5){
+                        if (LaneCountInbound + LaneCountOutbound > 5){
                                 StaticData.failDirectionParse = true;
                                 errorPanel.SetActive(true);
                         }
