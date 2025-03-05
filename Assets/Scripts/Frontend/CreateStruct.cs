@@ -64,8 +64,8 @@ public class CreateStruct : MonoBehaviour
                         (direction == terminalDirection && StaticData.totPrio != 4)
                 ){
                         StaticData.failFlowParse = true; // Needs to be set incase loop is entered through invalid priority
-                        StaticData.arrIndex = 0;
                         if (direction == terminalDirection){
+                                StaticData.arrIndex = 0;
                                 StaticData.totPrio = 0;
                                 StaticData.failFlowParse = false;
                         }
