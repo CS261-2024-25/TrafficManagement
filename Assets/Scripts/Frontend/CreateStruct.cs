@@ -1,5 +1,8 @@
 using UnityEngine;
 using Assets.Scripts.Util;
+using Assets.Scripts.Backend.Simulation;
+using Assets.Scripts.Backend.Engine;
+using Assets.Scripts.Backend.PersistentJunctionSave;
 using TMPro;
 using System;
 using System.IO;
@@ -122,6 +125,10 @@ public class CreateStruct : MonoBehaviour
                                         StaticData.westbound.HasPedestrianCrossing
                                 );
                                         StaticData.totPrio = 0;
+                                        InputParameters toBackend = new InputParameters(StaticData.northbound,StaticData.eastbound, StaticData.southbound, StaticData.westbound, StaticData.priority);
+                                        Simulation simulation = new Simulation(new Engine(1000000),toBackend,1000);
+                                        ResultTrafficSimulation results = simulation.RunSimulation();
+                                        PersistentJunctionSave.SaveResult(toBackend,results);       
                                         SceneManager.LoadScene("ResultsScreen"); // West Direction is run last so when west runs, switch scene
                                 break;
                                                 

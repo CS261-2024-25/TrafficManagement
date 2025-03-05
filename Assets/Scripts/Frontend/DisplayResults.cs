@@ -20,6 +20,7 @@ public class DisplayResults : MonoBehaviour
     {
         // hides or resets the text fields as soon as the scene starts
         ClearResults();
+        UpdateResults();
     }
 
 
