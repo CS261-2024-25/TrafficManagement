@@ -9523,7 +9523,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: Each direction must have at least one incoming and one outgoing lane and
-    the total number of lanes for each direction must be 5 at max.
+    the total number of lanes for each direction must be 5 at max. If there is a
+    left turn lane there must be at least two incoming lanes for a direction.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
