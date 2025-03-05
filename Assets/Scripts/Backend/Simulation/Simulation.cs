@@ -48,16 +48,13 @@ namespace Assets.Scripts.Backend.Simulation
         //Testing Values
         public bool PedestriansCrossedAtLeastOnce;
         public bool PhaseChangedAtLeastOnce;
-
-        // For save handling
-        private readonly InputParameters _inputParameters;
         
         public Simulation(Engine engine,InputParameters dirInfo, uint simulationDuration){
 
             Engine = engine;
 
             CardinalJunctionFactory JunctionFac = new CardinalJunctionFactory(Engine);
-            _inputParameters = dirInfo;
+
             Junction = JunctionFac
                 .AddNorthEntrance
                 (   
@@ -72,9 +69,7 @@ namespace Assets.Scripts.Backend.Simulation
                             dirInfo.Southbound.HasLeftTurn,
                             false
                         ),
-                        dirInfo.Southbound.LeftFlow > 0 && dirInfo.Southbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Southbound.ForwardFlow > 0 && dirInfo.Southbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Southbound.RightFlow > 0 && dirInfo.Southbound.LaneCountInbound > 0 ? true : false
+                        true, true, true
                     )
                     
                 )
@@ -91,9 +86,7 @@ namespace Assets.Scripts.Backend.Simulation
                             dirInfo.Westbound.HasLeftTurn,
                             false
                         ),
-                        dirInfo.Westbound.LeftFlow > 0 && dirInfo.Southbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Westbound.ForwardFlow > 0 && dirInfo.Southbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Westbound.RightFlow > 0 && dirInfo.Southbound.LaneCountInbound > 0 ? true : false
+                        true, true, true
                     )
                     
                 )
@@ -110,9 +103,7 @@ namespace Assets.Scripts.Backend.Simulation
                             dirInfo.Northbound.HasLeftTurn,
                             false
                         ),
-                        dirInfo.Northbound.LeftFlow > 0 && dirInfo.Northbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Northbound.ForwardFlow > 0  && dirInfo.Northbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Northbound.RightFlow > 0 && dirInfo.Northbound.LaneCountInbound > 0 ? true : false
+                        true, true, true
                     )
                     
                 )
@@ -129,9 +120,7 @@ namespace Assets.Scripts.Backend.Simulation
                             dirInfo.Eastbound.HasLeftTurn,
                             false
                         ),
-                        dirInfo.Eastbound.LeftFlow > 0 && dirInfo.Eastbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Eastbound.ForwardFlow > 0 && dirInfo.Eastbound.LaneCountInbound > 0 ? true : false,
-                        dirInfo.Eastbound.RightFlow > 0 && dirInfo.Eastbound.LaneCountInbound > 0 ? true : false
+                        true, true, true
                     )
                     
                 )
@@ -293,10 +282,7 @@ namespace Assets.Scripts.Backend.Simulation
                 Entrances[(int) CardinalDirection.West % 4].GetPeakQueueLength()
             );
             
-            var finalResult = new ResultTrafficSimulation(northresult,eastresult,southresult,westresult);
-            PersistentJunctionSave.PersistentJunctionSave.SaveResult(_inputParameters, finalResult);
-            
-            return finalResult;
+            return new ResultTrafficSimulation(northresult,eastresult,southresult,westresult);
         }
 
 
