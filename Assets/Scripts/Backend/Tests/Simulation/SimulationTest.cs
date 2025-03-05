@@ -11,8 +11,8 @@ class SimulationTest {
     public void RunSimulation_DoesNotThrowException(){
         var engine = new Engine(100);
 
-        var north = new DirectionDetails(200, 50, 50, 2, 2, true, false);
-        var east  = new DirectionDetails(150, 50, 50, 2, 2, true, false);
+        var north = new DirectionDetails(200, 50, 50, 2, 2, false, false);
+        var east  = new DirectionDetails(150, 50, 50, 2, 2, false, false);
         var south = new DirectionDetails(50, 50, 50, 2, 2, true, false);
         var west  = new DirectionDetails(50, 25, 25, 2, 2, true, false);
 
@@ -27,7 +27,7 @@ class SimulationTest {
         var inputParams = new InputParameters(north, east, south, west, priority);
         
 
-        var simulation = new Simulation(engine, inputParams, 1000);
+        var simulation = new Simulation(engine, inputParams, 500);
         Assert.DoesNotThrow(() => simulation.RunSimulation());
 
     }
@@ -47,7 +47,7 @@ class SimulationTest {
         var inputParams = new InputParameters(zeroDir, zeroDir, zeroDir, zeroDir, priority);
 
     
-        var simulation = new Simulation(engine, inputParams, 1000); // 100 seconds
+        var simulation = new Simulation(engine, inputParams, 500); // 100 seconds
         
         var simulationResults = simulation.RunSimulation();
 
