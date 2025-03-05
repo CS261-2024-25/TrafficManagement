@@ -40,14 +40,28 @@ public class ConfigureDirection : MonoBehaviour
                 if (StaticData.failDirectionParse){
                         if (direction == CardinalDirection.West){
                                 StaticData.failDirectionParse = false;
+                                StaticData.hasLeftTurn = false;
+                                StaticData.oneOutgoing = false;
                         }
                         errorPanel.SetActive(true);
                 }
                 else{
                         LaneCountOutbound = Convert.ToUInt32(parsedVal);
                         LaneCountInbound = Convert.ToUInt32(parsedVal2);
-                        if (LaneCountInbound + LaneCountOutbound > 5 || LaneCountInbound < 2 && leftToggle.isOn){
-                                StaticData.failDirectionParse = true;
+                        if (leftToggle.isOn){
+                                StaticData.hasLeftTurn = true;
+                        }
+                        if (LaneCountInbound == 1){
+                                StaticData.oneOutgoing = true;
+                        }
+                        if ((LaneCountInbound + LaneCountOutbound > 5) || (StaticData.hasLeftTurn && StaticData.oneOutgoing)){
+                                if (direction == CardinalDirection.West){
+                                        StaticData.hasLeftTurn = false;
+                                        StaticData.oneOutgoing = false;
+                                }
+                                else{
+                                        StaticData.failDirectionParse = true;
+                                }
                                 errorPanel.SetActive(true);
                         }
                         else{
@@ -66,6 +80,8 @@ public class ConfigureDirection : MonoBehaviour
                                                 break;
                                         case CardinalDirection.West:
                                                 StaticData.westbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
+                                                StaticData.hasLeftTurn = false;
+                                                StaticData.oneOutgoing = false;
                                                 SceneManager.LoadScene("TrafficFlowSelect"); // West run last so that switches scene
                                                 break;      
                                 }
