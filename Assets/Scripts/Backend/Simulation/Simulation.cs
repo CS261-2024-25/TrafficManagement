@@ -213,21 +213,28 @@ namespace Assets.Scripts.Backend.Simulation
 
                         if(exitPath != -1){
 
-                            exitPathIndexes[i].Enqueue((i + exitPath + 1) % 4);
+                            int exitIndex = (i + exitPath + 1) % 4;
 
-                            if(exitPath == 0 && Entrances[i].LeftValid){
+                            if(Entrances[exitIndex].ExitJunctionLanesCount() > 0){
 
-                                intoPathIndexes[i].Enqueue(Entrances[i].VehicleEnterForLeftTurn(generateVehicle()).Item2);
+                                exitPathIndexes[i].Enqueue(exitIndex);
 
-                            } else if(exitPath == 1 && Entrances[i].ForwardValid){
+                                if(exitPath == 0 && Entrances[i].LeftValid){
 
-                                intoPathIndexes[i].Enqueue(Entrances[i].VehicleEnterForForward(generateVehicle()).Item2);
+                                    intoPathIndexes[i].Enqueue(Entrances[i].VehicleEnterForLeftTurn(generateVehicle()).Item2);
 
-                            } else if(exitPath == 2 && Entrances[i].RightValid){
+                                } else if(exitPath == 1 && Entrances[i].ForwardValid){
 
-                                intoPathIndexes[i].Enqueue(Entrances[i].VehicleEnterForRightTurn(generateVehicle()).Item2);
+                                    intoPathIndexes[i].Enqueue(Entrances[i].VehicleEnterForForward(generateVehicle()).Item2);
 
+                                } else if(exitPath == 2 && Entrances[i].RightValid){
+
+                                    intoPathIndexes[i].Enqueue(Entrances[i].VehicleEnterForRightTurn(generateVehicle()).Item2);
+
+                                }
                             }
+
+                            
                         }
                         // Schedule the next arrival for lane i using the  (poisson) exponential distribution.
                         nextArrivalTimes[i] = Engine.SimulationTime + (-Math.Log(rnum.NextDouble()) / lambda);
