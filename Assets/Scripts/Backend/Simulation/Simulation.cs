@@ -48,13 +48,16 @@ namespace Assets.Scripts.Backend.Simulation
         //Testing Values
         public bool PedestriansCrossedAtLeastOnce;
         public bool PhaseChangedAtLeastOnce;
+
+        // For save handling
+        private readonly InputParameters _inputParameters;
         
         public Simulation(Engine engine,InputParameters dirInfo, uint simulationDuration){
 
             Engine = engine;
 
             CardinalJunctionFactory JunctionFac = new CardinalJunctionFactory(Engine);
-
+            _inputParameters = dirInfo;
             Junction = JunctionFac
                 .AddNorthEntrance
                 (   
@@ -290,7 +293,10 @@ namespace Assets.Scripts.Backend.Simulation
                 Entrances[(int) CardinalDirection.West % 4].GetPeakQueueLength()
             );
             
-            return new ResultTrafficSimulation(northresult,eastresult,southresult,westresult);
+            var finalResult = new ResultTrafficSimulation(northresult,eastresult,southresult,westresult);
+            PersistentJunctionSave.PersistentJunctionSave.SaveResult(_inputParameters, finalResult);
+            
+            return finalResult;
         }
 
 
