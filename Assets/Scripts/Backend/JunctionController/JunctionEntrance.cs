@@ -108,7 +108,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// <param name="vehicle"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Thrown if it is not possible to turn this direction</exception>
-        public double VehicleEnterForLeftTurn(Vehicle.Vehicle vehicle) {
+        public (double,int) VehicleEnterForLeftTurn(Vehicle.Vehicle vehicle) {
             try {
                 if (!LeftValid)
                 {
@@ -128,7 +128,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// <param name="vehicle"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Thrown if it is not possible to turn this direction</exception>
-        public double VehicleEnterForRightTurn(Vehicle.Vehicle vehicle) {
+        public (double,int) VehicleEnterForRightTurn(Vehicle.Vehicle vehicle) {
             try {
                 if (!RightValid)
                 {
@@ -148,7 +148,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// <param name="vehicle"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Thrown if it is not possible to go into this direction</exception>
-        public double VehicleEnterForForward(Vehicle.Vehicle vehicle) {
+        public (double,int) VehicleEnterForForward(Vehicle.Vehicle vehicle) {
             try {
                 if (!ForwardValid)
                 {
@@ -160,6 +160,16 @@ namespace Assets.Scripts.Backend.JunctionController
             } catch {
                 throw;
             }
+        }
+
+        public double VehicleEnterToLeave(Vehicle.Vehicle vehicle, int j){
+
+           return LaneSets.VehicleEnterToLeave(vehicle,j);
+
+        }
+
+        public Vehicle.Vehicle Exit(int i){
+            return LaneSets.Exit(i);
         }
 
         public uint GetMaxWaitTime()

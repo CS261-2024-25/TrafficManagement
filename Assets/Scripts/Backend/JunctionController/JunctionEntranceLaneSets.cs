@@ -78,15 +78,15 @@ namespace Assets.Scripts.Backend.JunctionController
         /// <param name="vehicle"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Thrown if it is not possible to turn this direction</exception>
-        public double VehicleEnterForLeftTurn(Vehicle.Vehicle vehicle)
+        public (double,int) VehicleEnterForLeftTurn(Vehicle.Vehicle vehicle)
         {
             if (HasLeftTurn)
             {
-                return IntoJunctionLanes[0].VehicleEnter(vehicle);
+                return (IntoJunctionLanes[0].VehicleEnter(vehicle),0);
             }
             else if (HasRightTurn && IntoJunctionLanesCount() > 1)
             {
-                return IntoJunctionLanes[0].VehicleEnter(vehicle);
+                return (IntoJunctionLanes[0].VehicleEnter(vehicle),0);
             }
             else
             {
@@ -102,15 +102,15 @@ namespace Assets.Scripts.Backend.JunctionController
         /// <param name="vehicle"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Thrown if it is not possible to turn this direction</exception>
-        public double VehicleEnterForRightTurn(Vehicle.Vehicle vehicle)
+        public (double,int) VehicleEnterForRightTurn(Vehicle.Vehicle vehicle)
         {
             if (HasRightTurn)
             {
-                return IntoJunctionLanes[IntoJunctionLanesCount() - 1].VehicleEnter(vehicle);
+                return (IntoJunctionLanes[IntoJunctionLanesCount() - 1].VehicleEnter(vehicle),IntoJunctionLanesCount() - 1);
             }
             else if (HasLeftTurn && IntoJunctionLanesCount() > 1)
             {
-                return IntoJunctionLanes[IntoJunctionLanesCount() - 1].VehicleEnter(vehicle);
+                return (IntoJunctionLanes[IntoJunctionLanesCount() - 1].VehicleEnter(vehicle),IntoJunctionLanesCount() - 1);
             }
             else
             {
@@ -126,7 +126,7 @@ namespace Assets.Scripts.Backend.JunctionController
         /// <param name="vehicle"></param>
         /// <returns></returns>
         /// <exception cref="InvalidOperationException">Thrown if there are no routes to go forward from</exception>
-        public double VehicleEnterForForward(Vehicle.Vehicle vehicle)
+        public (double,int) VehicleEnterForForward(Vehicle.Vehicle vehicle)
         {
             if (HasRightTurn && HasLeftTurn && IntoJunctionLanesCount() <= 2)
             {
@@ -158,6 +158,27 @@ namespace Assets.Scripts.Backend.JunctionController
             }
         }
 
+        /// <summary>
+        /// Gets the exit lanes and allows for a vehicle to exit into a specified one
+        /// </summary>
+        /// <param name="vehicle">Vehicle to add</param>
+        /// <param name="j">index of outbound lane</param>
+        /// <returns>Queue length after insertion</returns>
+        public double VehicleEnterToLeave(Vehicle.Vehicle vehicle, int j){
+
+           return ExitJunctionLanes[j].VehicleEnter(vehicle);
+
+        }
+
+        /// <summary>
+        /// Gets a vehicle from a specified into lane
+        /// </summary>
+        /// <param name="i">index of inbound lane</param>
+        /// <returns>vehicle that exit</returns>
+        public Vehicle.Vehicle Exit(int i){
+            return IntoJunctionLanes[i].VehicleExit().Item1;
+        }
+
         public int IntoJunctionLanesCount()
         {
             return IntoJunctionLanes.Count;
@@ -175,10 +196,12 @@ namespace Assets.Scripts.Backend.JunctionController
         /// <param name="l">Lower bound lane index</param>
         /// <param name="r">1 + upper bound lane index</param>
         /// <returns>Queue length after insertion</returns>
-        private double UnsafeVehicleEnterLanesWithRange(Vehicle.Vehicle vehicle, int l, int r)
+        private (double,int) UnsafeVehicleEnterLanesWithRange(Vehicle.Vehicle vehicle, int l, int r)
         {
             IntoJunctionLane bestLane = IntoJunctionLanes[l];
             double bestQueueLength = bestLane.GetQueueLength();
+
+            int index = l;
 
             for (int i = l + 1; i < r; ++i)
             {
@@ -187,10 +210,11 @@ namespace Assets.Scripts.Backend.JunctionController
                 {
                     bestQueueLength = newQueueLength;
                     bestLane = IntoJunctionLanes[i];
+                    index = i;
                 }
             }
 
-            return bestLane.VehicleEnter(vehicle);
+            return (bestLane.VehicleEnter(vehicle),index);
         }
     }
 }
