@@ -109,6 +109,7 @@ public class LoadSavedResult : MonoBehaviour
         int instanceToFetch;
 
         bool isInputParseSuccess = TryGetInputValues(out avgWaitCoeff, out maxWaitCoeff,out  maxQueueCoeff, out instanceToFetch);
+        
         //1st if statement --> to be uncommented when testing can be done with existing junction results stored
        /*  if (totalJunctionResultsSaved==0){
             errorText.text = "There are currently no stored juction configurations to view.Thus efficiency of junctions cannot be compared";
@@ -127,7 +128,6 @@ public class LoadSavedResult : MonoBehaviour
             Debug.Log(isInputParseSuccess);
             errorText.text = "Priority numbers must be between 0 and 3 (inclusive). Please adjust your entries."; 
             errorPanel.SetActive(true);
-            //return (null, null, null, null);
             return false;
         }
         /*commented out for testing that a DoNotDestroy object is created AS there is no result data stored 
@@ -139,7 +139,6 @@ public class LoadSavedResult : MonoBehaviour
             errorText.text = "The junction result to display must be less than the number of saved configurations"; //To remake msg
             //errorText.text += "\nEnsure the junction result to display is less than the number of saved configurations. Please renter your entry.";
             errorPanel.SetActive(true);
-            //return (null, null, null, null);
             return false;
         } */
         
@@ -149,7 +148,7 @@ public class LoadSavedResult : MonoBehaviour
             bool isLoadSuccess = PersistentJunctionSave.LoadByEfficiency(avgWaitCoeff, maxWaitCoeff, maxQueueCoeff, out allResults );
             
             //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
-            if (isLoadSuccess /*&& allResults.Count > 0 && instanceToFetch>=1 && instanceToFetch<=allResults.Count*/) {
+            if (isLoadSuccess) {
                 var selectedTuple = allResults[instanceToFetch-1]; // Convert 1-based user input to 0-based index
                 ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
 
@@ -161,10 +160,12 @@ public class LoadSavedResult : MonoBehaviour
                 return isStoringSuccess;
             }
             else{
-                errorText.text = "The junction result to display must be less than the number of saved configurations";
-                //Debug.LogError("No simulation results found - please run the simulation first.");
+                errorText.text = "No Junction Efficiency Results found - please enter configuration parameters and run the simulation first.";
+                Debug.LogError("No simulation results found - please run the simulation first.");
                 errorPanel.SetActive(true);
-                //return (null, null, null, null);
+                /*This should return false --> however is returning true currently for testing purposes
+                Change it to return false when result data available
+                Krishan informed me that result data visibility functionality was working now - but unsure if my branch was desrived from main at a point where this was working*/
                 //return false;
                 return true;
             }
@@ -184,14 +185,6 @@ public class LoadSavedResult : MonoBehaviour
             Debug.LogError("isLoadingSuccess= true! Trying to load Junction results SCENE");
             SceneManager.LoadScene("LoadedResultsScreen");
         }
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     
