@@ -1087,7 +1087,6 @@ GameObject:
   - component: {fileID: 368716004}
   - component: {fileID: 368716003}
   - component: {fileID: 368716002}
-  - component: {fileID: 368716001}
   m_Layer: 5
   m_Name: TxtBox  Junc Result TO FETCH
   m_TagString: Untagged
@@ -1115,18 +1114,6 @@ RectTransform:
   m_AnchoredPosition: {x: 182.57147, y: -206.96568}
   m_SizeDelta: {x: 268.2816, y: 44.239}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &368716001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368715999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &368716002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1230,19 +1217,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 368716001}
-        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
-        m_MethodName: ResetInvalidText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2128,7 +2103,6 @@ GameObject:
   - component: {fileID: 718960950}
   - component: {fileID: 718960949}
   - component: {fileID: 718960948}
-  - component: {fileID: 718960947}
   m_Layer: 5
   m_Name: TxtBox Priority Avg Wait time
   m_TagString: Untagged
@@ -2156,18 +2130,6 @@ RectTransform:
   m_AnchoredPosition: {x: 98.268234, y: 108.73947}
   m_SizeDelta: {x: 268.2816, y: 44.239}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &718960947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718960945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &718960948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2216,17 +2178,17 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 2
+  m_ContentType: 3
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 4
+  m_KeyboardType: 2
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 2
+  m_CharacterValidation: 3
   m_RegexValue: 
   m_GlobalPointSize: 14
-  m_CharacterLimit: 1
+  m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
@@ -2271,19 +2233,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 718960947}
-        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
-        m_MethodName: ResetInvalidText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2634,7 +2584,6 @@ GameObject:
   - component: {fileID: 835562499}
   - component: {fileID: 835562498}
   - component: {fileID: 835562497}
-  - component: {fileID: 835562496}
   m_Layer: 5
   m_Name: 'TxtBox Priority Max Wait time '
   m_TagString: Untagged
@@ -2662,18 +2611,6 @@ RectTransform:
   m_AnchoredPosition: {x: 98.2686, y: 38.639442}
   m_SizeDelta: {x: 268.2816, y: 44.239}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &835562496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835562494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &835562497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2777,19 +2714,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 835562496}
-        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
-        m_MethodName: ResetInvalidText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5891,7 +5816,6 @@ GameObject:
   - component: {fileID: 1984674533}
   - component: {fileID: 1984674532}
   - component: {fileID: 1984674531}
-  - component: {fileID: 1984674530}
   m_Layer: 5
   m_Name: TxtBox Priority Max Queue Length
   m_TagString: Untagged
@@ -5919,18 +5843,6 @@ RectTransform:
   m_AnchoredPosition: {x: 100.000015, y: -32.014908}
   m_SizeDelta: {x: 268.2816, y: 44.239}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1984674530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984674528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f33e7d17dd760d7468c459a79b8da99b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1984674531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6034,19 +5946,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1984674530}
-        m_TargetAssemblyTypeName: RestrictLaneNum, Assembly-CSharp
-        m_MethodName: ResetInvalidText
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6141,6 +6041,7 @@ MonoBehaviour:
   maximumQueueLengthCoefficientText: {fileID: 1984674531}
   numberOfSavedJunctionResultsText: {fileID: 1258833245}
   juncResultInstanceToFetch: {fileID: 368716002}
+  errorPanel: {fileID: 0}
 --- !u!4 &2039293789
 Transform:
   m_ObjectHideFlags: 0
@@ -6167,7 +6068,6 @@ GameObject:
   - component: {fileID: 2129528302}
   - component: {fileID: 2129528305}
   - component: {fileID: 2129528304}
-  - component: {fileID: 2129528303}
   m_Layer: 5
   m_Name: Shaded back Panel
   m_TagString: Untagged
@@ -6207,25 +6107,6 @@ RectTransform:
   m_AnchoredPosition: {x: -69.52351, y: -38.844}
   m_SizeDelta: {x: 723.9326, y: 561.8859}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2129528303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129528301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction1Text: {fileID: 0}
-  direction2Text: {fileID: 0}
-  direction3Text: {fileID: 0}
-  TotalFlowText: {fileID: 0}
-  priorityText: {fileID: 0}
-  errorPanel: {fileID: 0}
-  direction: 0
 --- !u!114 &2129528304
 MonoBehaviour:
   m_ObjectHideFlags: 0

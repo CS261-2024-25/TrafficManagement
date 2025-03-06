@@ -20,6 +20,10 @@ public class LoadSavedResult : MonoBehaviour
 
     //UI input field variables
     public TMP_InputField juncResultInstanceToFetch;
+
+    //UI error panel
+    public GameObject errorPanel;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -85,25 +89,43 @@ public class LoadSavedResult : MonoBehaviour
         int instanceToFetch;
 
         bool isInputParseSuccess = TryGetInputValues(out avgWaitCoeff, out maxWaitCoeff,out  maxQueueCoeff, out instanceToFetch);
-        
-        List<(double, (InputParameters, ResultTrafficSimulation))> allResults;
-        bool isLoadSuccess = PersistentJunctionSave.LoadByEfficiency(avgWaitCoeff, maxWaitCoeff, maxQueueCoeff, out allResults );
-        
-        //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
-        if (isLoadSuccess && allResults.Count > 0 && instanceToFetch<=allResults.Count) {
-            var selectedTuple = allResults[instanceToFetch];
-            ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
 
-            ResultJunctionEntrance northResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.North);
-            ResultJunctionEntrance southResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.South);
-            ResultJunctionEntrance eastResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.East);
-            ResultJunctionEntrance westResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.West);
-            return (northResult, southResult, eastResult, westResult);
-        }
-        else{
-            
-            Debug.LogError("No simulation results found - please run the simulation first.");
+        if (!isInputParseSuccess ||
+            (avgWaitCoeff > 3) ||
+            (avgWaitCoeff < 0) ||
+            (maxWaitCoeff < 3) ||
+            (maxWaitCoeff < 0) ||
+            (maxQueueCoeff > 3) ||
+            (maxQueueCoeff < 0) ||
+            (instanceToFetch < 1) ||
+            (instanceToFetch > totalJunctionResultsSaved)
+        )
+        {
+            errorPanel.SetActive(true);
             return (null, null, null, null);
+        }
+
+        else
+        {
+            List<(double, (InputParameters, ResultTrafficSimulation))> allResults;
+            bool isLoadSuccess = PersistentJunctionSave.LoadByEfficiency(avgWaitCoeff, maxWaitCoeff, maxQueueCoeff, out allResults );
+            
+            //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
+            if (isLoadSuccess && allResults.Count > 0 && instanceToFetch<=allResults.Count) {
+                var selectedTuple = allResults[instanceToFetch];
+                ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
+
+                ResultJunctionEntrance northResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.North);
+                ResultJunctionEntrance southResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.South);
+                ResultJunctionEntrance eastResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.East);
+                ResultJunctionEntrance westResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.West);
+                return (northResult, southResult, eastResult, westResult);
+            }
+            else{
+                
+                Debug.LogError("No simulation results found - please run the simulation first.");
+                return (null, null, null, null);
+            }
         }
 
     } 
