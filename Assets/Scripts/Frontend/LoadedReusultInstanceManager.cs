@@ -4,9 +4,9 @@ using Assets.Scripts.Util;
 
 //Script for donot destroy game object script for  persistent junction data 
 
-public class LoadedReusultInstanceManager : MonoBehaviour
+public class LoadedResultInstanceManager : MonoBehaviour
 {
-    public static LoadedReusultInstanceManager Instance; 
+    public static LoadedResultInstanceManager Instance; 
 
     public ResultJunctionEntrance northResult; 
     public ResultJunctionEntrance southResult; 

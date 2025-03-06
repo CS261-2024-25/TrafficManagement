@@ -43,12 +43,12 @@ public class DisplayLoadedResults : MonoBehaviour
     }
 
     public void PopulateResults(){
-        if (LoadedReusultInstanceManager.Instance != null){
+        if (LoadedResultInstanceManager.Instance != null){
         //Population code from previous results screen
-            ResultJunctionEntrance north=LoadedReusultInstanceManager.Instance.northResult;
-            ResultJunctionEntrance south=LoadedReusultInstanceManager.Instance.southResult;
-            ResultJunctionEntrance east=LoadedReusultInstanceManager.Instance.eastResult;
-            ResultJunctionEntrance west=LoadedReusultInstanceManager.Instance.westResult;
+            ResultJunctionEntrance north=LoadedResultInstanceManager.Instance.northResult;
+            ResultJunctionEntrance south=LoadedResultInstanceManager.Instance.southResult;
+            ResultJunctionEntrance east=LoadedResultInstanceManager.Instance.eastResult;
+            ResultJunctionEntrance west=LoadedResultInstanceManager.Instance.westResult;
             
             northAvgWaitText.text = $"{north.AverageWaitTime:F1} sec";
             northMaxWaitText.text = $"{north.MaxWaitTime:F1} sec";

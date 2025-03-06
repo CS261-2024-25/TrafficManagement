@@ -87,15 +87,15 @@ public class LoadSavedResult : MonoBehaviour
 
 
     public bool StorePersistentResultsForScreens(ResultJunctionEntrance northResult,ResultJunctionEntrance southResult,ResultJunctionEntrance eastResult,ResultJunctionEntrance westResult){
-        if (LoadedReusultInstanceManager.Instance == null) {
+        if (LoadedResultInstanceManager.Instance == null) {
             Debug.LogError("Persistent data manager is not initialized.");
             return false;
         }
         
-        LoadedReusultInstanceManager.Instance.northResult=northResult;
-        LoadedReusultInstanceManager.Instance.southResult=southResult;
-        LoadedReusultInstanceManager.Instance.eastResult=eastResult;
-        LoadedReusultInstanceManager.Instance.westResult=westResult;
+        LoadedResultInstanceManager.Instance.northResult=northResult;
+        LoadedResultInstanceManager.Instance.southResult=southResult;
+        LoadedResultInstanceManager.Instance.eastResult=eastResult;
+        LoadedResultInstanceManager.Instance.westResult=westResult;
         
         return true;
 
@@ -164,8 +164,7 @@ public class LoadSavedResult : MonoBehaviour
                 Debug.LogError("No simulation results found - please run the simulation first.");
                 errorPanel.SetActive(true);
                 /*This should return false --> however is returning true currently for testing purposes
-                Change it to return false when result data available
-                Krishan informed me that result data visibility functionality was working now - but unsure if my branch was desrived from main at a point where this was working*/
+                Change it to return false when result data available*/
                 //return false;
                 return true;
             }
