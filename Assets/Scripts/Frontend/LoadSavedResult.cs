@@ -124,6 +124,7 @@ public class LoadSavedResult : MonoBehaviour
             else{
                 
                 Debug.LogError("No simulation results found - please run the simulation first.");
+                errorPanel.SetActive(true);
                 return (null, null, null, null);
             }
         }
