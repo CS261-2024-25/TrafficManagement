@@ -23,6 +23,7 @@ public class LoadSavedResult : MonoBehaviour
 
     //UI error panel
     public GameObject errorPanel;
+    public TMP_Text errorText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,25 +59,25 @@ public class LoadSavedResult : MonoBehaviour
         bool success = true;
         if (!double.TryParse(averageWaitTimeCoefficientText.text, out avgWaitCoeff))
         {
-            Debug.LogError("Failed to parse average wait time coefficient.");
+            //Debug.LogError("Failed to parse average wait time coefficient.");
             success = false;
         }
 
         if (!double.TryParse(maximumWaitTimeCoefficientText.text, out maxWaitCoeff))
         {
-            Debug.LogError("Failed to parse maximum wait time coefficient.");
+            //Debug.LogError("Failed to parse maximum wait time coefficient.");
             success = false;
         }
         
         if (!double.TryParse(maximumQueueLengthCoefficientText.text, out maxQueueCoeff))
         {
-            Debug.LogError("Failed to parse maximum queue length coefficient.");
+            //Debug.LogError("Failed to parse maximum queue length coefficient.");
             success = false;
         }
         
         if (!int.TryParse(juncResultInstanceToFetch.text, out instanceToFetch))
         {
-            Debug.LogError("Failed to parse junction result instance.");
+            //Debug.LogError("Failed to parse junction result instance.");
             success = false;
         }
         
@@ -93,14 +94,22 @@ public class LoadSavedResult : MonoBehaviour
         if (!isInputParseSuccess ||
             (avgWaitCoeff > 3) ||
             (avgWaitCoeff < 0) ||
-            (maxWaitCoeff < 3) ||
+            (maxWaitCoeff > 3) ||
             (maxWaitCoeff < 0) ||
             (maxQueueCoeff > 3) ||
-            (maxQueueCoeff < 0) ||
-            (instanceToFetch < 1) ||
-            (instanceToFetch > totalJunctionResultsSaved)
+            (maxQueueCoeff < 0) 
         )
         {
+            Debug.Log(isInputParseSuccess);
+            errorText.text = "Priority numbers must be between 0 and 3.";
+            errorPanel.SetActive(true);
+            return (null, null, null, null);
+        }
+        else if (
+            (instanceToFetch < 1) ||
+            (instanceToFetch > totalJunctionResultsSaved)
+        ){
+            errorText.text = "The junction result to display must be less than the number of saved configurations";
             errorPanel.SetActive(true);
             return (null, null, null, null);
         }
@@ -122,8 +131,8 @@ public class LoadSavedResult : MonoBehaviour
                 return (northResult, southResult, eastResult, westResult);
             }
             else{
-                
-                Debug.LogError("No simulation results found - please run the simulation first.");
+                errorText.text = "The junction result to display must be less than the number of saved configurations";
+                //Debug.LogError("No simulation results found - please run the simulation first.");
                 errorPanel.SetActive(true);
                 return (null, null, null, null);
             }
@@ -132,7 +141,7 @@ public class LoadSavedResult : MonoBehaviour
     } 
     public void BtnClickViewLoadedResults(){
         var (north,south,east,west) = GetSpecifiedSimulationResults();
-        Debug.LogError("Button Clicked! Testing user inputs");
+        //Debug.LogError("Button Clicked! Testing user inputs");
     }
 
 
