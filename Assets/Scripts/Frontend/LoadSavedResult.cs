@@ -121,7 +121,7 @@ public class LoadSavedResult : MonoBehaviour
             
             //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
             if (isLoadSuccess && allResults.Count > 0 && instanceToFetch<=allResults.Count) {
-                var selectedTuple = allResults[instanceToFetch];
+                var selectedTuple = allResults[instanceToFetch-1]; //as list is 1based and array is 0 based 
                 ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
 
                 ResultJunctionEntrance northResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.North);
