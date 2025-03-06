@@ -20,7 +20,7 @@ public class LoadedReusultInstanceManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }
+        } 
 
         Instance = this;
         DontDestroyOnLoad(gameObject);

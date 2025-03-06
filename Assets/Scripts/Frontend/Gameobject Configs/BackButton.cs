@@ -11,4 +11,9 @@ public class BackButton : MonoBehaviour
     public void BackToTrafficFlowScreen(){
         SceneManager.LoadScene("TrafficFlowSelect");
     }
+
+    //Method to go back to  config screen for Traffic flow  FROM results screen 
+    public void BackToPrioritiseJuncMetricScene(){
+        SceneManager.LoadScene("PrioritiseJuncMetric");
+    }
 }

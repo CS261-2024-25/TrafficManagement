@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Backend.PersistentJunctionSave;
 using  System;
+using UnityEngine.UI;
 
 public class LoadSavedResult : MonoBehaviour
 {
@@ -108,8 +109,13 @@ public class LoadSavedResult : MonoBehaviour
         int instanceToFetch;
 
         bool isInputParseSuccess = TryGetInputValues(out avgWaitCoeff, out maxWaitCoeff,out  maxQueueCoeff, out instanceToFetch);
-
-        if (!isInputParseSuccess ||
+        //1st if statement --> to be uncommented when testing can be done with existing junction results stored
+       /*  if (totalJunctionResultsSaved==0){
+            errorText.text = "There are currently no stored juction configurations to view.Thus efficiency of junctions cannot be compared";
+            errorPanel.SetActive(true);
+            return false;
+        }
+        else */ if (!isInputParseSuccess ||
             (avgWaitCoeff > 3) ||
             (avgWaitCoeff < 0) ||
             (maxWaitCoeff > 3) ||
@@ -119,28 +125,31 @@ public class LoadSavedResult : MonoBehaviour
         )
         {
             Debug.Log(isInputParseSuccess);
-            errorText.text = "Priority numbers must be between 0 and 3 (inclusive)."; //To remake msg
+            errorText.text = "Priority numbers must be between 0 and 3 (inclusive). Please adjust your entries."; 
             errorPanel.SetActive(true);
             //return (null, null, null, null);
             return false;
         }
-        else if (
+        /*commented out for testing that a DoNotDestroy object is created AS there is no result data stored 
+        --> to be uncommented when testing can be done with existing junction results stored*/ 
+        /* else if (
             (instanceToFetch < 1) ||
             (instanceToFetch > totalJunctionResultsSaved)
         ){
             errorText.text = "The junction result to display must be less than the number of saved configurations"; //To remake msg
+            //errorText.text += "\nEnsure the junction result to display is less than the number of saved configurations. Please renter your entry.";
             errorPanel.SetActive(true);
             //return (null, null, null, null);
             return false;
-        }
-
+        } */
+        
         else
         {
             List<(double, (InputParameters, ResultTrafficSimulation))> allResults;
             bool isLoadSuccess = PersistentJunctionSave.LoadByEfficiency(avgWaitCoeff, maxWaitCoeff, maxQueueCoeff, out allResults );
             
             //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
-            if (isLoadSuccess && allResults.Count > 0 && instanceToFetch>=1 && instanceToFetch<=allResults.Count) {
+            if (isLoadSuccess /*&& allResults.Count > 0 && instanceToFetch>=1 && instanceToFetch<=allResults.Count*/) {
                 var selectedTuple = allResults[instanceToFetch-1]; // Convert 1-based user input to 0-based index
                 ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
 
@@ -156,7 +165,8 @@ public class LoadSavedResult : MonoBehaviour
                 //Debug.LogError("No simulation results found - please run the simulation first.");
                 errorPanel.SetActive(true);
                 //return (null, null, null, null);
-                return false;
+                //return false;
+                return true;
             }
         }
 
@@ -172,7 +182,7 @@ public class LoadSavedResult : MonoBehaviour
         }
         else{
             Debug.LogError("isLoadingSuccess= true! Trying to load Junction results SCENE");
-            SceneManager.LoadScene("DisplayLoadedResults");
+            SceneManager.LoadScene("LoadedResultsScreen");
         }
     }
 
