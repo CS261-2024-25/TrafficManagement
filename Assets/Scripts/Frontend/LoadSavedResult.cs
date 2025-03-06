@@ -130,6 +130,10 @@ public class LoadSavedResult : MonoBehaviour
         }
 
     } 
+    public void BtnClickViewLoadedResults(){
+        var (north,south,east,west) = GetSpecifiedSimulationResults();
+        Debug.LogError("Button Clicked! Testing user inputs");
+    }
 
 
 
