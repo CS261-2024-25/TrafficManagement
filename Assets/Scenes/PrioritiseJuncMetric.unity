@@ -6540,6 +6540,7 @@ MonoBehaviour:
   numberOfSavedJunctionResultsText: {fileID: 1258833245}
   juncResultInstanceToFetch: {fileID: 368716002}
   errorPanel: {fileID: 96953103}
+  errorText: {fileID: 865640439}
 --- !u!4 &2039293789
 Transform:
   m_ObjectHideFlags: 0
