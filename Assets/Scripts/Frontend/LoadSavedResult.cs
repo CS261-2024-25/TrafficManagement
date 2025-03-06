@@ -85,7 +85,25 @@ public class LoadSavedResult : MonoBehaviour
     }
 
 
-    public (ResultJunctionEntrance north, ResultJunctionEntrance south, ResultJunctionEntrance east, ResultJunctionEntrance west) GetSpecifiedSimulationResults() {
+    public bool StorePersistentResultsForScreens(ResultJunctionEntrance northResult,ResultJunctionEntrance southResult,ResultJunctionEntrance eastResult,ResultJunctionEntrance westResult){
+        if (LoadedReusultInstanceManager.Instance == null) {
+            Debug.LogError("Persistent data manager is not initialized.");
+            return false;
+        }
+        
+        LoadedReusultInstanceManager.Instance.northResult=northResult;
+        LoadedReusultInstanceManager.Instance.southResult=southResult;
+        LoadedReusultInstanceManager.Instance.eastResult=eastResult;
+        LoadedReusultInstanceManager.Instance.westResult=westResult;
+        
+        return true;
+
+    }
+
+
+
+    //public (ResultJunctionEntrance north, ResultJunctionEntrance south, ResultJunctionEntrance east, ResultJunctionEntrance west) GetSpecifiedSimulationResults() {
+    public bool GetSpecifiedSimulationResults() {
         double avgWaitCoeff, maxWaitCoeff, maxQueueCoeff;
         int instanceToFetch;
 
@@ -101,17 +119,19 @@ public class LoadSavedResult : MonoBehaviour
         )
         {
             Debug.Log(isInputParseSuccess);
-            errorText.text = "Priority numbers must be between 0 and 3.";
+            errorText.text = "Priority numbers must be between 0 and 3 (inclusive)."; //To remake msg
             errorPanel.SetActive(true);
-            return (null, null, null, null);
+            //return (null, null, null, null);
+            return false;
         }
         else if (
             (instanceToFetch < 1) ||
             (instanceToFetch > totalJunctionResultsSaved)
         ){
-            errorText.text = "The junction result to display must be less than the number of saved configurations";
+            errorText.text = "The junction result to display must be less than the number of saved configurations"; //To remake msg
             errorPanel.SetActive(true);
-            return (null, null, null, null);
+            //return (null, null, null, null);
+            return false;
         }
 
         else
@@ -120,28 +140,40 @@ public class LoadSavedResult : MonoBehaviour
             bool isLoadSuccess = PersistentJunctionSave.LoadByEfficiency(avgWaitCoeff, maxWaitCoeff, maxQueueCoeff, out allResults );
             
             //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
-            if (isLoadSuccess && allResults.Count > 0 && instanceToFetch<=allResults.Count) {
-                var selectedTuple = allResults[instanceToFetch-1]; //as list is 1based and array is 0 based 
+            if (isLoadSuccess && allResults.Count > 0 && instanceToFetch>=1 && instanceToFetch<=allResults.Count) {
+                var selectedTuple = allResults[instanceToFetch-1]; // Convert 1-based user input to 0-based index
                 ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
 
                 ResultJunctionEntrance northResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.North);
                 ResultJunctionEntrance southResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.South);
                 ResultJunctionEntrance eastResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.East);
                 ResultJunctionEntrance westResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.West);
-                return (northResult, southResult, eastResult, westResult);
+                bool isStoringSuccess= StorePersistentResultsForScreens(northResult, southResult, eastResult, westResult); //added line for more clarity
+                return isStoringSuccess;
             }
             else{
                 errorText.text = "The junction result to display must be less than the number of saved configurations";
                 //Debug.LogError("No simulation results found - please run the simulation first.");
                 errorPanel.SetActive(true);
-                return (null, null, null, null);
+                //return (null, null, null, null);
+                return false;
             }
         }
 
     } 
     public void BtnClickViewLoadedResults(){
-        var (north,south,east,west) = GetSpecifiedSimulationResults();
+        //var (north,south,east,west) = GetSpecifiedSimulationResults();
         //Debug.LogError("Button Clicked! Testing user inputs");
+        bool isLoadingSuccess=GetSpecifiedSimulationResults();
+        if (!isLoadingSuccess)
+        {
+            Debug.LogError("Failed to load junction results. Cannot proceed to next scene.");
+            return;
+        }
+        else{
+            Debug.LogError("isLoadingSuccess= true! Trying to load Junction results SCENE");
+            SceneManager.LoadScene("DisplayLoadedResults");
+        }
     }
 
 
@@ -153,4 +185,30 @@ public class LoadSavedResult : MonoBehaviour
     }
 
     
+}
+
+
+//Script for donot destroy game object script for  persistent junction data 
+
+public class LoadedReusultInstanceManager : MonoBehaviour
+{
+    public static LoadedReusultInstanceManager Instance; 
+
+    public ResultJunctionEntrance northResult; 
+    public ResultJunctionEntrance southResult; 
+    public ResultJunctionEntrance eastResult; 
+    public ResultJunctionEntrance westResult; 
+
+    
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 }
