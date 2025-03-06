@@ -4825,9 +4825,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DisplayResults, Frontend
-        m_MethodName: btnClickViewResults
+      - m_Target: {fileID: 2039293788}
+        m_TargetAssemblyTypeName: LoadSavedResult, Frontend
+        m_MethodName: BtnClickViewLoadedResults
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
