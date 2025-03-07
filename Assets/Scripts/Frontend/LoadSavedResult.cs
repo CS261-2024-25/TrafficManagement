@@ -111,12 +111,13 @@ public class LoadSavedResult : MonoBehaviour
         bool isInputParseSuccess = TryGetInputValues(out avgWaitCoeff, out maxWaitCoeff,out  maxQueueCoeff, out instanceToFetch);
         
         //1st if statement --> to be uncommented when testing can be done with existing junction results stored
-       /*  if (totalJunctionResultsSaved==0){
+       if (totalJunctionResultsSaved==0){
+            Debug.LogError("No Junction results");
             errorText.text = "There are currently no stored juction configurations to view.Thus efficiency of junctions cannot be compared";
             errorPanel.SetActive(true);
             return false;
         }
-        else */ if (!isInputParseSuccess ||
+        else if (!isInputParseSuccess ||
             (avgWaitCoeff > 3) ||
             (avgWaitCoeff < 0) ||
             (maxWaitCoeff > 3) ||
@@ -165,8 +166,8 @@ public class LoadSavedResult : MonoBehaviour
                 errorPanel.SetActive(true);
                 /*This should return false --> however is returning true currently for testing purposes
                 Change it to return false when result data available*/
-                //return false;
-                return true;
+                return false;
+                //return true;
             }
         }
 
