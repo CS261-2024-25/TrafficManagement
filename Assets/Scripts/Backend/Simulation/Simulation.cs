@@ -179,7 +179,7 @@ namespace Assets.Scripts.Backend.Simulation
                     ? Engine.SimulationTime + (-Math.Log(rnum.NextDouble()) / lambda)
                     : double.MaxValue;
             }
-            // Prepare queues to hold vehicles
+            // Prepare queues to hold vehicles data
             Queue<int>[] exitPathIndexes = new Queue<int>[4];
             Queue<int>[] intoPathIndexes = new Queue<int>[4];
             for (int i = 0; i < 4; i++){
@@ -255,11 +255,7 @@ namespace Assets.Scripts.Backend.Simulation
 
             Engine.StopEngine();
 
-            foreach(var ent in Entrances){
-                Debug.Log(ent.GetAverageWaitTime());
-                Debug.Log(ent.GetMaxWaitTime());
-                Debug.Log(ent.GetPeakQueueLength());
-            }
+            
 
             ResultJunctionEntrance northresult = new ResultJunctionEntrance
             (
