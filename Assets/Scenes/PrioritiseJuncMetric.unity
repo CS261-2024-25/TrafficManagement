@@ -4431,7 +4431,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.0000066672, y: -23}
-  m_SizeDelta: {x: 600, y: 25.8982}
+  m_SizeDelta: {x: 625, y: 25.8982}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1460166195
 MonoBehaviour:
@@ -4453,7 +4453,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Priority can be any number from 0 to 3 (inclusive)
+  m_text: 'Priority  for each metric is: Reletive to the others & can be any number
+    from 0 to 3 (inclusive)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
