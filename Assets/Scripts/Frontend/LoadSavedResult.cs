@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class LoadSavedResult : MonoBehaviour
 {
     public int totalJunctionResultsSaved=0;
+    public string priorityTittleInitialText="Priority for each metric is: Reletive to the others & can be any number from 0 to 3 (inclusive)";
     
     //UI input field variables
     public TMP_InputField averageWaitTimeCoefficientText;
@@ -18,6 +19,7 @@ public class LoadSavedResult : MonoBehaviour
 
     //UI output field variable
     public TMP_Text numberOfSavedJunctionResultsText;
+    public TMP_Text priorityExplanationWithNoSavedJuncsText;
 
     //UI input field variables
     public TMP_InputField juncResultInstanceToFetch;
@@ -32,7 +34,13 @@ public class LoadSavedResult : MonoBehaviour
         ClearAllText();
         totalJunctionResultsSaved=GetTotalNumberOfResults();
         numberOfSavedJunctionResultsText.text = $"{totalJunctionResultsSaved} results";
-        
+        priorityExplanationWithNoSavedJuncsText.text=priorityTittleInitialText;
+        if (totalJunctionResultsSaved==1){
+            priorityExplanationWithNoSavedJuncsText.text += $" across {totalJunctionResultsSaved} Junction Configuration";
+        }
+        else{
+            priorityExplanationWithNoSavedJuncsText.text += $" across {totalJunctionResultsSaved} Junction Configurations";
+        }
     }
 
     public void ClearAllText(){
@@ -164,10 +172,8 @@ public class LoadSavedResult : MonoBehaviour
                 errorText.text = "No Junction Efficiency Results found - please enter configuration parameters and run the simulation first.";
                 Debug.LogError("No simulation results found - please run the simulation first.");
                 errorPanel.SetActive(true);
-                /*This should return false --> however is returning true currently for testing purposes
-                Change it to return false when result data available*/
                 return false;
-                //return true;
+
             }
         }
 
