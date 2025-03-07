@@ -681,7 +681,6 @@ GameObject:
   - component: {fileID: 216340637}
   - component: {fileID: 216340636}
   - component: {fileID: 216340635}
-  - component: {fileID: 216340634}
   m_Layer: 5
   m_Name: South Panel
   m_TagString: Untagged
@@ -689,25 +688,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &216340634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216340633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction1Text: {fileID: 0}
-  direction2Text: {fileID: 0}
-  direction3Text: {fileID: 0}
-  TotalFlowText: {fileID: 0}
-  priorityText: {fileID: 0}
-  errorPanel: {fileID: 0}
-  direction: 1
 --- !u!114 &216340635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2760,7 +2740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -3318,7 +3298,6 @@ GameObject:
   - component: {fileID: 1174087466}
   - component: {fileID: 1174087465}
   - component: {fileID: 1174087464}
-  - component: {fileID: 1174087463}
   m_Layer: 5
   m_Name: West Panel
   m_TagString: Untagged
@@ -3326,25 +3305,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1174087463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174087462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction1Text: {fileID: 0}
-  direction2Text: {fileID: 0}
-  direction3Text: {fileID: 0}
-  TotalFlowText: {fileID: 0}
-  priorityText: {fileID: 0}
-  errorPanel: {fileID: 0}
-  direction: 3
 --- !u!114 &1174087464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3496,7 +3456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -3586,7 +3546,6 @@ GameObject:
   - component: {fileID: 1229603513}
   - component: {fileID: 1229603512}
   - component: {fileID: 1229603511}
-  - component: {fileID: 1229603510}
   m_Layer: 5
   m_Name: North Panel
   m_TagString: Untagged
@@ -3594,25 +3553,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1229603510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229603509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction1Text: {fileID: 0}
-  direction2Text: {fileID: 0}
-  direction3Text: {fileID: 0}
-  TotalFlowText: {fileID: 0}
-  priorityText: {fileID: 0}
-  errorPanel: {fileID: 0}
-  direction: 0
 --- !u!114 &1229603511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4168,7 +4108,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -4696,7 +4636,6 @@ GameObject:
   - component: {fileID: 1422472258}
   - component: {fileID: 1422472257}
   - component: {fileID: 1422472256}
-  - component: {fileID: 1422472255}
   m_Layer: 5
   m_Name: East Panel
   m_TagString: Untagged
@@ -4704,25 +4643,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1422472255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422472254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9925a782cc051f4a8041c7bba485b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  direction1Text: {fileID: 0}
-  direction2Text: {fileID: 0}
-  direction3Text: {fileID: 0}
-  TotalFlowText: {fileID: 0}
-  priorityText: {fileID: 0}
-  errorPanel: {fileID: 0}
-  direction: 2
 --- !u!114 &1422472256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5527,7 +5447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}

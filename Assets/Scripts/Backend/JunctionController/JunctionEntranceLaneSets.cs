@@ -88,6 +88,10 @@ namespace Assets.Scripts.Backend.JunctionController
             {
                 return (IntoJunctionLanes[0].VehicleEnter(vehicle),0);
             }
+            else if (!HasRightTurn && IntoJunctionLanesCount() >= 1)
+            {
+                return (IntoJunctionLanes[0].VehicleEnter(vehicle),0);
+            }
             else
             {
                 throw new InvalidOperationException(
@@ -109,6 +113,10 @@ namespace Assets.Scripts.Backend.JunctionController
                 return (IntoJunctionLanes[IntoJunctionLanesCount() - 1].VehicleEnter(vehicle),IntoJunctionLanesCount() - 1);
             }
             else if (HasLeftTurn && IntoJunctionLanesCount() > 1)
+            {
+                return (IntoJunctionLanes[IntoJunctionLanesCount() - 1].VehicleEnter(vehicle),IntoJunctionLanesCount() - 1);
+            }
+            else if (!HasLeftTurn && IntoJunctionLanesCount() >= 1)
             {
                 return (IntoJunctionLanes[IntoJunctionLanesCount() - 1].VehicleEnter(vehicle),IntoJunctionLanesCount() - 1);
             }

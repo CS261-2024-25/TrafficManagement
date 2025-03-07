@@ -626,7 +626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All fields must be filled non-negative. The total priority must some to
+  m_text: All fields must be filled non-negative. The total priority must sum to
     4 and the total flow for each direction must be the sum of all traffic exiting
     for the direction.
   m_isRightToLeft: 0
