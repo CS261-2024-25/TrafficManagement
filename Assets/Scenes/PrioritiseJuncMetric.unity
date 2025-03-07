@@ -4408,7 +4408,7 @@ GameObject:
   - component: {fileID: 1460166196}
   - component: {fileID: 1460166195}
   m_Layer: 5
-  m_Name: Title-Introduce Prioirty
+  m_Name: TxtOut_ Priority_Intro_Num_Juncs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4454,7 +4454,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Priority  for each metric is: Reletive to the others & can be any number
-    from 0 to 3 (inclusive)'
+    from 0 to 3 (inclusive)  '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -6253,10 +6253,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalJunctionResultsSaved: 0
+  priorityTittleInitialText: 'Priority for each metric is: Reletive to the others
+    & can be any number from 0 to 3 (inclusive)'
   averageWaitTimeCoefficientText: {fileID: 718960948}
   maximumWaitTimeCoefficientText: {fileID: 835562497}
   maximumQueueLengthCoefficientText: {fileID: 267608018}
   numberOfSavedJunctionResultsText: {fileID: 1258833245}
+  priorityExplanationWithNoSavedJuncsText: {fileID: 1460166195}
   juncResultInstanceToFetch: {fileID: 368716002}
   errorPanel: {fileID: 96953103}
   errorText: {fileID: 865640439}
