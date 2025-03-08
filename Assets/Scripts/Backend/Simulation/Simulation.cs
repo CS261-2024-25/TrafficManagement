@@ -159,7 +159,7 @@ namespace Assets.Scripts.Backend.Simulation
 
         /// <summary>
         /// Runs the simulation by first converting converting a uniformly distributed random number into an exponentially distributed time t which is then added to generate
-        /// the next queue time. This method is known as poisson distribution and it ensures that queuing of vehicles in this context are independent of each other and random.
+        /// the next queue time. This method is also known as a poisson method and it ensures that queuing of vehicles in this context are independent of each other and random.
         /// This method goes on to model a junction and also dequeues vehicles depending on the traffic light signal returning the metrics calculated for each junction
         /// </summary>
         /// <returns>vehicle simulation results which is a container for each junctions results</returns>
@@ -180,17 +180,20 @@ namespace Assets.Scripts.Backend.Simulation
                     : double.MaxValue;
             }
 
+
+            // Prepare queues to hold vehicles
+            Queue<int>[] exitPathIndexes = new Queue<int>[4];
+            Queue<int>[] intoPathIndexes = new Queue<int>[4];
+            for (int i = 0; i < 4; i++){
+                exitPathIndexes[i] = new Queue<int>();
+                intoPathIndexes[i] = new Queue<int>();
+            }
+
             while(Engine.SimulationTime < endTime){
 
                 processPedestrians(Engine.SimulationTime);
                 
-                // Prepare queues to hold vehicles
-                Queue<int>[] exitPathIndexes = new Queue<int>[4];
-                Queue<int>[] intoPathIndexes = new Queue<int>[4];
-                for (int i = 0; i < 4; i++){
-                    exitPathIndexes[i] = new Queue<int>();
-                    intoPathIndexes[i] = new Queue<int>();
-                }
+                
 
                 // For each lane, check if it's time for a vehicle arrival
                 for (int i = 0; i < 4; i++){
@@ -379,6 +382,7 @@ namespace Assets.Scripts.Backend.Simulation
         /// <summary>
         /// Updates traffic lights assuming currphaseindex is a green for that direction
         /// </summary>
+        /// <param name="currentTime">current simulation time </param>
         private void processTrafficLights(uint currentTime){
             //Note: Phases here are green lights for each lane. So if we are on phase 0, The traffic light is green for Northbound road and red for everything else.
             //used to make sure phaseEndTime does not increase indefinitely and so the second if block can run
