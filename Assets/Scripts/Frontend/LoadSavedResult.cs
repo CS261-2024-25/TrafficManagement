@@ -159,6 +159,13 @@ public class LoadSavedResult : MonoBehaviour
             //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
             if (isLoadSuccess) {
                 var selectedTuple = allResults[instanceToFetch-1]; // Convert 1-based user input to 0-based index
+
+                InputParameters inputs = selectedTuple.Item2.Item1; // Saved in static data for use by graphical display
+                StaticData.northbound = inputs.Northbound;
+                StaticData.southbound = inputs.Southbound;
+                StaticData.eastbound = inputs.Eastbound;
+                StaticData.westbound = inputs.Westbound;
+
                 ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
 
                 ResultJunctionEntrance northResult = resultInstanceToFetch.ResultWithDirection(CardinalDirection.North);
