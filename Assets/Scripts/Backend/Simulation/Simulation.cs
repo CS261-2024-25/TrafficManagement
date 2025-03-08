@@ -180,20 +180,17 @@ namespace Assets.Scripts.Backend.Simulation
                     : double.MaxValue;
             }
 
-
-            // Prepare queues to hold vehicles
-            Queue<int>[] exitPathIndexes = new Queue<int>[4];
-            Queue<int>[] intoPathIndexes = new Queue<int>[4];
-            for (int i = 0; i < 4; i++){
-                exitPathIndexes[i] = new Queue<int>();
-                intoPathIndexes[i] = new Queue<int>();
-            }
-
             while(Engine.SimulationTime < endTime){
 
                 processPedestrians(Engine.SimulationTime);
                 
-                
+                // Prepare queues to hold vehicles
+                Queue<int>[] exitPathIndexes = new Queue<int>[4];
+                Queue<int>[] intoPathIndexes = new Queue<int>[4];
+                for (int i = 0; i < 4; i++){
+                    exitPathIndexes[i] = new Queue<int>();
+                    intoPathIndexes[i] = new Queue<int>();
+                }
 
                 // For each lane, check if it's time for a vehicle arrival
                 for (int i = 0; i < 4; i++){
@@ -256,6 +253,8 @@ namespace Assets.Scripts.Backend.Simulation
             }
 
             Engine.StopEngine();
+
+            
 
             ResultJunctionEntrance northresult = new ResultJunctionEntrance
             (
