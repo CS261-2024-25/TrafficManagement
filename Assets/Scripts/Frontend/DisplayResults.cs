@@ -19,7 +19,7 @@ public class DisplayResults : MonoBehaviour
     {
         // hides or resets the text fields as soon as the scene starts
         ClearResults();
-        UpdateResults(); //--> commented out as making the user click the the button shorten their percieved wait time for the simmulation to take place --> increases user affordance
+        //UpdateResults(); //--> commented out as making the user click the the button shorten their percieved wait time for the simmulation to take place --> increases user affordance
     }
 
 
