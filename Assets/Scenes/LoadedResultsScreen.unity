@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Average wait time (Seconds)
+  m_text: Average Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -1989,7 +1989,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum wait time (Seconds)
+  m_text: Maximum Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -2155,7 +2155,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Average wait time (Seconds)
+  m_text: Average Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -2671,7 +2671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -2837,7 +2837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Average wait time (Seconds)
+  m_text: Average Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -3003,7 +3003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum wait time (Seconds)
+  m_text: Maximum Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -3407,7 +3407,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -3811,7 +3811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum wait time (Seconds)
+  m_text: Maximum Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -4079,7 +4079,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -4488,7 +4488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Average wait time (Seconds)
+  m_text: Average Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -5136,7 +5136,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum wait time (Seconds)
+  m_text: Maximum Wait Time (Seconds)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
@@ -5302,7 +5302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Maximum Queue Length (Units)
+  m_text: Maximum Queue Length (no. vehicles)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 064d28b015d679948a0629e518907f55, type: 2}
   m_sharedMaterial: {fileID: -413242407761151580, guid: 064d28b015d679948a0629e518907f55, type: 2}
