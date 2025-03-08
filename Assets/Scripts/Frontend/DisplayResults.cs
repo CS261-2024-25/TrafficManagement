@@ -89,12 +89,12 @@ public class DisplayResults : MonoBehaviour
 
     public void btnClickViewResults(){
         UpdateResults(); //To comment out when objects available from backend
-        Debug.LogError("Button Clicked! Trying to Update RESULTS SCENE");
+        //Debug.LogError("Button Clicked! Trying to Update RESULTS SCENE");
     }
 
     public void btnClickViewJunctionSimulation(){
         SceneManager.LoadScene("GraphicalJunctionSimulationScreen");
-        Debug.LogError("Button Clicked! Trying to load JunctionSimulation SCENE");
+        //Debug.LogError("Button Clicked! Trying to load JunctionSimulation SCENE");
         
     }
 
