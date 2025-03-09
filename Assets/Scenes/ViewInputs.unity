@@ -383,7 +383,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 79237448}
         m_TargetAssemblyTypeName: BackButton, Assembly-CSharp
-        m_MethodName: BackToLoadedResultsScene
+        m_MethodName: BackToResults
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1990,15 +1990,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 396449764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Script: {fileID: 11500000, guid: d45d06972a07442219f8f6c00780dd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 0}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  errorPanel: {fileID: 1659154898}
-  direction: 2
+  directionSelected: 2
+  isLeftEnabledTxtOut: {fileID: 749301886}
+  isCrossingEnabledTxtOut: {fileID: 65366362}
+  noIncomingLanesTxtOut: {fileID: 229195453}
+  noOutgoingLanesTxtOut: {fileID: 1792546379}
+  incomingTrafficFlowTxtOut: {fileID: 448178861}
+  dir1OutgoingTrafficFlowTxtOut: {fileID: 269415181}
+  dir2OutgoingTrafficFlowTxtOut: {fileID: 1691519384}
+  dir3OutgoingTrafficFlowTxtOut: {fileID: 232813647}
+  noForDirPriorityTxtOut: {fileID: 716684999}
 --- !u!1 &448178858
 GameObject:
   m_ObjectHideFlags: 0
@@ -6121,15 +6125,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1308259832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Script: {fileID: 11500000, guid: d45d06972a07442219f8f6c00780dd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 0}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  errorPanel: {fileID: 1659154898}
-  direction: 0
+  directionSelected: 0
+  isLeftEnabledTxtOut: {fileID: 1960351720}
+  isCrossingEnabledTxtOut: {fileID: 339783114}
+  noIncomingLanesTxtOut: {fileID: 1361603454}
+  noOutgoingLanesTxtOut: {fileID: 2020682402}
+  incomingTrafficFlowTxtOut: {fileID: 1766759655}
+  dir1OutgoingTrafficFlowTxtOut: {fileID: 956440151}
+  dir2OutgoingTrafficFlowTxtOut: {fileID: 1255011083}
+  dir3OutgoingTrafficFlowTxtOut: {fileID: 1060657169}
+  noForDirPriorityTxtOut: {fileID: 1922421841}
 --- !u!1 &1361603451
 GameObject:
   m_ObjectHideFlags: 0
@@ -8329,15 +8337,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1889283552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Script: {fileID: 11500000, guid: d45d06972a07442219f8f6c00780dd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 0}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  errorPanel: {fileID: 1659154898}
-  direction: 1
+  directionSelected: 1
+  isLeftEnabledTxtOut: {fileID: 1232529490}
+  isCrossingEnabledTxtOut: {fileID: 126660851}
+  noIncomingLanesTxtOut: {fileID: 1391714931}
+  noOutgoingLanesTxtOut: {fileID: 204930501}
+  incomingTrafficFlowTxtOut: {fileID: 1095892133}
+  dir1OutgoingTrafficFlowTxtOut: {fileID: 1123154812}
+  dir2OutgoingTrafficFlowTxtOut: {fileID: 230359615}
+  dir3OutgoingTrafficFlowTxtOut: {fileID: 1786158500}
+  noForDirPriorityTxtOut: {fileID: 115956211}
 --- !u!1 &1902639502
 GameObject:
   m_ObjectHideFlags: 0
@@ -9535,15 +9547,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2098657053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e60e2a4aea8dd48bba9faf8ad0106c, type: 3}
+  m_Script: {fileID: 11500000, guid: d45d06972a07442219f8f6c00780dd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outboundText: {fileID: 0}
-  inboundText: {fileID: 0}
-  leftToggle: {fileID: 0}
-  crossingToggle: {fileID: 0}
-  errorPanel: {fileID: 1659154898}
-  direction: 3
+  directionSelected: 3
+  isLeftEnabledTxtOut: {fileID: 705097380}
+  isCrossingEnabledTxtOut: {fileID: 538609246}
+  noIncomingLanesTxtOut: {fileID: 1902639505}
+  noOutgoingLanesTxtOut: {fileID: 995589332}
+  incomingTrafficFlowTxtOut: {fileID: 1032249862}
+  dir1OutgoingTrafficFlowTxtOut: {fileID: 2059758903}
+  dir2OutgoingTrafficFlowTxtOut: {fileID: 858177087}
+  dir3OutgoingTrafficFlowTxtOut: {fileID: 712769760}
+  noForDirPriorityTxtOut: {fileID: 1566788862}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -57,6 +57,12 @@ public class ViewLoadedParameters : MonoBehaviour
         
         uint incomingTrafficFlowNumber= direction.RightFlow + direction.ForwardFlow + direction.RightFlow;
         incomingTrafficFlowTxtOut.text+= incomingTrafficFlowNumber.ToString();
+
+        foreach ((CardinalDirection, double) tup in StaticData.priority){
+            if (tup.Item1 == directionSelected){
+                noForDirPriorityTxtOut.text += tup.Item2;
+            }
+        }
         
     }
 }

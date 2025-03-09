@@ -165,6 +165,7 @@ public class LoadSavedResult : MonoBehaviour
                 StaticData.southbound = inputs.Southbound;
                 StaticData.eastbound = inputs.Eastbound;
                 StaticData.westbound = inputs.Westbound;
+                StaticData.priority = inputs.Priority;
 
                 ResultTrafficSimulation resultInstanceToFetch = selectedTuple.Item2.Item2;
 
