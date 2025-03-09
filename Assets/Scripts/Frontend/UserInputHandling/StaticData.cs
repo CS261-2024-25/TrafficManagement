@@ -15,4 +15,5 @@ public class StaticData : MonoBehaviour
     public static bool failDirectionParse = false; 
     public static bool failFlowParse = false; 
     public static double totPrio = 0;
+    public static bool saved = false;
 }
