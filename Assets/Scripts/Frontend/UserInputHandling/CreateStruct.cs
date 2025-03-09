@@ -129,7 +129,8 @@ public class CreateStruct : MonoBehaviour
                                         InputParameters toBackend = new InputParameters(StaticData.northbound,StaticData.eastbound, StaticData.southbound, StaticData.westbound, StaticData.priority);
                                         Simulation simulation = new Simulation(new Engine(100),toBackend,1000);
                                         ResultTrafficSimulation results = simulation.RunSimulation();
-                                        PersistentJunctionSave.SaveResult(toBackend,results);       
+                                        PersistentJunctionSave.SaveResult(toBackend,results);
+                                        StaticData.saved = false;       
                                         SceneManager.LoadScene("ResultsScreen"); // West Direction is run last so when west runs, switch scene
                                 break;
                                                 
