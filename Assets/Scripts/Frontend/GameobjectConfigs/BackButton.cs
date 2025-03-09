@@ -17,6 +17,11 @@ public class BackButton : MonoBehaviour
         SceneManager.LoadScene("PrioritiseJuncMetric");
     }
 
+    public void BackToLoadedResultsScene(){
+        SceneManager.LoadScene("LoadedResultsScreen");
+    }
+
+
     //Method to go back to results screen FROM graphic display screen 
     public void BackToResults(){
         SceneManager.LoadScene("ResultsScreen");
