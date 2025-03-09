@@ -158,9 +158,11 @@ public class LoadSavedResult : MonoBehaviour
             
             //allResults.Count minimises chance of error is page is reloaded after totalJunctionResultsSaved initialised
             if (isLoadSuccess) {
+                StaticData.saved = true;
                 var selectedTuple = allResults[instanceToFetch-1]; // Convert 1-based user input to 0-based index
 
                 InputParameters inputs = selectedTuple.Item2.Item1; // Saved in static data for use by graphical display
+                Debug.Log("run");
                 StaticData.northbound = inputs.Northbound;
                 StaticData.southbound = inputs.Southbound;
                 StaticData.eastbound = inputs.Eastbound;
@@ -197,7 +199,7 @@ public class LoadSavedResult : MonoBehaviour
         }
         else{
             Debug.LogError("isLoadingSuccess= true! Trying to load Junction results SCENE");
-            SceneManager.LoadScene("LoadedResultsScreen");
+            SceneManager.LoadScene("ResultsScreen");
         }
     }
 

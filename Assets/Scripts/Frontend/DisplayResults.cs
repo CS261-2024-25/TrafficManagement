@@ -26,12 +26,19 @@ public class DisplayResults : MonoBehaviour
     public (ResultJunctionEntrance north, ResultJunctionEntrance south, ResultJunctionEntrance east, ResultJunctionEntrance west) GetLatestSimulationResults() {
         (InputParameters, ResultTrafficSimulation)[] allResults;
         bool isLoadSuccess = PersistentJunctionSave.LoadAllResults(out allResults);
-        if (isLoadSuccess && allResults.Length > 0) {
+        if (!StaticData.saved && isLoadSuccess && allResults.Length > 0) {
             ResultTrafficSimulation mostRecent = allResults[allResults.Length - 1].Item2;
             ResultJunctionEntrance northResult = mostRecent.ResultWithDirection(CardinalDirection.North);
             ResultJunctionEntrance southResult = mostRecent.ResultWithDirection(CardinalDirection.South);
             ResultJunctionEntrance eastResult = mostRecent.ResultWithDirection(CardinalDirection.East);
             ResultJunctionEntrance westResult = mostRecent.ResultWithDirection(CardinalDirection.West);
+            return (northResult, southResult, eastResult, westResult);
+        }
+        else if(StaticData.saved){
+            ResultJunctionEntrance northResult =LoadedResultInstanceManager.Instance.northResult;
+            ResultJunctionEntrance southResult =LoadedResultInstanceManager.Instance.southResult;
+            ResultJunctionEntrance eastResult =LoadedResultInstanceManager.Instance.eastResult;
+            ResultJunctionEntrance westResult =LoadedResultInstanceManager.Instance.westResult;
             return (northResult, southResult, eastResult, westResult);
         }
         else{
