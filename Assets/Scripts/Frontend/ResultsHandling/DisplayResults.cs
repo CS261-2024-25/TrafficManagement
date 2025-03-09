@@ -19,9 +19,7 @@ public class DisplayResults : MonoBehaviour
     {
         // hides or resets the text fields as soon as the scene starts
         ClearResults();
-        //UpdateResults(); //--> commented out as making the user click the the button shorten their percieved wait time for the simmulation to take place --> increases user affordance
     }
-
 
     public (ResultJunctionEntrance north, ResultJunctionEntrance south, ResultJunctionEntrance east, ResultJunctionEntrance west) GetLatestSimulationResults() {
         (InputParameters, ResultTrafficSimulation)[] allResults;
@@ -95,14 +93,11 @@ public class DisplayResults : MonoBehaviour
 
 
     public void btnClickViewResults(){
-        UpdateResults(); //To comment out when objects available from backend
-        //Debug.LogError("Button Clicked! Trying to Update RESULTS SCENE");
+        UpdateResults();
     }
 
     public void btnClickViewJunctionSimulation(){
-        SceneManager.LoadScene("GraphicalJunctionSimulationScreen");
-        //Debug.LogError("Button Clicked! Trying to load JunctionSimulation SCENE");
-        
+        SceneManager.LoadScene("GraphicalJunctionSimulationScreen");       
     }
 
     

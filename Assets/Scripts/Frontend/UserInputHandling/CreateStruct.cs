@@ -11,10 +11,6 @@ using System.Diagnostics; // To parse strings
 
 public class CreateStruct : MonoBehaviour
 {
-        private uint LeftFlow;
-        private uint ForwardFlow;
-        private uint RightFlow;
-
         // Directions are not specified as the function in this code is run separately for each direction
         public TMP_InputField direction1Text;
         public TMP_InputField direction2Text;
