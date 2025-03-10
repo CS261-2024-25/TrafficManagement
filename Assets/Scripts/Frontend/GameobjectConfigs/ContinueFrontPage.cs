@@ -4,10 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class ContinueFrontPage : MonoBehaviour
 {
+
+    /// <summary>
+    /// Used to switch onto main application from start screen
+    /// </summary>
     public void Continue() 
     {
-        Debug.Log("continue clicked");
-        Console.WriteLine("hello");
         SceneManager.LoadScene("ParameterSelectScreen");
     }
 }

@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class ExitButton : MonoBehaviour // This script is used by Exit manager so multiple quit buttons can be used
+public class ExitButton : MonoBehaviour
 {
+    /// <summary>
+    /// Used by exit buttons to exit application
+    /// </summary>
     public void Exit(){
-        //Debug.Log("Quit"); // Uncomment for testing
         Application.Quit();
     }
 }

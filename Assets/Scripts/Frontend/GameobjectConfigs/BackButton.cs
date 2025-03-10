@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class BackButton : MonoBehaviour
 {
+    //Method to go back to parameter select svcreen FROM Traffic Flow screen
     public void BackToParameter(){
         SceneManager.LoadScene("ParameterSelectScreen");
     }
@@ -17,12 +18,7 @@ public class BackButton : MonoBehaviour
         SceneManager.LoadScene("PrioritiseJuncMetric");
     }
 
-    public void BackToLoadedResultsScene(){
-        SceneManager.LoadScene("LoadedResultsScreen");
-    }
-
-
-    //Method to go back to results screen FROM graphic display screen 
+    //Method to go back to results screen FROM graphic display screen/load prev results 
     public void BackToResults(){
         SceneManager.LoadScene("ResultsScreen");
     }

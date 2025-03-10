@@ -7,14 +7,19 @@ public class SetRoadPanels : MonoBehaviour
     public GameObject parent;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// Finds the relevant panels corresponding to lane number of junction in Static Data (current junction being analysed)
+    /// and sets the relevant panels to active to construct a graphical representation of the junction
+    /// </summary>
     void Start()
     {
-        // Sets all panels to false  
+        // Sets all panels to false incase some were previously on   
         foreach (Transform child in parent.transform)
         {
             child.gameObject.SetActive(false);
         }
 
+        // Turns on relevant panel for each direction
         GameObject northOn;
         switch (StaticData.northbound.LaneCountInbound + StaticData.northbound.LaneCountOutbound)
         {

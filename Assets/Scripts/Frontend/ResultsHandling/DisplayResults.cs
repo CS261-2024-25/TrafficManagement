@@ -21,10 +21,14 @@ public class DisplayResults : MonoBehaviour
         ClearResults();
     }
 
+    /// <summary>
+    /// Loads the most recently added configuration from JSON if the user is configuring a new junction and a
+    /// </summary>
+    /// <returns> relevant junction details from the JSON</returns>
     public (ResultJunctionEntrance north, ResultJunctionEntrance south, ResultJunctionEntrance east, ResultJunctionEntrance west) GetLatestSimulationResults() {
         (InputParameters, ResultTrafficSimulation)[] allResults;
         bool isLoadSuccess = PersistentJunctionSave.LoadAllResults(out allResults);
-        if (!StaticData.saved && isLoadSuccess && allResults.Length > 0) {
+        if (!StaticData.saved && isLoadSuccess && allResults.Length > 0) { // If user configured a new junction
             ResultTrafficSimulation mostRecent = allResults[allResults.Length - 1].Item2;
             ResultJunctionEntrance northResult = mostRecent.ResultWithDirection(CardinalDirection.North);
             ResultJunctionEntrance southResult = mostRecent.ResultWithDirection(CardinalDirection.South);
@@ -32,7 +36,7 @@ public class DisplayResults : MonoBehaviour
             ResultJunctionEntrance westResult = mostRecent.ResultWithDirection(CardinalDirection.West);
             return (northResult, southResult, eastResult, westResult);
         }
-        else if(StaticData.saved){
+        else if(StaticData.saved){ // If user is loading a previous configuration
             ResultJunctionEntrance northResult =LoadedResultInstanceManager.Instance.northResult;
             ResultJunctionEntrance southResult =LoadedResultInstanceManager.Instance.southResult;
             ResultJunctionEntrance eastResult =LoadedResultInstanceManager.Instance.eastResult;
@@ -47,7 +51,9 @@ public class DisplayResults : MonoBehaviour
 
     }
 
-    //public void UpdateResults(TrafficSimulationResults SimulationResults ) //To be uncommented when objects available from backend
+    /// <summary>
+    /// Updates the text of the results page when view results button is clicked to reflext the loaded junction
+    /// </summary>
     public void UpdateResults()
     {
         // Fetch results from Backend
@@ -72,6 +78,9 @@ public class DisplayResults : MonoBehaviour
         //removed error handling for null results as backend logic verifies that null results can't be appended to persistent junction data 
     }
 
+    /// <summary>
+    /// Clears results text
+    /// </summary>
     public void ClearResults(){
         //removed loop AND HARDCODED --> NO CHANCE OF ERROR
         northAvgWaitText.text = "";

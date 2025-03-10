@@ -11,7 +11,7 @@ public class StaticData : MonoBehaviour
     public static (CardinalDirection, double)[] priority = new (CardinalDirection,double)[4];
     public static int arrIndex = 0;
     public static bool hasLeftTurn = false;
-    public static bool oneOutgoing = false;
+    public static bool oneIncoming = false;
     public static bool failDirectionParse = false; // Check for ConfigureDirection
     public static bool failFlowParse = false; // Check for CreateStruct
     public static double totPrio = 0; 

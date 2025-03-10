@@ -25,10 +25,14 @@ public class ConfigureDirection : MonoBehaviour
 
         public CardinalDirection direction; // Manually set in unity
         
-        // Run when submit is clicken on the first page
+        /// <summary>
+        /// Run when submit is clicked on the parameter select page and runs once for each direction.
+        /// Captures all user inputs for that panel and stores them in static data if it is a valid configuration otherwise, the user is alerted.
+        /// </summary>
         public void GetInputs(){
                 int parsedVal = 0;
                 int parsedVal2 = 0;
+                // Parses all user inputs
                 if (!Int32.TryParse(outboundText.text, out parsedVal)){
                         StaticData.failDirectionParse = true;
                 }
@@ -41,7 +45,7 @@ public class ConfigureDirection : MonoBehaviour
                         if (direction == CardinalDirection.West){
                                 StaticData.failDirectionParse = false;
                                 StaticData.hasLeftTurn = false;
-                                StaticData.oneOutgoing = false;
+                                StaticData.oneIncoming = false;
                         }
                         errorPanel.SetActive(true);
                 }
@@ -49,26 +53,26 @@ public class ConfigureDirection : MonoBehaviour
                         LaneCountOutbound = Convert.ToUInt32(parsedVal);
                         LaneCountInbound = Convert.ToUInt32(parsedVal2);
                         if (leftToggle.isOn){
-                                StaticData.hasLeftTurn = true;
+                                StaticData.hasLeftTurn = true; // Needs to be stored as if any lane has left turn then all incoming num >1
                         }
                         if (LaneCountInbound == 1){
-                                StaticData.oneOutgoing = true;
+                                StaticData.oneIncoming = true; // Needs to be stored as if any lane has left turn then all incoming num >1
                         }
-                        if ((LaneCountInbound + LaneCountOutbound > 5) || (StaticData.hasLeftTurn && StaticData.oneOutgoing)){
+                        if ((LaneCountInbound + LaneCountOutbound > 5) || (StaticData.hasLeftTurn && StaticData.oneIncoming)){ // Error handling
                                 if (direction == CardinalDirection.West){
                                         StaticData.hasLeftTurn = false;
-                                        StaticData.oneOutgoing = false;
+                                        StaticData.oneIncoming = false;
                                 }
                                 else{
                                         StaticData.failDirectionParse = true;
                                 }
-                                errorPanel.SetActive(true);
+                                errorPanel.SetActive(true); // Inputs are not collected and user is alerted of mistake
                         }
                         else{
                                 HasLeftTurn = leftToggle.isOn;
                                 HasPedestrianCrossing = crossingToggle.isOn;
 
-                                switch(direction){  // Traffic flows are set to 0 as they will be set later in CreateStruct
+                                switch(direction){  // Traffic flows are set to 0 as they will be set later on Traffic Flow screen
                                         case CardinalDirection.North:
                                                 StaticData.northbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
                                                 break;
@@ -81,7 +85,7 @@ public class ConfigureDirection : MonoBehaviour
                                         case CardinalDirection.West:
                                                 StaticData.westbound = new DirectionDetails(0,0,0,LaneCountOutbound,LaneCountInbound,HasLeftTurn,HasPedestrianCrossing);
                                                 StaticData.hasLeftTurn = false;
-                                                StaticData.oneOutgoing = false;
+                                                StaticData.oneIncoming = false;
                                                 SceneManager.LoadScene("TrafficFlowSelect"); // West run last so that switches scene
                                                 break;      
                                 }

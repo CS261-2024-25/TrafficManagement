@@ -26,6 +26,10 @@ public class ViewLoadedParameters : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
+    /// <summary>
+    /// Displays the input parameters of the currently selected junction on the ViewInputs screen for a given direction.
+    /// This is called once for each direction and the results are fetched from StaticData.
+    /// </summary>
     void Start()
     {
         DirectionDetails direction;

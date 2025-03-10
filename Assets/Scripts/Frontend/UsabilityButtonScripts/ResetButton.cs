@@ -8,6 +8,9 @@ public class ResetButton : MonoBehaviour
     public GameObject objectToCheck;
     private Toggle[] toggles;
 
+    /// <summary>
+    /// Gets list of all present toggles and textboxes on screen (script usually attatched to main panel)
+    /// </summary>
     void Start()
     {
         textBoxes = objectToCheck.GetComponentsInChildren<TMP_InputField>();
@@ -15,6 +18,9 @@ public class ResetButton : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Sets all toggles to on and all textboxes to empty
+    /// </summary>
     public void Reset()
     {
         foreach(TMP_InputField textBox in textBoxes){
