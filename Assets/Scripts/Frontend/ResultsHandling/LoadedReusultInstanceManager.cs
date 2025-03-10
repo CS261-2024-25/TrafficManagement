@@ -13,7 +13,9 @@ public class LoadedResultInstanceManager : MonoBehaviour
     public ResultJunctionEntrance eastResult; 
     public ResultJunctionEntrance westResult; 
 
-    
+    /// <summary>
+    /// Used for persistent data
+    /// </summary>
     private void Awake()
     {
         if (Instance != null)

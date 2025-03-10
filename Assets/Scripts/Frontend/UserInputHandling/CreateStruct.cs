@@ -11,10 +11,6 @@ using System.Diagnostics; // To parse strings
 
 public class CreateStruct : MonoBehaviour
 {
-        private uint LeftFlow;
-        private uint ForwardFlow;
-        private uint RightFlow;
-
         // Directions are not specified as the function in this code is run separately for each direction
         public TMP_InputField direction1Text;
         public TMP_InputField direction2Text;
@@ -26,13 +22,18 @@ public class CreateStruct : MonoBehaviour
 
         public CardinalDirection direction; // Manually set in unity
 
-        // Run when submit is clicked on the second page
+        /// <summary>
+        /// Run when submit is clicked on traffic flow page once for each direction. Captures all user inputs on the traffic flow page if configuration was valid
+        /// if not then alerts the user and does not capture data. If all data is valid, then the relevant parts of static data are reset and the backend 
+        /// simulation is called ready to be displayed on the next page.
+        /// </summary>
         public void GetInputs(){
                 CardinalDirection terminalDirection = CardinalDirection.West;
                 int parsedVal1 = 0;
                 int parsedVal2 = 0;
                 int parsedVal3 = 0;
                 int parsedVal4 = 0;
+                // Parses all text boxes
                 if (!Int32.TryParse(direction1Text.text, out parsedVal1)){ // If runs when number cannot be parsed
                         StaticData.failFlowParse = true;
                 }
@@ -53,7 +54,7 @@ public class CreateStruct : MonoBehaviour
                 else{
                         StaticData.failFlowParse = true;
                 }
-                // Input sanitisation checks
+                // Input sanitisation checks (if fail then user is alerted and data is not stored)
                 if (
                         StaticData.failFlowParse || 
                         prioNum < 0 || 
@@ -73,13 +74,14 @@ public class CreateStruct : MonoBehaviour
 
                 }
                 else{
-                        StaticData.priority[StaticData.arrIndex] = (direction,prioNum); 
+                        StaticData.priority[StaticData.arrIndex] = (direction,prioNum); // Priority recorded
                         StaticData.arrIndex++;
 
                         uint direction1Flow = Convert.ToUInt32(parsedVal1); // Needed to fit struct type
                         uint direction2Flow = Convert.ToUInt32(parsedVal2);
                         uint direction3Flow = Convert.ToUInt32(parsedVal3);
 
+                        // Updates stored data with flows
                         switch(direction){
                                 case CardinalDirection.North:
                                 StaticData.northbound = new DirectionDetails( 
@@ -124,16 +126,15 @@ public class CreateStruct : MonoBehaviour
                                         StaticData.westbound.HasLeftTurn,
                                         StaticData.westbound.HasPedestrianCrossing
                                 );
-                                        StaticData.totPrio = 0;
-                                        StaticData.arrIndex = 0;
+                                        StaticData.totPrio = 0; // Reset for next use
+                                        StaticData.arrIndex = 0; // Reset for next use
                                         InputParameters toBackend = new InputParameters(StaticData.northbound,StaticData.eastbound, StaticData.southbound, StaticData.westbound, StaticData.priority);
-                                        Simulation simulation = new Simulation(new Engine(100),toBackend,1000);
+                                        Simulation simulation = new Simulation(new Engine(100),toBackend,1000); // Runs backend simultation
                                         ResultTrafficSimulation results = simulation.RunSimulation();
                                         PersistentJunctionSave.SaveResult(toBackend,results);
-                                        StaticData.saved = false;       
+                                        StaticData.saved = false; // Done so loading manager knows the results were not loaded from a previous config (new config added)      
                                         SceneManager.LoadScene("ResultsScreen"); // West Direction is run last so when west runs, switch scene
-                                break;
-                                                
+                                break;                                              
                                 }
                 }
         }

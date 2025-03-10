@@ -29,6 +29,9 @@ public class LoadSavedResult : MonoBehaviour
     public TMP_Text errorText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// First clears text then adds updated methods by calling relevant  methods
+    /// </summary>
     void Start()
     {
         ClearAllText();
@@ -43,6 +46,9 @@ public class LoadSavedResult : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Clears all previous results text
+    /// </summary>
     public void ClearAllText(){
         //HARDCODED --> NO CHANCE OF ERROR
         averageWaitTimeCoefficientText.text = "";
@@ -53,6 +59,10 @@ public class LoadSavedResult : MonoBehaviour
         juncResultInstanceToFetch.text = "";
     }
 
+    /// <summary>
+    /// Gets number of results stored in the JSON
+    /// </summary>
+    /// <returns>Number of results stored</returns>
     public int GetTotalNumberOfResults(){
         (InputParameters, ResultTrafficSimulation)[] allResults;
         bool isLoadSuccess = PersistentJunctionSave.LoadAllResults(out allResults);
@@ -64,29 +74,33 @@ public class LoadSavedResult : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// reads user input fields and parses them to assign variables to them
+    /// </summary>
+    /// <param name="avgWaitCoeff">variable for average wait coefficient to be stored in</param>
+    /// <param name="maxWaitCoeff">variable for max wait coefficient to be stored in</param>
+    /// <param name="maxQueueCoeff">variable for max queue coefficient to be stored in</param>
+    /// <param name="instanceToFetch">variable for the index of the result to be fetched</param>
+    /// <returns>true if succeeds, false if not</returns>
     public bool TryGetInputValues(out double avgWaitCoeff, out double maxWaitCoeff, out double maxQueueCoeff, out int instanceToFetch){
         bool success = true;
         if (!double.TryParse(averageWaitTimeCoefficientText.text, out avgWaitCoeff))
         {
-            //Debug.LogError("Failed to parse average wait time coefficient.");
             success = false;
         }
 
         if (!double.TryParse(maximumWaitTimeCoefficientText.text, out maxWaitCoeff))
         {
-            //Debug.LogError("Failed to parse maximum wait time coefficient.");
             success = false;
         }
         
         if (!double.TryParse(maximumQueueLengthCoefficientText.text, out maxQueueCoeff))
         {
-            //Debug.LogError("Failed to parse maximum queue length coefficient.");
             success = false;
         }
         
         if (!int.TryParse(juncResultInstanceToFetch.text, out instanceToFetch))
         {
-            //Debug.LogError("Failed to parse junction result instance.");
             success = false;
         }
         
@@ -94,6 +108,14 @@ public class LoadSavedResult : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Prepares input data to be stored
+    /// </summary>
+    /// <param name="northResult">North configuration</param>
+    /// <param name="southResult">South configuration</param>
+    /// <param name="eastResult">East configuration</param>
+    /// <param name="westResult">West configuration</param>
+    /// <returns>true if data manager is initialised, false otherwise</returns>
     public bool StorePersistentResultsForScreens(ResultJunctionEntrance northResult,ResultJunctionEntrance southResult,ResultJunctionEntrance eastResult,ResultJunctionEntrance westResult){
         if (LoadedResultInstanceManager.Instance == null) {
             Debug.LogError("Persistent data manager is not initialized.");
@@ -111,7 +133,10 @@ public class LoadSavedResult : MonoBehaviour
 
 
 
-    //public (ResultJunctionEntrance north, ResultJunctionEntrance south, ResultJunctionEntrance east, ResultJunctionEntrance west) GetSpecifiedSimulationResults() {
+    /// <summary>
+    /// Gets the relevant stored junction data from secondary storage based on the user's priority and rank inputs and stores them in persistent data
+    /// </summary>
+    /// <returns>True if successful, false otherwise</returns>
     public bool GetSpecifiedSimulationResults() {
         double avgWaitCoeff, maxWaitCoeff, maxQueueCoeff;
         int instanceToFetch;
@@ -134,7 +159,6 @@ public class LoadSavedResult : MonoBehaviour
             (maxQueueCoeff < 0) 
         )
         {
-            Debug.Log(isInputParseSuccess);
             errorText.text = "Priority numbers must be between 0 and 3 (inclusive). Please adjust your entries."; 
             errorPanel.SetActive(true);
             return false;
@@ -162,7 +186,6 @@ public class LoadSavedResult : MonoBehaviour
                 var selectedTuple = allResults[instanceToFetch-1]; // Convert 1-based user input to 0-based index
 
                 InputParameters inputs = selectedTuple.Item2.Item1; // Saved in static data for use by graphical display
-                Debug.Log("run");
                 StaticData.northbound = inputs.Northbound;
                 StaticData.southbound = inputs.Southbound;
                 StaticData.eastbound = inputs.Eastbound;
@@ -188,9 +211,11 @@ public class LoadSavedResult : MonoBehaviour
         }
 
     } 
+
+    /// <summary>
+    /// Loads relevant scene when submit is clicked
+    /// </summary>
     public void BtnClickViewLoadedResults(){
-        //var (north,south,east,west) = GetSpecifiedSimulationResults();
-        //Debug.LogError("Button Clicked! Testing user inputs");
         bool isLoadingSuccess=GetSpecifiedSimulationResults();
         if (!isLoadingSuccess)
         {

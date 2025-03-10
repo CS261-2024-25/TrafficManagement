@@ -1893,7 +1893,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 592940130}
         m_TargetAssemblyTypeName: BackButton, Frontend
-        m_MethodName: BackToTrafficFlowScreen
+        m_MethodName: BackToResults
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
